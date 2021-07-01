@@ -11,7 +11,6 @@
 FOODIE - A food centered app to share, teach, and learn about cultures through food around the world.
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
 - **Category:** Social, lifestyle
 - **Mobile:** There are many user interaction in the app community: users will be able to take food pictures and share in a post on the platform. Users will also be able to view restraunts in selected region's map and mark them down. Users can also view, comment, and like others' posts.
 - **Story:** The value of the app is clear - to share, teach, and learn about cultures through food around the world. As a foodie, I was always looking for a platform that's specific to food-sharing but there's almost none in the market. Many people also take a large amount of time to look for good restraunts because resources are not concentrated in one platform. The app story solves this problem and goes beyond to connect people through food.
