@@ -1,4 +1,7 @@
-# FOODIE
+Original App Design Project - README Template
+===
+
+# FoodieWIKI
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -8,15 +11,16 @@
 
 ## Overview
 ### Description
-FOODIE - A food centered app to share, teach, and learn about cultures through food around the world.
+FoodieWIKI - A food centered app to bookmark and learn about cultures through food around the world.
 
 ### App Evaluation
-- **Category:** Social, lifestyle
-- **Mobile:** There are many user interaction in the app community: users will be able to take food pictures and share in a post on the platform. Users will also be able to view restraunts in selected region's map and mark them down. Users can also view, comment, and like others' posts.
-- **Story:** The value of the app is clear - to share, teach, and learn about cultures through food around the world. As a foodie, I was always looking for a platform that's specific to food-sharing but there's almost none in the market. Many people also take a large amount of time to look for good restraunts because resources are not concentrated in one platform. The app story solves this problem and goes beyond to connect people through food.
-- **Market:** We mainly focus on young people who are active on social media and looking to learn more about cultures, or simply want to find a nice restraunt to hang out with friends. The app can be helpful when other age groups are planning a trip locally or to other regions since food is always an important part when we visit new places.
-- **Habit:** Average users will consume the content on the app and sometimes create their own post to showcase a restraunt they like or share a receipt. The platform is interactive and habit-forming because this app serves as a centralized platform for food info.
-- **Scope:** The goal is clearly defined. It is doable to complete an MVP where users can post and interact with other posts + a map function to view local restraunt so users can bookmark them. An addtional feature can be the app will help users to set up a meal-together with strangers (if they would like to connect with new friends) or friends.
+[Evaluation of your app across the following attributes]
+- **Category:** Lifestyle
+- **Mobile:** Users will also be able to view restraunts in selected region's map and mark them down. User can filter restraunts based on their choices.
+- **Story:** The value of the app is clear - to learn about cultures through food around the world. As a foodie, I was always looking for a platform that's specific to food-searching but there's almost none in the market. Many people also take a large amount of time to look for good restraunts because resources are not concentrated in one platform. The app story solves this problem.
+- **Market:** We mainly focus on young people who are looking to learn more about cultures, or simply want to find a nice restraunt to hang out with friends. The app can be helpful when other age groups are planning a trip locally or to other regions since food is always an important part when we visit new places.
+- **Habit:** Average users will consume the content on the app. The platform is habit-forming because this app serves as a centralized platform for food info.
+- **Scope:** The goal is clearly defined. It is doable to complete an MVP where users can view local restraunt and bookmark them. 
 
 ## Product Spec
 
@@ -25,35 +29,23 @@ FOODIE - A food centered app to share, teach, and learn about cultures through f
 **Required Must-have Stories**
 
 Post:
-* User can post a new post to their feed
 * User can create a new account
 * User can login
 * User can search for other users
 * User can like a post
-* User can bookmark a post
 * User can view a feed of photos
 
 Map:
 * User can see nearby restraurants in a map and mark down restaurants in one folder based on area or other self-defined category
-* User can see posts nearby or choose a region
+* User can see restraunts nearby or choose a region
 
 
 **Optional Nice-to-have Stories**
 
-Post:
-* User can add a comment to a photo
 * User can tap a photo to view a more detailed photo screen with comments
-* User can see trending posts
-* User can search for posts by a hashtag or the name of the restraunt
-* User can see notifications when their photo is liked or they are followed
-* User can see their profile page with their posts
-* User can follow/unfollow another user
-    * User can see a list of their followers
-    * User can see a list of their following
-* User can view other user’s profiles and see their post feed
+* User can see their profile page with their bookmarks
+* User can view other user’s profiles and see their bookmarks
 
-Map:
-* User can initiate a meal-together with strangers/followers/friends. They can invite specific people or leave it as a post to have other people joining.
 
 ### 2. Screen Archetypes
 
@@ -61,17 +53,15 @@ Map:
    * User can create a new account
    * User can sign in
 * Stream 
-    * User can scroll through posts 
+    * User can scroll through restraunt info 
         * Nearby (based on location)
-        * Explore (a mix of posts that can be from other regions)
+        * Explore (a mix of cards that can be from other regions)
 * Map View - visualizing location-based restraunt information
    * Users can see nearby restraunt based on selected regions
    * Users can mark down restraunts
-   * Users can tap in the restraunt and see relevant posts 
+   * Users can tap in the restraunt and see details
 * Detail
-    * Users can see details of a post
-* Creation 
-    * User can create a new post (share a restraunt / receipt)
+    * Users can see details of a restraunt
 * Profile 
     * User can view their identity and stats
 
@@ -80,7 +70,6 @@ Map:
 **Tab Navigation** (Tab to Screen)
 
 * Stream screen
-* Creation screen
 * Profile screen
 
 **Flow Navigation** (Screen to Screen)
@@ -89,11 +78,11 @@ Map:
    * Stream feed
 * Stream screen
    * Nearby posts
-       * Detail screen once tab on a post
+       * Detail screen once tab on a card
    * Explore posts
-       * Detail screen once tab on a post
-* Creation screen
-    * Home screen (after creation)
+       * Detail screen once tab on a card
+* Profile screen
+    * Bookmarks
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
