@@ -82,10 +82,6 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 ## Wireframes
 <img src="https://github.com/minzsiure/Foodie/blob/main/wireframe.png?raw=true" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
-
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
