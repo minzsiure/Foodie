@@ -27,24 +27,19 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 ### 1. User Stories (Required and Optional)
 
 **Required Must-have Stories**
-
-Post:
 * User can create a new account
 * User can login
-* User can search for other users
-* User can like a post
+* User can bookmark a restraunt
 * User can view a feed of photos
-
-Map:
 * User can see nearby restraurants in a map and mark down restaurants in one folder based on area or other self-defined category
-* User can see restraunts nearby or choose a region
 
 
 **Optional Nice-to-have Stories**
-
+* User can search for other users
 * User can tap a photo to view a more detailed photo screen with comments
 * User can see their profile page with their bookmarks
 * User can view other user’s profiles and see their bookmarks
+* User can see restraunts nearby or choose a region
 
 
 ### 2. Screen Archetypes
@@ -85,8 +80,7 @@ Map:
     * Bookmarks
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/minzsiure/Foodie/blob/main/wireframe.png?raw=true" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
