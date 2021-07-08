@@ -14,7 +14,6 @@ Original App Design Project - README Template
 FoodieWIKI - A food centered app to bookmark and learn about cultures through food around the world.
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
 - **Category:** Lifestyle
 - **Mobile:** Users will also be able to view restraunts in selected region's map and mark them down. User can filter restraunts based on their choices.
 - **Story:** The value of the app is clear - to learn about cultures through food around the world. As a foodie, I was always looking for a platform that's specific to food-searching but there's almost none in the market. Many people also take a large amount of time to look for good restraunts because resources are not concentrated in one platform. The app story solves this problem.
@@ -28,15 +27,16 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 
 **Required Must-have Stories**
 * User can create a new account
-* User can login
+* User can login/logout
 * User can bookmark a restraunt
-* User can view a feed of photos
-* User can see nearby restraurants in a map and mark down restaurants in one folder based on area or other self-defined category
+* User can view a feed of photos and restraunt cards
+* User can see detial page of a restraunt
+* User can see nearby restraurants in a map and mark down restaurants in one folder based on area (optional: or other self-defined category)
 
 
 **Optional Nice-to-have Stories**
 * User can search for other users
-* User can tap a photo to view a more detailed photo screen with comments
+* User can tap a photo to view a more detailed photo screen
 * User can see their profile page with their bookmarks
 * User can view other user’s profiles and see their bookmarks
 * User can see restraunts nearby or choose a region
