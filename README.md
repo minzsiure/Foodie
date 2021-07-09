@@ -94,7 +94,16 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 | email      | String   | unique email for the user registration (default, optional) |
 | password   | String   | password for the user (default field)                      |
 | Region     | String   | user current location (city, state)                        |
-| profilePic | File     | user custom profile picture 
+| profilePic | File     | user custom profile picture |
+
+**Bookmark**
+| Property  | Type             | Description                          |
+| --------- | ---------------- | ------------------------------------ |
+| author    | pointer          | user who authored this bookmark book |
+| restraunt | array of pointer | a list of restraunt being bookmarked |
+| updatedAt | dateTime         | date when bookmark is created        |
+| createdAt | dateTime         | date when bookmark is updated        |
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
