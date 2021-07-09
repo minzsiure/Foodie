@@ -72,9 +72,9 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 * Login screen
    * Stream feed
 * Stream screen
-   * Nearby posts
+   * posts (optional)
        * Detail screen once tab on a card
-   * Explore posts
+   * restraunt cards
        * Detail screen once tab on a card
 * Profile screen
     * Bookmarks
