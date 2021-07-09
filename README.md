@@ -85,26 +85,41 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 ## Schema 
 ### Models
 **User**
-| Property   | Type     | Description                                                |
-| ---------- | -------- | ---------------------------------------------------------- |
-| objectID   | String   | unique id for the user post (default field)                |
-| createdAt  | dateTime | date when post is created (default field)                  |
-| updatedAt  | dateTime | date when post is last updated (default field)             |
-| username   | String   | unique username for the user (default field)               |
-| email      | String   | unique email for the user registration (default, optional) |
-| password   | String   | password for the user (default field)                      |
-| Region     | String   | user current location (city, state)                        |
-| profilePic | File     | user custom profile picture |
-| restraunts | array of pointer | a list of restraunt being bookmarked                       |
 
+| Property   | Type                       | Description                                                |
+| ---------- | -------------------------- | ---------------------------------------------------------- |
+| objectID   | String                     | unique id for the user (default field)                     |
+| createdAt  | dateTime                   | date when user is created (default field)                  |
+| updatedAt  | dateTime                   | date when user is last updated (default field)             |
+| username   | String                     | unique username for the user (default field)               |
+| email      | String                     | unique email for the user registration (default, optional) |
+| password   | String                     | password for the user (default field)                      |
+| Region     | String                     | user current location (city, state)                        |
+| profilePic | File                       | user custom profile picture                                |
+| restraunts | array of restraunt pointer | a list of restraunt being bookmarked                       |
 
 **Bookmark**
-| Property  | Type             | Description                          |
-| --------- | ---------------- | ------------------------------------ |
-| author    | pointer          | user who authored this bookmark book |
-| restraunt | array of pointer | a list of restraunt being bookmarked |
-| updatedAt | dateTime         | date when bookmark is created        |
-| createdAt | dateTime         | date when bookmark is updated        |
+| Property  | Type                       | Description                                |
+| --------- | -------------------------- | ------------------------------------------ |
+| objectID  | String                     | unique id for the bookmark (default field) |
+| author    | pointer                    | user who authored this bookmark book       |
+| restraunt | array of restraunt pointer | a list of restraunt being bookmarked       |
+| updatedAt | dateTime                   | date when bookmark is created              |
+| createdAt | dateTime                   | date when bookmark is updated              |
+
+**Restraunt**
+
+| Property     | Type                  | Description                                        |
+| ------------ | --------------------- | -------------------------------------------------- |
+| objectID     | string                | unique id for the restraunt (default field)        |
+| name         | Text                  | Text                                               |
+| posterPic    | file                  | the profile picture of the restraunt shown to user |
+| otherPics    | array of files        | other pictures of the restraunt                    |
+| rating       | Number                | restraunt rating                                   |
+| website      | String                | restraunt website                                  |
+| phone number | String                | restraunt phone number                             |
+| likedBy      | array of user pointer | users who bookmarked the restraunt                 |
+| address      | String                | restraunt address                                  |
 
 ### Networking
 - [Add list of network requests by screen ]
