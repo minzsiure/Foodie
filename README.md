@@ -95,6 +95,8 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 | password   | String   | password for the user (default field)                      |
 | Region     | String   | user current location (city, state)                        |
 | profilePic | File     | user custom profile picture |
+| restraunts | array of pointer | a list of restraunt being bookmarked                       |
+
 
 **Bookmark**
 | Property  | Type             | Description                          |
