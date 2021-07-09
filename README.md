@@ -122,4 +122,14 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+#### Google Map SDK or Apple MapKit
+- Base URL - https://developers.google.com/maps/documentation/ios-sdk/overview
+- Base URL - https://developer.apple.com/documentation/mapkit/
+
+#### Yelp Business Endpoints
+- Base URL - https://www.yelp.com/developers/documentation/v3
+
+| HTTP verb | Endpoint         | Description                                                                                                                                                                                           |
+| --------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET       | /businesses/{id} | This endpoint returns detailed business content. Normally, you would get the Business ID from /businesses/search, /businesses/search/phone, /transactions/{transaction_type}/search or /autocomplete. |
+| GET          | /businesses/search                 |This endpoint returns up to 1000 businesses based on the provided search criteria. It has some basic information about the business. To get detailed information and reviews, please use the Business ID returned here and refer to /businesses/{id} and /businesses/{id}/reviews endpoints.                                                                                                                                    
