@@ -28,9 +28,9 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 **Required Must-have Stories**
 * User can create a new account
 * User can login/logout
-* User can bookmark a restraunt
+* User can bookmark a restaurant
 * User can view a feed of photos and restraunt cards
-* User can see detial page of a restraunt
+* User can see detial page of a restaurant
 * User can see nearby restraurants in a map and mark down restaurants in one folder based on area (optional: or other self-defined category)
 
 
@@ -52,9 +52,9 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
         * Nearby (based on location)
         * Explore (a mix of cards that can be from other regions)
 * Map View - visualizing location-based restraunt information
-   * Users can see nearby restraunt based on selected regions
-   * Users can mark down restraunts
-   * Users can tap in the restraunt and see details
+   * Users can see nearby restaurant based on selected regions
+   * Users can mark down restaurants
+   * Users can tap in the restaurant and see details
 * Detail
     * Users can see details of a restraunt
 * Profile 
@@ -74,7 +74,7 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 * Stream screen
    * posts (optional)
        * Detail screen once tab on a card
-   * restraunt cards
+   * restaurant cards
        * Detail screen once tab on a card
 * Profile screen
     * Bookmarks
@@ -96,14 +96,14 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 | password   | String                     | password for the user (default field)                      |
 | Region     | String                     | user current location (city, state)                        |
 | profilePic | File                       | user custom profile picture                                |
-| restraunts | array of restraunt objectID| a list of restraunt being bookmarked                       |
+| restaurants | array of restaurants objectID| a list of restaurants being bookmarked                       |
 
 **Bookmark**
 | Property  | Type                       | Description                                |
 | --------- | -------------------------- | ------------------------------------------ |
 | objectID  | String                     | unique id for the bookmark (default field) |
 | author    | pointer                    | user who authored this bookmark book       |
-| restraunt | array of restraunt objectID | a list of restraunt being bookmarked       |
+| restaurants | array of restraunt objectID | a list of restaurants being bookmarked       |
 | updatedAt | dateTime                   | date when bookmark is created              |
 | createdAt | dateTime                   | date when bookmark is updated              |
 
@@ -115,9 +115,9 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 | name         | Text                  | Text                                               |
 | posterPic    | file                  | the profile picture of the restraunt shown to user |
 | otherPics    | array of files        | other pictures of the restraunt                    |
-| rating       | Number                | restraunt rating                                   |
-| website      | String                | restraunt website                                  |
-| phone number | String                | restraunt phone number                             |
+| rating       | Number                | restaurant rating                                   |
+| website      | String                | restaurant website                                  |
+| phone number | String                | restaurant phone number                             |
 | likedBy      | array of user objectID | users who bookmarked the restraunt                 |
 | address      | String                | restraunt address                                  |
 
