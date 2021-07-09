@@ -85,6 +85,7 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 
 ## Schema 
 ### Models
+**User**
 | Property   | Type                       | Description                                                |
 | ---------- | -------------------------- | ---------------------------------------------------------- |
 | objectID   | String                     | unique id for the user (default field)                     |
