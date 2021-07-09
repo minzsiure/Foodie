@@ -84,8 +84,6 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 
 ## Schema 
 ### Models
-**User**
-
 | Property   | Type                       | Description                                                |
 | ---------- | -------------------------- | ---------------------------------------------------------- |
 | objectID   | String                     | unique id for the user (default field)                     |
@@ -96,14 +94,14 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 | password   | String                     | password for the user (default field)                      |
 | Region     | String                     | user current location (city, state)                        |
 | profilePic | File                       | user custom profile picture                                |
-| restraunts | array of restraunt pointer | a list of restraunt being bookmarked                       |
+| restraunts | array of restraunt objectID| a list of restraunt being bookmarked                       |
 
 **Bookmark**
 | Property  | Type                       | Description                                |
 | --------- | -------------------------- | ------------------------------------------ |
 | objectID  | String                     | unique id for the bookmark (default field) |
 | author    | pointer                    | user who authored this bookmark book       |
-| restraunt | array of restraunt pointer | a list of restraunt being bookmarked       |
+| restraunt | array of restraunt objectID | a list of restraunt being bookmarked       |
 | updatedAt | dateTime                   | date when bookmark is created              |
 | createdAt | dateTime                   | date when bookmark is updated              |
 
@@ -118,7 +116,7 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 | rating       | Number                | restraunt rating                                   |
 | website      | String                | restraunt website                                  |
 | phone number | String                | restraunt phone number                             |
-| likedBy      | array of user pointer | users who bookmarked the restraunt                 |
+| likedBy      | array of user objectID | users who bookmarked the restraunt                 |
 | address      | String                | restraunt address                                  |
 
 ### Networking
