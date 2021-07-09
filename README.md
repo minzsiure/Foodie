@@ -81,6 +81,7 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 
 ## Wireframes
 <img src="https://github.com/minzsiure/Foodie/blob/main/wireframe.png?raw=true" width=600>
+<img src="https://github.com/minzsiure/Foodie/blob/main/foodieWIKI.gif?raw=true" width=600> 
 
 ## Schema 
 ### Models
