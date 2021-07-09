@@ -83,9 +83,18 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 <img src="https://github.com/minzsiure/Foodie/blob/main/wireframe.png?raw=true" width=600>
 
 ## Schema 
-[This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+**User**
+| Property   | Type     | Description                                                |
+| ---------- | -------- | ---------------------------------------------------------- |
+| objectID   | String   | unique id for the user post (default field)                |
+| createdAt  | dateTime | date when post is created (default field)                  |
+| updatedAt  | dateTime | date when post is last updated (default field)             |
+| username   | String   | unique username for the user (default field)               |
+| email      | String   | unique email for the user registration (default, optional) |
+| password   | String   | password for the user (default field)                      |
+| Region     | String   | user current location (city, state)                        |
+| profilePic | File     | user custom profile picture 
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
