@@ -10,6 +10,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RestaurantCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *posterImage;
+@property (weak, nonatomic) IBOutlet UILabel *restaurantName;
 
 @end
 

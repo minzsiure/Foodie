@@ -13,7 +13,10 @@
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
 
-@interface RestaurantViewController ()
+@interface RestaurantViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *restaurantTable;
+
+@property (strong, nonatomic) NSArray *restaurants;
 
 @end
 
@@ -21,9 +24,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.restaurantTable.delegate = self;
+    self.restaurantTable.dataSource = self;
+    [self fetchRestaurants];
     
 }
+
+- (void) fetchRestaurants{
+    YelpAPIManager *manager = [YelpAPIManager new];
+    [manager getYelpRestaurantCompletion:^(NSArray *restaurants, NSError *error){
+        self.restaurants = restaurants;
+        //[self.restaurantTable reloadData];
+    }];
+    
+}
+
 - (IBAction)logOut:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -44,5 +60,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    RestaurantCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RestaurantCell"];
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 20;
+}
+
 
 @end

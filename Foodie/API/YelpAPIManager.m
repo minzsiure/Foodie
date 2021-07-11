@@ -34,7 +34,7 @@
              completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-            NSLog(@"%@",responseDictionary);
+            NSLog(@"YELP DATA FETCHED SUCCESS");
             NSArray *dictionaries = responseDictionary[@"businesses"];
             NSArray *restaurants = [Restaurant restaurantsWithDictionaries:dictionaries];
             completion(restaurants, nil);
