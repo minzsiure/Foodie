@@ -10,6 +10,8 @@
 #import "UIImageView+AFNetworking.h"
 #import "Restaurant.h"
 #import "YelpAPIManager.h"
+#import <Parse/Parse.h>
+#import "LoginViewController.h"
 
 @interface RestaurantViewController ()
 
@@ -21,6 +23,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+}
+- (IBAction)logOut:(id)sender {
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        [[UIApplication sharedApplication].keyWindow setRootViewController: loginViewController];
+        
+    }];
 }
 
 /*

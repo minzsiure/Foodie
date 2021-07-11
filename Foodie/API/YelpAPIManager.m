@@ -7,6 +7,7 @@
 
 #import "YelpAPIManager.h"
 #import "Restaurant.h"
+#import <YelpAPI/YelpAPI.h>
 
 @interface YelpAPIManager()
 
