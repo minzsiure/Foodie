@@ -38,19 +38,16 @@
     self.photoTwo = [NSURL URLWithString:photos[1]];
     self.photoThree = [NSURL URLWithString:photos[2]];
     
-    self.hours = dictionary[@"hours"][@"open"];
+    //self.hours = dictionary[@"hours"][@"open"];
     
     return self;
 }
 
-+ (NSMutableArray *)detailsWithDictionaries:(NSDictionary *)dictionary {
-    NSMutableArray *restaurants = [NSMutableArray array];
-    
++ (RestaurantDetail *)detailsWithDictionaries:(NSDictionary *)dictionary {
     // a factory method that returns Restaurants when initialized with an array of Restaurant Dictionaries.
     RestaurantDetail *restaurantDetail = [[RestaurantDetail alloc] initWithDictionary:dictionary];
-    [restaurants addObject:restaurantDetail];
     
-    return restaurants;
+    return restaurantDetail;
 }
 
 @end

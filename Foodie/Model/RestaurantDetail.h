@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
-+ (NSMutableArray *)detailsWithDictionaries:(NSDictionary *)dictionary;
++ (RestaurantDetail *)detailsWithDictionaries:(NSDictionary *)dictionary;
 
 @end
 

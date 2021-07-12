@@ -30,7 +30,6 @@
     
     self.reviewCount = dictionary[@"reviewCount"];
     self.price = dictionary[@"price"];
-    //self.snippet = dictionary[@"snippet"];
     
     return self;
 }
