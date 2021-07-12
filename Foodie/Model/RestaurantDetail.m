@@ -1,13 +1,15 @@
 //
-//  Restaurant.m
+//  RestaurantDetail.m
 //  Foodie
 //
-//  Created by Eva Xie on 7/9/21.
+//  Created by Eva Xie on 7/12/21.
 //
 
+#import "RestaurantDetail.h"
 #import "Restaurant.h"
 
-@implementation Restaurant
+@implementation RestaurantDetail
+
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     self = [super init];
@@ -30,24 +32,26 @@
     
     self.reviewCount = dictionary[@"reviewCount"];
     self.price = dictionary[@"price"];
-    //self.snippet = dictionary[@"snippet"];
+    
+    NSArray *photos = dictionary[@"photos"];
+    self.photoOne = [NSURL URLWithString:photos[0]];
+    self.photoTwo = [NSURL URLWithString:photos[1]];
+    self.photoThree = [NSURL URLWithString:photos[2]];
+    
+    self.hours = dictionary[@"hours"][@"open"];
     
     return self;
 }
 
-+ (NSMutableArray *)restaurantsWithDictionaries:(NSArray *)dictionaries {
++ (NSMutableArray *)detailsWithDictionaries:(NSDictionary *)dictionary {
     NSMutableArray *restaurants = [NSMutableArray array];
     
     // a factory method that returns Restaurants when initialized with an array of Restaurant Dictionaries.
-    for (NSDictionary *dictionary in dictionaries) {
-        Restaurant *restaurant = [[Restaurant alloc] initWithDictionary:dictionary];
-        [restaurants addObject:restaurant];
-    }
+    RestaurantDetail *restaurantDetail = [[RestaurantDetail alloc] initWithDictionary:dictionary];
+    [restaurants addObject:restaurantDetail];
     
     return restaurants;
 }
 
-
-
-
 @end
+

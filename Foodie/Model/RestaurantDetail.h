@@ -1,16 +1,15 @@
 //
-//  Restaurant.h
+//  RestaurantDetail.h
 //  Foodie
 //
-//  Created by Eva Xie on 7/9/21.
+//  Created by Eva Xie on 7/12/21.
 //
 
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Restaurant : NSObject
-
+@interface RestaurantDetail : NSObject
 @property (nonatomic, strong) NSString *id;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSArray *categories;
@@ -20,10 +19,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *rating;
 @property (strong, nonatomic) NSNumber *reviewCount;
 @property (strong, nonatomic) NSString *price;
+@property (strong, nonatomic) NSURL *photoOne;
+@property (strong, nonatomic) NSURL *photoTwo;
+@property (strong, nonatomic) NSURL *photoThree;
+@property (strong, nonatomic) NSArray *hours;
+
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
-+ (NSArray *)restaurantsWithDictionaries:(NSMutableArray *)dictionaries;
-
++ (NSMutableArray *)detailsWithDictionaries:(NSDictionary *)dictionary;
 
 @end
 
