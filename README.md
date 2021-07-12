@@ -80,7 +80,7 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
     * Bookmarks
 
 ## Wireframes
-<img src="https://github.com/minzsiure/Foodie/blob/main/wireframe.png?raw=true" width=600>
+<img src="https://github.com/minzsiure/Foodie/blob/main/Screen%20Shot%202021-07-12%20at%2011.35.53%20AM.png?raw=true" width=600>
 <img src="https://github.com/minzsiure/Foodie/blob/main/foodieWIKI.gif?raw=true" width=400> 
 
 ## Schema 
