@@ -6,6 +6,8 @@
 //
 
 #import "RestaurantCell.h"
+#import "Restaurant.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation RestaurantCell
 
@@ -18,6 +20,15 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void) setRestaurant:(Restaurant *)restaurant{
+    _restaurant = restaurant;
+    self.restaurantName.text = self.restaurant.name;
+    self.posterImage.image = nil;
+    if (self.restaurant.imageURL != nil){
+        [self.posterImage setImageWithURL:self.restaurant.imageURL];
+    }
 }
 
 @end

@@ -35,6 +35,7 @@
         if (!error) {
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
             NSLog(@"YELP DATA FETCHED SUCCESS");
+            NSLog(@"%@", responseDictionary[@"businesses"][0]); 
             NSArray *dictionaries = responseDictionary[@"businesses"];
             NSArray *restaurants = [Restaurant restaurantsWithDictionaries:dictionaries];
             completion(restaurants, nil);

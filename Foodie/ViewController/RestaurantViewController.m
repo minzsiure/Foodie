@@ -63,6 +63,7 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     RestaurantCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RestaurantCell"];
+    cell.restaurant = self.restaurants[indexPath.row];
     return cell;
 }
 

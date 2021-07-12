@@ -15,7 +15,9 @@
     self.name = dictionary[@"name"];
     self.categories = dictionary[@"categories"];
     self.phone = dictionary[@"phone"];
-    self.imageURL = dictionary[@"imageURL"];
+    NSString *posterURLString = dictionary[@"image_url"];
+    NSURL *posterURL = [NSURL URLWithString:posterURLString];
+    self.imageURL = posterURL;
     self.location = dictionary[@"location"];
     self.rating =  dictionary[@"rating"];
     self.ratingURL = dictionary[@"ratingURL"];
