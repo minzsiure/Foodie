@@ -23,23 +23,27 @@
     [super viewDidLoad];
     _latitude = 42.36001;
     _longtitude = -71.0942;
-    // Create a GMSCameraPosition that tells the map to display the given
-    // coordinate at zoom level 15.
+    
     [self createCameraPosition];
     [self createCenterMarker];
     [self processRestaurantArray:self.restaurantDictionaries];
+    
 }
 
 - (void) createCameraPosition{
+    // Create a GMSCameraPosition that tells the map to display the given
+    // coordinate at zoom level 15.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_latitude
                                                               longitude:_longtitude
                                                                    zoom:15];
     self.mapView = [GMSMapView mapWithFrame:self.view.frame camera:camera];
     self.mapView.myLocationEnabled = YES;
+    self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
 }
 
 - (void) createCenterMarker{
+    // create a marker on user current location (currently default)
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(_latitude, _longtitude);
     marker.title = @"MIT";
@@ -48,6 +52,7 @@
 }
 
 - (void) processRestaurantMarker: (Restaurant *)restaurantObj{
+    // process all restaurant objects from main stream Yelp API
     GMSMarker *marker = [[GMSMarker alloc] init];
     double latDouble = [restaurantObj.latitude doubleValue];
     double longDouble = [restaurantObj.longitude doubleValue];
@@ -64,6 +69,11 @@
     }
 }
 
+#pragma mark - GMSMapViewDelegate
+- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker{
+    NSLog(@"You long tapped at marker");
+}
+
 /*
 #pragma mark - Navigation
 
@@ -73,5 +83,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end
