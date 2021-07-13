@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSDictionary *location;
 @property (strong, nonatomic) NSString *rating;
 @property (strong, nonatomic) NSNumber *reviewCount;
+@property (strong, nonatomic) NSString *latitude;
+@property (strong, nonatomic) NSString *longitude;
 @property (strong, nonatomic) NSString *price;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;

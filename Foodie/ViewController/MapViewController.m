@@ -6,9 +6,14 @@
 //
 
 #import "MapViewController.h"
+#import "Restaurant.h"
 #import <GoogleMaps/GoogleMaps.h>
 
 @interface MapViewController ()
+@property double latitude;
+@property double longtitude;
+@property (strong, nonatomic) GMSMapView *mapView;
+
 
 @end
 
@@ -16,22 +21,45 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    // Create a GMSCameraPosition that tells the map to display the
-    // coordinate -33.86,151.20 at zoom level 6.
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
-                                                              longitude:151.20
-                                                                   zoom:6];
-    GMSMapView *mapView = [GMSMapView mapWithFrame:self.view.frame camera:camera];
-    mapView.myLocationEnabled = YES;
-    [self.view addSubview:mapView];
+    _latitude = 42.36001;
+    _longtitude = -71.0942;
+    // Create a GMSCameraPosition that tells the map to display the given
+    // coordinate at zoom level 15.
+    [self createCameraPosition];
+    [self createCenterMarker];
+    [self processRestaurantArray:self.restaurantDictionaries];
+}
 
-    // Creates a marker in the center of the map.
+- (void) createCameraPosition{
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_latitude
+                                                              longitude:_longtitude
+                                                                   zoom:15];
+    self.mapView = [GMSMapView mapWithFrame:self.view.frame camera:camera];
+    self.mapView.myLocationEnabled = YES;
+    [self.view addSubview:self.mapView];
+}
+
+- (void) createCenterMarker{
     GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
-    marker.title = @"Sydney";
-    marker.snippet = @"Australia";
-    marker.map = mapView;
+    marker.position = CLLocationCoordinate2DMake(_latitude, _longtitude);
+    marker.title = @"MIT";
+    marker.snippet = @"USA";
+    marker.map = self.mapView;
+}
+
+- (void) processRestaurantMarker: (Restaurant *)restaurantObj{
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    double latDouble = [restaurantObj.latitude doubleValue];
+    double longDouble = [restaurantObj.longitude doubleValue];
+    marker.position = CLLocationCoordinate2DMake(latDouble, longDouble);
+    marker.title = restaurantObj.name;
+    marker.map = self.mapView;
+}
+
+- (void) processRestaurantArray: (NSArray *)restaurantDic{
+    for (Restaurant *dictionary in restaurantDic){
+        [self processRestaurantMarker:dictionary];
+    }
 }
 
 /*

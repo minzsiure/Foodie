@@ -14,6 +14,7 @@
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
 #import "DetailViewController.h"
+#import "MapViewController.h"
 
 @interface RestaurantViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *restaurantTable;
@@ -78,6 +79,11 @@
     
         DetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.restaurant = restaurant;
+    }
+    if ([segue.identifier isEqual:@"mapSegue"]){
+        
+        MapViewController *mapViewController = [segue destinationViewController];
+        mapViewController.restaurantDictionaries = self.restaurants;
     }
 
 }
