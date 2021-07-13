@@ -315,7 +315,7 @@
                                 <color key="tintColor" systemColor="systemGrayColor"/>
                                 <state key="normal" backgroundImage="link.circle.fill" catalog="system"/>
                                 <connections>
-                                    <action selector="onTapYelpLink:" destination="2uV-1Y-M9w" eventType="touchUpInside" id="c7a-GI-fYs"/>
+                                    <segue destination="dM2-Yf-Hwj" kind="presentation" identifier="yelpSegue" destinationCreationSelector="yelpSegue" modalTransitionStyle="coverVertical" id="ARE-Qx-rDW"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yelp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zm5-G1-fYh">
@@ -335,7 +335,7 @@
                                 <color key="tintColor" systemColor="opaqueSeparatorColor"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="People who also liked this..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NqF-M6-azT">
-                                <rect key="frame" x="15" y="621" width="267" height="27"/>
+                                <rect key="frame" x="15" y="617.5" width="267" height="27"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                 <color key="textColor" red="0.18975336864741166" green="0.18975336864741166" blue="0.18975336864741166" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -369,12 +369,12 @@
                                 </cells>
                             </collectionView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.34999999403953552" contentMode="scaleAspectFit" image="grey-line-png" translatesAutoresizingMaskIntoConstraints="NO" id="VEp-3u-dKI">
-                                <rect key="frame" x="-43" y="536" width="500" height="144"/>
+                                <rect key="frame" x="-43" y="533.5" width="500" height="144"/>
                                 <color key="tintColor" systemColor="opaqueSeparatorColor"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSp-mv-VET">
-                                <rect key="frame" x="15" y="562" width="48" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSp-mv-VET">
+                                <rect key="frame" x="15" y="562" width="384" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -390,7 +390,8 @@
                             <constraint firstItem="u3p-Ly-ynz" firstAttribute="leading" secondItem="Ouo-VZ-qEC" secondAttribute="trailing" constant="85" id="9Zz-c5-3Ha"/>
                             <constraint firstItem="M0v-Q6-SW7" firstAttribute="top" secondItem="Edp-fp-FmW" secondAttribute="bottom" constant="8" id="9p4-y1-I98"/>
                             <constraint firstItem="NqF-M6-azT" firstAttribute="leading" secondItem="Edp-fp-FmW" secondAttribute="leading" id="Bdb-cl-vCP"/>
-                            <constraint firstItem="NqF-M6-azT" firstAttribute="top" secondItem="WAx-O3-K1x" secondAttribute="bottom" constant="30" id="EPn-iG-LJ8"/>
+                            <constraint firstItem="dHw-aF-08E" firstAttribute="trailing" secondItem="KSp-mv-VET" secondAttribute="trailing" constant="15" id="Dn6-9u-ytr"/>
+                            <constraint firstItem="NqF-M6-azT" firstAttribute="top" secondItem="VEp-3u-dKI" secondAttribute="bottom" constant="-60" id="EPn-iG-LJ8"/>
                             <constraint firstItem="pYe-Il-BjM" firstAttribute="centerX" secondItem="l1A-wX-KXB" secondAttribute="centerX" id="HUj-G9-pGf"/>
                             <constraint firstItem="Ouo-VZ-qEC" firstAttribute="centerX" secondItem="l1A-wX-KXB" secondAttribute="centerX" id="LzP-3J-c7w"/>
                             <constraint firstItem="Edp-fp-FmW" firstAttribute="top" secondItem="Wgs-Nk-MRm" secondAttribute="bottom" constant="20" id="NdF-os-ofR"/>
@@ -398,7 +399,7 @@
                             <constraint firstItem="KSp-mv-VET" firstAttribute="top" secondItem="8Yb-tY-Z9Z" secondAttribute="bottom" constant="8" id="Pn9-gQ-CWY"/>
                             <constraint firstItem="WAx-O3-K1x" firstAttribute="top" secondItem="zm5-G1-fYh" secondAttribute="bottom" constant="-55" id="SQ1-eR-nf6"/>
                             <constraint firstItem="VEp-3u-dKI" firstAttribute="top" secondItem="KSp-mv-VET" secondAttribute="bottom" constant="-50" id="ShZ-ic-cAC"/>
-                            <constraint firstAttribute="trailing" secondItem="Wgs-Nk-MRm" secondAttribute="trailing" constant="311" id="SoS-Me-B6r"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Wgs-Nk-MRm" secondAttribute="trailing" constant="311" id="SoS-Me-B6r"/>
                             <constraint firstAttribute="trailing" secondItem="WAx-O3-K1x" secondAttribute="trailing" constant="-32" id="Vdr-wV-sts"/>
                             <constraint firstItem="rdR-hO-4eP" firstAttribute="trailing" secondItem="dHw-aF-08E" secondAttribute="trailing" id="W3u-it-Z5h"/>
                             <constraint firstItem="Edp-fp-FmW" firstAttribute="top" secondItem="rdR-hO-4eP" secondAttribute="bottom" constant="8" id="Y3Z-dZ-h4b"/>
@@ -433,6 +434,40 @@
             </objects>
             <point key="canvasLocation" x="957.97101449275374" y="1599.7767857142856"/>
         </scene>
+        <!--Yelp View Controller-->
+        <scene sceneID="KgR-fq-Add">
+            <objects>
+                <viewController id="dM2-Yf-Hwj" customClass="YelpViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RDH-bz-c5E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rPI-BU-wgO">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wXf-Za-p8h"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rPI-BU-wgO" firstAttribute="trailing" secondItem="wXf-Za-p8h" secondAttribute="trailing" id="8ph-Lb-l0c"/>
+                            <constraint firstAttribute="bottom" secondItem="rPI-BU-wgO" secondAttribute="bottom" id="c9t-AO-LqZ"/>
+                            <constraint firstItem="rPI-BU-wgO" firstAttribute="leading" secondItem="wXf-Za-p8h" secondAttribute="leading" id="mdT-55-2bj"/>
+                            <constraint firstItem="rPI-BU-wgO" firstAttribute="top" secondItem="wXf-Za-p8h" secondAttribute="top" id="pwY-DT-j0C"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="yelpWebView" destination="rPI-BU-wgO" id="sSC-fa-ftz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ruY-Rj-nrG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="957.97101449275374" y="2300.8928571428569"/>
+        </scene>
         <!--My Profile View Controller-->
         <scene sceneID="dfg-hM-pgE">
             <objects>
@@ -440,14 +475,35 @@
                     <view key="view" contentMode="scaleToFill" id="zHf-zU-hPR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9VB-sD-r4E">
+                                <rect key="frame" x="0.0" y="218" width="414" height="678"/>
+                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="iFd-mu-BEg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9VB-sD-r4E" firstAttribute="top" secondItem="iFd-mu-BEg" secondAttribute="top" constant="130" id="1IM-nx-6SS"/>
+                            <constraint firstItem="9VB-sD-r4E" firstAttribute="trailing" secondItem="iFd-mu-BEg" secondAttribute="trailing" id="2Wx-yc-VfS"/>
+                            <constraint firstItem="9VB-sD-r4E" firstAttribute="leading" secondItem="iFd-mu-BEg" secondAttribute="leading" id="SRZ-xJ-S6T"/>
+                            <constraint firstAttribute="bottom" secondItem="9VB-sD-r4E" secondAttribute="bottom" id="xxy-zv-e2m"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="czO-8V-8FM"/>
+                    <connections>
+                        <outlet property="shadowView" destination="9VB-sD-r4E" id="LNW-CH-0m0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wyv-1S-iof" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3068" y="885"/>
+            <point key="canvasLocation" x="3066.666666666667" y="884.59821428571422"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fNd-Hf-gKi">

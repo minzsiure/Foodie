@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSArray *categories;
 @property (strong, nonatomic) NSString *phone;
 @property (strong, nonatomic) NSURL *imageURL;
+@property (strong, nonatomic) NSURL *yelpURL;
 @property (strong, nonatomic) NSDictionary *location;
 @property (strong, nonatomic) NSString *rating;
 @property (strong, nonatomic) NSNumber *reviewCount;

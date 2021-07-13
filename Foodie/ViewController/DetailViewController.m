@@ -10,6 +10,7 @@
 #import "Restaurant.h"
 #import "UIImageView+AFNetworking.h"
 #import "YelpAPIManager.h"
+#import "YelpViewController.h"
 
 @interface DetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *posterImage;
@@ -73,23 +74,24 @@
 
 }
 
-- (IBAction)onTapYelpLink:(id)sender {
-}
-
 - (IBAction)onTapCall:(id)sender {
+    NSString *phoneURL = [@"tel:" stringByAppendingString:self.restaurant.phone];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneURL]];
 }
 
 - (IBAction)onTapLocation:(id)sender {
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqual:@"yelpSegue"]){
+        YelpViewController *yelpViewController = [segue destinationViewController];
+        yelpViewController.yelpURL = self.restaurant.yelpURL;
+    }
 }
-*/
+
 
 @end

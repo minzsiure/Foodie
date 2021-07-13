@@ -17,6 +17,7 @@
 
 @interface RestaurantViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *restaurantTable;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @property (strong, nonatomic) NSArray *restaurants;
 @property (strong, nonatomic) NSArray *restaurantDetail;
@@ -33,6 +34,13 @@
     self.restaurantTable.dataSource = self;
     [self fetchRestaurants];
     [self.restaurantTable reloadData];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    
+    //refresh controller
+    [self.refreshControl addTarget:self action:@selector(fetchRestaurants) forControlEvents:UIControlEventValueChanged];
+    [self.restaurantTable insertSubview:self.refreshControl atIndex:0];
+    [self.restaurantTable addSubview:self.refreshControl];
 
     
 }

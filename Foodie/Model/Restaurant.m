@@ -17,8 +17,10 @@
     self.phone = dictionary[@"phone"];
     
     NSString *posterURLString = dictionary[@"image_url"];
-    NSURL *posterURL = [NSURL URLWithString:posterURLString];
-    self.imageURL = posterURL;
+    self.imageURL = [NSURL URLWithString:posterURLString];
+    
+    NSString *yelpURLString = dictionary[@"url"];
+    self.yelpURL = [NSURL URLWithString:yelpURLString];
 
     self.location = dictionary[@"location"];
 
