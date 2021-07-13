@@ -9,7 +9,7 @@
 #import "Restaurant.h"
 #import <GoogleMaps/GoogleMaps.h>
 
-@interface MapViewController ()
+@interface MapViewController () <GMSMapViewDelegate>
 @property double latitude;
 @property double longtitude;
 @property (strong, nonatomic) GMSMapView *mapView;
@@ -43,7 +43,7 @@
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(_latitude, _longtitude);
     marker.title = @"MIT";
-    marker.snippet = @"USA";
+    marker.snippet = @"Current Location";
     marker.map = self.mapView;
 }
 
@@ -54,6 +54,8 @@
     marker.position = CLLocationCoordinate2DMake(latDouble, longDouble);
     marker.title = restaurantObj.name;
     marker.map = self.mapView;
+    marker.snippet = @"View Details";
+    
 }
 
 - (void) processRestaurantArray: (NSArray *)restaurantDic{

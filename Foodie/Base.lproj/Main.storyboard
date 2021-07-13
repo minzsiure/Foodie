@@ -523,7 +523,7 @@
                                         <color key="tintColor" systemColor="opaqueSeparatorColor"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bookmarks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Q4-0a-tLp">
-                                        <rect key="frame" x="10" y="199" width="123" height="29"/>
+                                        <rect key="frame" x="20" y="199" width="123" height="29"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -536,7 +536,7 @@
                                     <constraint firstItem="xYF-uP-U99" firstAttribute="top" secondItem="9VB-sD-r4E" secondAttribute="top" constant="100" id="DVr-ZI-xkl"/>
                                     <constraint firstItem="mzU-cf-Lfg" firstAttribute="centerX" secondItem="9VB-sD-r4E" secondAttribute="centerX" id="PiR-9l-vNY"/>
                                     <constraint firstItem="5rr-W1-Lip" firstAttribute="centerX" secondItem="9VB-sD-r4E" secondAttribute="centerX" id="Ucj-bb-zAy"/>
-                                    <constraint firstItem="2Q4-0a-tLp" firstAttribute="leading" secondItem="9VB-sD-r4E" secondAttribute="leading" constant="10" id="W46-y9-H7p"/>
+                                    <constraint firstItem="2Q4-0a-tLp" firstAttribute="leading" secondItem="9VB-sD-r4E" secondAttribute="leading" constant="20" id="W46-y9-H7p"/>
                                     <constraint firstAttribute="trailing" secondItem="xYF-uP-U99" secondAttribute="trailing" constant="-28" id="WV1-6O-qdY"/>
                                     <constraint firstItem="5rr-W1-Lip" firstAttribute="top" secondItem="mzU-cf-Lfg" secondAttribute="bottom" constant="8" id="aQe-Zj-CYx"/>
                                     <constraint firstItem="mzU-cf-Lfg" firstAttribute="top" secondItem="9VB-sD-r4E" secondAttribute="top" constant="80" id="rbI-bx-Uxg"/>
