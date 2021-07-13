@@ -246,6 +246,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="b2W-CK-I9g"/>
+                    <connections>
+                        <segue destination="2uV-1Y-M9w" kind="show" identifier="MarkerDetail" id="x3X-eE-fWx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ro-Pa-Ge6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -643,6 +646,9 @@
             <point key="canvasLocation" x="19" y="885"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="x3X-eE-fWx"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="blob" width="356" height="173"/>
         <image name="grey-line-png" width="2088" height="144"/>

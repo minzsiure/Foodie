@@ -8,11 +8,13 @@
 #import "MapViewController.h"
 #import "Restaurant.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "DetailViewController.h"
 
 @interface MapViewController () <GMSMapViewDelegate>
 @property double latitude;
 @property double longtitude;
 @property (strong, nonatomic) GMSMapView *mapView;
+
 
 
 @end
@@ -60,6 +62,7 @@
     marker.title = restaurantObj.name;
     marker.map = self.mapView;
     marker.snippet = @"View Details";
+    marker.userData = restaurantObj;
     
 }
 
@@ -72,17 +75,23 @@
 #pragma mark - GMSMapViewDelegate
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker{
     NSLog(@"You long tapped at marker");
+    [self performSegueWithIdentifier:@"MarkerDetail" sender:marker.userData];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"MarkerDetail"]){
+        Restaurant *restaurant = sender;
+        DetailViewController *detailViewController = [segue destinationViewController];
+        detailViewController.restaurant = restaurant;
+        // need to figre out how a marker can carry info
+        
+    }
 }
-*/
+
 
 
 @end
