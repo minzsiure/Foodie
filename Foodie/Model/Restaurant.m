@@ -19,9 +19,9 @@
     NSString *posterURLString = dictionary[@"image_url"];
     NSURL *posterURL = [NSURL URLWithString:posterURLString];
     self.imageURL = posterURL;
-    
+
     self.location = dictionary[@"location"];
-    
+
     double voteDouble = [(NSNumber *)  dictionary[@"rating"] doubleValue];
     NSString *voteString = [NSString stringWithFormat:@" %0.1f ",voteDouble];
     NSString *star = @"★";

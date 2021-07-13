@@ -16,10 +16,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (nonatomic, strong) NSDictionary *detailDictionary;
 @property (strong, nonatomic) NSString *categoryString;
+@property (strong, nonatomic) NSString *locString;
+
+
 
 @end
 
@@ -40,50 +42,35 @@
 //
 //        //NSLog(@"%@", self.categoryString);
 //    }];
-//    NSString *APIKey = @"28Yo8kD_K-RyBUR6gCWznPYoMh1ItVdboaEExmr9duOBklai0I21Ww6b-IHLW2ZJyn6Ohh70J_V-xP6Mxv1JV1V8HZ_9hljzdgqkMbouw6oRsY3f12VS0KL3LqHoYHYx";
-//    NSString *baseURL = @"https://api.yelp.com/v3/businesses/";
-//    NSString *completeURL = [baseURL stringByAppendingString:self.restaurant.id];
-//    NSURL *url = [NSURL URLWithString: completeURL];
-//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-//
-//    [request setHTTPMethod:@"GET"];
-//    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-//
-//    NSString *authValue = [NSString stringWithFormat:@"Bearer %@", APIKey];
-//    [request setValue:authValue forHTTPHeaderField:@"Authorization"];
-//
-//    NSURLSession *session = [NSURLSession sharedSession];
-//    [[session dataTaskWithRequest:request
-//             completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//        if (!error) {
-//            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-//            NSLog(@"Restaurant Detail FETCHED SUCCESS");
-//            self.detailDictionary = responseDictionary;
-//        }
-//        else{
-//            NSLog(@"ERROR %@", [error localizedDescription]);
-//        }
-//
-//    }] resume];
-    
+
     self.posterImage.image = nil;
     if (self.restaurant.imageURL != nil){
         [self.posterImage setImageWithURL:self.restaurant.imageURL];
     }
     self.nameLabel.text = self.restaurant.name;
     self.ratingLabel.text = self.restaurant.rating;
-    self.priceLabel.text = self.restaurant.price;
-    NSArray *categoryDic = self.restaurant.categories;
-    for (int i = 0; i < categoryDic.count; i++){
-        if (i < categoryDic.count){
-            [self.categoryString stringByAppendingString:categoryDic[i][@"title"]];
-            [self.categoryString stringByAppendingString:@", "];
-        }
-        else{
-            [self.categoryString stringByAppendingString:categoryDic[i][@"title"]];
-        }
+    //self.priceLabel.text = self.restaurant.price;
+    
+    //price (if any) + category
+    NSArray *categoryArr = self.restaurant.categories;
+    NSMutableArray *newArray = [NSMutableArray new];
+    for (NSDictionary *dic in categoryArr){
+        [newArray addObject:dic[@"title"]];
     }
-    self.categoryLabel.text = self.categoryString;
+    NSString *categoryStr = [newArray componentsJoinedByString:@", "];
+    if (self.restaurant.price != nil){
+        NSString *subRow = [self.restaurant.price stringByAppendingString:@" • "];
+        self.priceLabel.text = [subRow stringByAppendingString:categoryStr];
+    }
+    else{
+        self.priceLabel.text = categoryStr;
+    }
+
+    //address
+    NSArray *locArray = self.restaurant.location[@"display_address"];
+    self.addressLabel.text = [locArray componentsJoinedByString:@" "];
+
+
 }
 
 - (IBAction)onTapYelpLink:(id)sender {
