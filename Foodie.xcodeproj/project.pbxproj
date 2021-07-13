@@ -27,6 +27,7 @@
 		8A425C8D269CB29A000D7A79 /* RestaurantDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A425C8C269CB29A000D7A79 /* RestaurantDetail.m */; };
 		8AA088B6269D2BB9004351FC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA088B5269D2BB9004351FC /* WebKit.framework */; };
 		8AA088B9269D2BDA004351FC /* YelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA088B8269D2BDA004351FC /* YelpViewController.m */; };
+		8AA088BC269E0B5A004351FC /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA088BB269E0B5A004351FC /* MapViewController.m */; };
 		B9272DF2021C3A3A963EA9F8 /* Pods_Foodie_FoodieUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E7D464BCF89E48C4B6AA40 /* Pods_Foodie_FoodieUITests.framework */; };
 		DE1803EED51CF9B401A98E98 /* Pods_Foodie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F80AD68F3A04A89403AE86D /* Pods_Foodie.framework */; };
 /* End PBXBuildFile section */
@@ -89,6 +90,8 @@
 		8AA088B5269D2BB9004351FC /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8AA088B7269D2BDA004351FC /* YelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YelpViewController.h; sourceTree = "<group>"; };
 		8AA088B8269D2BDA004351FC /* YelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YelpViewController.m; sourceTree = "<group>"; };
+		8AA088BA269E0B5A004351FC /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		8AA088BB269E0B5A004351FC /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		AEA169FC7C5F8B8EDBD86F30 /* Pods-Foodie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.release.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.release.xcconfig"; sourceTree = "<group>"; };
 		B0101693DE2FF6A26F7A9E7C /* Pods-Foodie-FoodieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie-FoodieUITests.release.xcconfig"; path = "Target Support Files/Pods-Foodie-FoodieUITests/Pods-Foodie-FoodieUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B3725B4F03FE35156DBD8CB8 /* Pods-Foodie-FoodieUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie-FoodieUITests.debug.xcconfig"; path = "Target Support Files/Pods-Foodie-FoodieUITests/Pods-Foodie-FoodieUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -234,6 +237,8 @@
 				8A425C812698D653000D7A79 /* DetailViewController.m */,
 				8AA088B7269D2BDA004351FC /* YelpViewController.h */,
 				8AA088B8269D2BDA004351FC /* YelpViewController.m */,
+				8AA088BA269E0B5A004351FC /* MapViewController.h */,
+				8AA088BB269E0B5A004351FC /* MapViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 				8A06BDC3268E216200A13382 /* Frameworks */,
 				8A06BDC4268E216200A13382 /* Resources */,
 				4079A0C4D382BB20BED47432 /* [CP] Embed Pods Frameworks */,
+				052BE9A30B0548032B90236E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -306,6 +312,7 @@
 				8A06BDE9268E216400A13382 /* Frameworks */,
 				8A06BDEA268E216400A13382 /* Resources */,
 				F1706A31A494D4D4767EFD2A /* [CP] Embed Pods Frameworks */,
+				28C33A5128A23E4D50A36C8A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -387,6 +394,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		052BE9A30B0548032B90236E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Foodie/Pods-Foodie-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Foodie/Pods-Foodie-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Foodie/Pods-Foodie-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28C33A5128A23E4D50A36C8A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Foodie-FoodieUITests/Pods-Foodie-FoodieUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Foodie-FoodieUITests/Pods-Foodie-FoodieUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Foodie-FoodieUITests/Pods-Foodie-FoodieUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4079A0C4D382BB20BED47432 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -501,6 +542,7 @@
 				8A425C7C2698D48F000D7A79 /* RestaurantCell.m in Sources */,
 				8A425C822698D653000D7A79 /* DetailViewController.m in Sources */,
 				8A06BDCE268E216200A13382 /* SceneDelegate.m in Sources */,
+				8AA088BC269E0B5A004351FC /* MapViewController.m in Sources */,
 				8A425C882698D7C1000D7A79 /* Restaurant.m in Sources */,
 				8AA088B9269D2BDA004351FC /* YelpViewController.m in Sources */,
 				8A425C7F2698D4BB000D7A79 /* LoginViewController.m in Sources */,

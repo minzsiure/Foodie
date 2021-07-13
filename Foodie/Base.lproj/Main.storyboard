@@ -216,6 +216,16 @@
                                 </connections>
                             </button>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="81K-VS-q83">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sPQ-yq-3LN">
+                                <rect key="frame" x="324" y="6" width="70" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="map (3)"/>
+                                <connections>
+                                    <segue destination="KbZ-Kc-1Rb" kind="show" identifier="mapSegue" id="hNe-L1-yGF"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="restaurantTable" destination="6z9-Is-Nxn" id="PSP-Bp-tLi"/>
@@ -224,6 +234,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RnR-47-lsq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="957.97101449275374" y="884.59821428571422"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="jZt-bV-waC">
+            <objects>
+                <viewController id="KbZ-Kc-1Rb" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zxu-Ma-Vj9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="2Vc-0m-gmu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="b2W-CK-I9g"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ro-Pa-Ge6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1884" y="885"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="dDb-dp-FYN">
@@ -558,7 +584,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wyv-1S-iof" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3066.666666666667" y="884.59821428571422"/>
+            <point key="canvasLocation" x="3733" y="885"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fNd-Hf-gKi">
@@ -595,7 +621,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sDv-ed-rSs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2116" y="885"/>
+            <point key="canvasLocation" x="2965" y="885"/>
         </scene>
         <!--Restaurant-->
         <scene sceneID="Vae-ts-185">
@@ -623,6 +649,7 @@
         <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="link.circle.fill" catalog="system" width="128" height="121"/>
         <image name="location.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="map (3)" width="32" height="32"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="phone.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="opaqueSeparatorColor">

@@ -10,6 +10,7 @@ target 'Foodie' do
   pod 'AFNetworking'
   pod 'DateTools'
   pod "YelpAPI"
+  pod 'GoogleMaps', '5.1.0'
 
   target 'FoodieTests' do
     inherit! :search_paths
