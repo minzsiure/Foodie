@@ -488,6 +488,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rr-W1-Lip">
                                         <rect key="frame" x="143.5" y="127" width="127" height="30"/>
                                         <state key="normal" title="Edit Profile Picture"/>
+                                        <connections>
+                                            <action selector="onTapEditProfilePic:" destination="Syy-lT-CuD" eventType="touchUpInside" id="thl-24-JOt"/>
+                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.34999999403953552" contentMode="scaleAspectFit" image="grey-line-png" translatesAutoresizingMaskIntoConstraints="NO" id="xYF-uP-U99">
                                         <rect key="frame" x="-58" y="100" width="500" height="144"/>
