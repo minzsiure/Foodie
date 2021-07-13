@@ -10,6 +10,8 @@
 
 @interface MyProfileViewController ()
 @property (weak, nonatomic) IBOutlet UIView *shadowView;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
 
 @end
 
