@@ -97,6 +97,7 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 | Region     | String                     | user current location (city, state)                        |
 | profilePic | File                       | user custom profile picture                                |
 | restaurants | array of restaurants objectID| a list of restaurants being bookmarked                       |
+| name | String | user's customized name|
 
 **Bookmark**
 | Property  | Type                       | Description                                |
