@@ -125,5 +125,37 @@
     return self.restaurants.count;
 }
 
+// swipe to bookmark
+//-(NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//       UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Bookmark" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+//          //insert your editAction here
+//       }];
+//       editAction.backgroundColor = [UIColor blueColor];
+//
+//       UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Delete"  handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+//          //insert your deleteAction here
+//       }];
+//       deleteAction.backgroundColor = [UIColor redColor];
+//    return @[deleteAction,editAction];
+//}
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UIContextualAction *bookmark = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:nil handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+        
+        // your code...
+        
+    }];
+    bookmark.image  = [UIImage imageNamed:@"bookmark"];
+    bookmark.backgroundColor = [UIColor colorWithRed:228.0f/255.0f
+                                              green:78.0f/255.0f
+                                               blue:45.0f/255.0f
+                                              alpha:1.0f];
+    bookmark.title = @"Bookmark";
+    
+    UISwipeActionsConfiguration *actions = [UISwipeActionsConfiguration configurationWithActions:[[NSArray alloc] initWithObjects:bookmark, nil]];
+    
+    return actions;
+}
+
 
 @end
