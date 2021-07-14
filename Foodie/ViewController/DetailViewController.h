@@ -7,12 +7,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Restaurant.h"
+#import "RestaurantDetail.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DetailViewController : UIViewController
 @property (nonatomic, strong) Restaurant *restaurant;
+@property (nonatomic, strong) RestaurantDetail *restaurantDetailObj;
 
 
 @end

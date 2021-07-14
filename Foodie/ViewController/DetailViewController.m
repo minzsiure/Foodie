@@ -30,37 +30,37 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [self fetchRestaurantDetail];
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self pageSetUp];
 }
 
 - (void) fetchRestaurantDetail{
-    //NSLog(@"%@", self.restaurant.id);
-//    YelpAPIManager *manager = [YelpAPIManager new];
-//    [manager getRestaurantDetail:self.restaurant completion:^(RestaurantDetail *restautantDetail, NSError *error) {
-//        self.restaurantDetail = restautantDetail;
-//
-//        //NSLog(@"%@", self.categoryString);
-//    }];
+    YelpAPIManager *manager = [YelpAPIManager new];
+    [manager getRestaurantDetail:(self.restaurant) completion:^(NSDictionary * restaurantDetail, NSError *error) {
+        self.restaurantDetailObj = [RestaurantDetail detailsWithDictionaries:restaurantDetail];
+    }];
+}
 
+- (void) pageSetUp{
     self.posterImage.image = nil;
-    if (self.restaurant.imageURL != nil){
-        [self.posterImage setImageWithURL:self.restaurant.imageURL];
+    if (self.restaurantDetailObj.imageURL != nil){
+        [self.posterImage setImageWithURL:self.restaurantDetailObj.imageURL];
     }
-    self.nameLabel.text = self.restaurant.name;
-    self.ratingLabel.text = self.restaurant.rating;
-    //self.priceLabel.text = self.restaurant.price;
+    self.nameLabel.text = self.restaurantDetailObj.name;
+    self.ratingLabel.text = self.restaurantDetailObj.rating;
     
     //price (if any) + category
-    NSArray *categoryArr = self.restaurant.categories;
+    NSArray *categoryArr = self.restaurantDetailObj.categories;
     NSMutableArray *newArray = [NSMutableArray new];
     for (NSDictionary *dic in categoryArr){
         [newArray addObject:dic[@"title"]];
     }
     NSString *categoryStr = [newArray componentsJoinedByString:@", "];
-    if (self.restaurant.price != nil){
-        NSString *subRow = [self.restaurant.price stringByAppendingString:@" • "];
+    if (self.restaurantDetailObj.price != nil){
+        NSString *subRow = [self.restaurantDetailObj.price stringByAppendingString:@" • "];
         self.priceLabel.text = [subRow stringByAppendingString:categoryStr];
     }
     else{
@@ -68,10 +68,8 @@
     }
 
     //address
-    NSArray *locArray = self.restaurant.location[@"display_address"];
+    NSArray *locArray = self.restaurantDetailObj.location[@"display_address"];
     self.addressLabel.text = [locArray componentsJoinedByString:@" "];
-
-
 }
 
 - (IBAction)onTapCall:(id)sender {

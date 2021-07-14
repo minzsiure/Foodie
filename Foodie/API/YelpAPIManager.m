@@ -23,24 +23,20 @@
 
 
 
-- (void)getYelpRestaurantCompletion:(void(^)(NSArray *restaurants, NSError *error))completion{
-    // get user current location
-//    RestaurantViewController *lvc = [[RestaurantViewController alloc] init];
-//    double latDouble = lvc.latitude;
-//    double longDouble = lvc.longitude;
-    PFUser *user = [PFUser currentUser];
-    NSString *lat = user[@"latitude"];
-    NSString *longt = user[@"longitude"];
+- (void)getYelpRestaurantCompletion: (NSString *)lat forLongt: (NSString *)longt completion:(void(^)(NSArray *restaurants, NSError *error))completion{
+    
+//    PFUser *user = [PFUser currentUser];
     
     // assemble APIKey
     NSString *APIKey = @"28Yo8kD_K-RyBUR6gCWznPYoMh1ItVdboaEExmr9duOBklai0I21Ww6b-IHLW2ZJyn6Ohh70J_V-xP6Mxv1JV1V8HZ_9hljzdgqkMbouw6oRsY3f12VS0KL3LqHoYHYx";
-//    NSURL *url = [NSURL URLWithString: @"https://api.yelp.com/v3/businesses/search?term=restaurant&latitude=42.360001&longitude=-71.0942"];
+
     NSString *baseURL =  @"https://api.yelp.com/v3/businesses/search?term=restaurant&latitude=";
     NSString *latURL = [baseURL stringByAppendingString:lat];
     NSString *longtURL = [latURL stringByAppendingString:@"&longitude="];
     NSString *urlString = [longtURL stringByAppendingString:longt];
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
 
     [request setHTTPMethod:@"GET"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -55,8 +51,10 @@
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
             NSLog(@"YELP DATA FETCHED SUCCESS");
             NSArray *dictionaries = responseDictionary[@"businesses"];
-            //NSLog(@"%@", dictionaries);
+            
+            // this is for testing location manager
             NSLog(@"at API %@, %@", lat, longt);
+            
             NSArray *restaurants = [Restaurant restaurantsWithDictionaries:dictionaries];
             completion(restaurants, nil);
             
@@ -69,7 +67,7 @@
     }] resume];
 }
 
-- (void)getRestaurantDetail:(Restaurant *)restaurant completion:(void (^)(RestaurantDetail *restautantDetail, NSError *error))completion {
+- (void)getRestaurantDetail:(Restaurant *)restaurant completion:(void (^)(NSDictionary *restaurantDetail, NSError *error))completion {
     NSString *APIKey = @"28Yo8kD_K-RyBUR6gCWznPYoMh1ItVdboaEExmr9duOBklai0I21Ww6b-IHLW2ZJyn6Ohh70J_V-xP6Mxv1JV1V8HZ_9hljzdgqkMbouw6oRsY3f12VS0KL3LqHoYHYx";
     NSString *baseURL = @"https://api.yelp.com/v3/businesses/";
     NSString *completeURL = [baseURL stringByAppendingString:restaurant.id];
@@ -88,9 +86,9 @@
         if (!error) {
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
             NSLog(@"Restaurant Detail FETCHED SUCCESS");
-            RestaurantDetail *restaurantDetail = [RestaurantDetail detailsWithDictionaries:responseDictionary];
-            NSLog(@"%@", restaurantDetail.name);
-            //completion(restaurantDetail, nil);
+            NSDictionary *restaurantDetail = responseDictionary;
+            NSLog(@"detail %@", restaurantDetail);
+            completion(restaurantDetail, nil);
         }
         else{
             NSLog(@"ERROR %@", [error localizedDescription]);

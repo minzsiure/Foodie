@@ -10,8 +10,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RestaurantViewController : UIViewController
-@property (nonatomic) double longitude;
-@property (nonatomic) double latitude;
+@property (strong, nonatomic) NSString *longitude;
+@property (strong, nonatomic) NSString *latitude;
+
 
 @end
 

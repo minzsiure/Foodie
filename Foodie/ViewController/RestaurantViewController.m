@@ -24,28 +24,17 @@
 @property (strong, nonatomic) NSArray *restaurantDetail;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
-
 @end
 
 @implementation RestaurantViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.restaurantTable.delegate = self;
     self.restaurantTable.dataSource = self;
-    
-    [self fetchRestaurants];
-    
-    //refresh controller
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
-    [self.restaurantTable insertSubview:self.refreshControl atIndex:0];
+    [self accessCurrentLocation];
     
 }
-
 
 - (void) accessCurrentLocation{
     self.locationManager = [[CLLocationManager alloc] init];
@@ -54,33 +43,38 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
-    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
      {
-        CLLocation *location = [locations lastObject];
-        
-         _latitude = location.coordinate.latitude;
-         _longitude = location.coordinate.longitude;
-         NSLog(@"restaurant view controller said lat%f - lon%f", self.latitude, self.longitude);
-        
-        [self.locationManager stopUpdatingLocation];
-         
+             CLLocation *location = [locations lastObject];
+              //First, checking if the location services are enabled
+             self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
+             self.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+                NSLog(@"restaurant view controller said lat%@ - lon%@", self.latitude, self.longitude);
+            [self fetchRestaurants];
+            [self.locationManager stopUpdatingLocation];
+                  
+            //refresh controller
+            self.refreshControl = [[UIRefreshControl alloc] init];
+            [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+            [self.restaurantTable insertSubview:self.refreshControl atIndex:0];
     }
 
 - (void) beginRefresh:(UIRefreshControl *)refreshControl{
     [self fetchRestaurants];
-    [self.restaurantTable reloadData];
-    [refreshControl endRefreshing];
 }
 
 - (void) fetchRestaurants{
-    
     YelpAPIManager *manager = [YelpAPIManager new];
-    [manager getYelpRestaurantCompletion:^(NSArray *restaurants, NSError *error){
+    [manager getYelpRestaurantCompletion:self.latitude forLongt:self.longitude completion:^(NSArray *restaurants, NSError *error) {
         if (restaurants){
             self.restaurants = restaurants;
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                [self.restaurantTable reloadData];
+                [self.refreshControl endRefreshing];
+            });
+            
         }
         else{
             NSLog(@"%@", error.localizedDescription);
@@ -128,7 +122,7 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.restaurants.count;
 }
 
 
