@@ -125,7 +125,8 @@
     return self.restaurants.count;
 }
 
-// swipe to bookmark
+
+// swipe left to bookmark
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath{
     UIContextualAction *bookmark = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:nil handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
         
@@ -152,6 +153,38 @@
     bookmark.title = @"Bookmark";
     
     UISwipeActionsConfiguration *actions = [UISwipeActionsConfiguration configurationWithActions:[[NSArray alloc] initWithObjects:bookmark, nil]];
+    
+    return actions;
+}
+
+//swipe left to cancel bookmark
+// swipe to bookmark
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UIContextualAction *cancel = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:nil handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+        
+        PFUser *currentUser = [PFUser currentUser];
+        Restaurant *restaurant = self.restaurants[indexPath.row];
+        
+        //if currentUser did bookmark, then remove the restaurantID from their bookmark; else, do nothing
+        if (([currentUser[@"restaurants"] containsObject:restaurant.id])){
+            [currentUser removeObject:restaurant.id forKey:@"restaurants"];
+        }
+
+        [currentUser saveInBackground];
+        completionHandler(true);
+        
+        
+    }];
+    
+    // UI Design
+    cancel.image  = [UIImage systemImageNamed:@"nosign"];
+    cancel.backgroundColor = [UIColor colorWithRed:210.0f/255.0f
+                                              green:210.0f/255.0f
+                                               blue:210.0f/255.0f
+                                              alpha:1.0f];
+    cancel.title = @"Unbookmark";
+    
+    UISwipeActionsConfiguration *actions = [UISwipeActionsConfiguration configurationWithActions:[[NSArray alloc] initWithObjects:cancel, nil]];
     
     return actions;
 }
