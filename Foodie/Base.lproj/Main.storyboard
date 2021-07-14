@@ -177,11 +177,17 @@
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4D-j3-gbQ">
+                                                    <rect key="frame" x="294" y="0.0" width="100" height="100"/>
+                                                    <state key="normal" image="bookmark_grey_small"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Ten-YM-xnR" firstAttribute="leading" secondItem="cG6-M8-eCi" secondAttribute="leadingMargin" id="CIv-Ca-LZG"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="tdc-c1-c2j" secondAttribute="bottom" constant="8" id="OTh-wq-0oo"/>
                                                 <constraint firstItem="Ten-YM-xnR" firstAttribute="top" secondItem="cG6-M8-eCi" secondAttribute="topMargin" id="PU9-N6-qcB"/>
+                                                <constraint firstAttribute="trailing" secondItem="D4D-j3-gbQ" secondAttribute="trailing" constant="20" id="WC4-ih-1rL"/>
+                                                <constraint firstItem="D4D-j3-gbQ" firstAttribute="top" secondItem="cG6-M8-eCi" secondAttribute="top" id="dJb-wM-TbV"/>
                                                 <constraint firstItem="Ten-YM-xnR" firstAttribute="trailing" secondItem="cG6-M8-eCi" secondAttribute="trailingMargin" id="fTW-Lz-BMg"/>
                                                 <constraint firstItem="tdc-c1-c2j" firstAttribute="leading" secondItem="Ten-YM-xnR" secondAttribute="leading" id="hUT-cg-mWj"/>
                                                 <constraint firstItem="tdc-c1-c2j" firstAttribute="top" secondItem="Ten-YM-xnR" secondAttribute="bottom" constant="10" id="spI-hi-AR0"/>
@@ -651,6 +657,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="blob" width="356" height="173"/>
+        <image name="bookmark_grey_small" width="100" height="100"/>
         <image name="grey-line-png" width="2088" height="144"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="link.circle.fill" catalog="system" width="128" height="121"/>
