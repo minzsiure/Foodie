@@ -132,7 +132,10 @@
         PFUser *currentUser = [PFUser currentUser];
         Restaurant *restaurant = self.restaurants[indexPath.row];
         
-        [currentUser addObject:restaurant.id forKey:@"restaurants"];
+        //if currentUser did not bookmark, then add the restaurantID to their bookmark; else, do nothing
+        if (!([currentUser[@"restaurants"] containsObject:restaurant.id])){
+            [currentUser addObject:restaurant.id forKey:@"restaurants"];
+        }
 
         [currentUser saveInBackground];
         completionHandler(true);
