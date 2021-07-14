@@ -38,21 +38,13 @@
     self.restaurantTable.dataSource = self;
     
     [self fetchRestaurants];
-    //[self accessCurrentLocation];
-    [self.restaurantTable reloadData];
-    
-    self.refreshControl = [[UIRefreshControl alloc] init];
     
     //refresh controller
-    [self.refreshControl addTarget:self action:@selector(fetchRestaurants) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.restaurantTable insertSubview:self.refreshControl atIndex:0];
-    [self.restaurantTable addSubview:self.refreshControl];
-}
-
-- (void) loadViewIfNeeded{
     
 }
-
 
 
 - (void) accessCurrentLocation{
@@ -71,17 +63,29 @@
         
          _latitude = location.coordinate.latitude;
          _longitude = location.coordinate.longitude;
-         NSLog(@"lat%f - lon%f", self.latitude, self.longitude);
+         NSLog(@"restaurant view controller said lat%f - lon%f", self.latitude, self.longitude);
         
         [self.locationManager stopUpdatingLocation];
          
     }
 
+- (void) beginRefresh:(UIRefreshControl *)refreshControl{
+    [self fetchRestaurants];
+    [self.restaurantTable reloadData];
+    [refreshControl endRefreshing];
+}
+
 - (void) fetchRestaurants{
     
     YelpAPIManager *manager = [YelpAPIManager new];
     [manager getYelpRestaurantCompletion:^(NSArray *restaurants, NSError *error){
-        self.restaurants = restaurants;
+        if (restaurants){
+            self.restaurants = restaurants;
+        }
+        else{
+            NSLog(@"%@", error.localizedDescription);
+        }
+        
     }];
 }
 
@@ -116,7 +120,6 @@
     }
 
 }
-
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     RestaurantCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RestaurantCell"];
