@@ -6,11 +6,13 @@
 //
 
 #import "LoginViewController.h"
+#import <CoreLocation/CoreLocation.h>
 #import <Parse/Parse.h>
 
-@interface LoginViewController ()
+@interface LoginViewController () <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -18,7 +20,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //[self accessCurrentLocation];
 }
+
+- (void) accessCurrentLocation{
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager startUpdatingLocation];
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+     {
+        CLLocation *location = [locations lastObject];
+        
+         self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
+         self.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+         NSLog(@"lat%@ - lon%@", self.latitude, self.longitude);
+//         PFUser *user = [PFUser currentUser];
+//         user[@"latitude"] = self.latitude;
+//         user[@"longitude"] = self.longitude;
+        [self.locationManager stopUpdatingLocation];
+         
+    }
+
 
 - (IBAction)signUpUser:(id)sender {
     if (![self.usernameField.text isEqual:@""] && ![self.passwordField.text isEqual:@""]) {
@@ -26,6 +54,8 @@
 
         newUser.username = self.usernameField.text;
         newUser.password = self.passwordField.text;
+        newUser[@"latitude"] = self.latitude;
+        newUser[@"longitude"] = self.longitude;
 
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
             if (error != nil) {
@@ -45,6 +75,8 @@
     NSString *password = self.passwordField.text;
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
+            user[@"latitude"] = self.latitude;
+            user[@"longitude"] = self.longitude;
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");

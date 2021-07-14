@@ -9,6 +9,7 @@
 #import "Restaurant.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "DetailViewController.h"
+#import <Parse/Parse.h>
 
 @interface MapViewController () <GMSMapViewDelegate>
 @property double latitude;
@@ -23,14 +24,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _latitude = 42.36001;
-    _longtitude = -71.0942;
-    
+//    _latitude = 42.36001;
+//    _longtitude = -71.0942;
+    PFUser *user = [PFUser currentUser];
+    _latitude = [user[@"latitude"] doubleValue];
+    _longtitude = [user[@"longitude"] doubleValue];
     [self createCameraPosition];
     [self createCenterMarker];
     [self processRestaurantArray:self.restaurantDictionaries];
     
 }
+
 
 - (void) createCameraPosition{
     // Create a GMSCameraPosition that tells the map to display the given
@@ -48,8 +52,8 @@
     // create a marker on user current location (currently default)
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(_latitude, _longtitude);
-    marker.title = @"MIT";
-    marker.snippet = @"Current Location";
+    marker.title = @"Current Location";
+//    marker.snippet = @"";
     marker.map = self.mapView;
 }
 
@@ -87,8 +91,6 @@
         Restaurant *restaurant = sender;
         DetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.restaurant = restaurant;
-        // need to figre out how a marker can carry info
-        
     }
 }
 

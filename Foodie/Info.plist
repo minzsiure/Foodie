@@ -7,6 +7,10 @@
         <string>googlechromes</string>
         <string>comgooglemaps</string>
     </array>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Application wants to use your location</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Application wants to use your location</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

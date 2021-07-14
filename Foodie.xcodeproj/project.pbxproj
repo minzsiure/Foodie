@@ -28,6 +28,7 @@
 		8AA088B6269D2BB9004351FC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA088B5269D2BB9004351FC /* WebKit.framework */; };
 		8AA088B9269D2BDA004351FC /* YelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA088B8269D2BDA004351FC /* YelpViewController.m */; };
 		8AA088BC269E0B5A004351FC /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA088BB269E0B5A004351FC /* MapViewController.m */; };
+		8AA088BE269E37D0004351FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA088BD269E37D0004351FC /* CoreLocation.framework */; };
 		B9272DF2021C3A3A963EA9F8 /* Pods_Foodie_FoodieUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E7D464BCF89E48C4B6AA40 /* Pods_Foodie_FoodieUITests.framework */; };
 		DE1803EED51CF9B401A98E98 /* Pods_Foodie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F80AD68F3A04A89403AE86D /* Pods_Foodie.framework */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,7 @@
 		8AA088B8269D2BDA004351FC /* YelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YelpViewController.m; sourceTree = "<group>"; };
 		8AA088BA269E0B5A004351FC /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		8AA088BB269E0B5A004351FC /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		8AA088BD269E37D0004351FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AEA169FC7C5F8B8EDBD86F30 /* Pods-Foodie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.release.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.release.xcconfig"; sourceTree = "<group>"; };
 		B0101693DE2FF6A26F7A9E7C /* Pods-Foodie-FoodieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie-FoodieUITests.release.xcconfig"; path = "Target Support Files/Pods-Foodie-FoodieUITests/Pods-Foodie-FoodieUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B3725B4F03FE35156DBD8CB8 /* Pods-Foodie-FoodieUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie-FoodieUITests.debug.xcconfig"; path = "Target Support Files/Pods-Foodie-FoodieUITests/Pods-Foodie-FoodieUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AA088BE269E37D0004351FC /* CoreLocation.framework in Frameworks */,
 				8AA088B6269D2BB9004351FC /* WebKit.framework in Frameworks */,
 				DE1803EED51CF9B401A98E98 /* Pods_Foodie.framework in Frameworks */,
 			);
@@ -144,6 +147,7 @@
 		62AB807600183C70A9E80F3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8AA088BD269E37D0004351FC /* CoreLocation.framework */,
 				8AA088B5269D2BB9004351FC /* WebKit.framework */,
 				1F80AD68F3A04A89403AE86D /* Pods_Foodie.framework */,
 				44E7D464BCF89E48C4B6AA40 /* Pods_Foodie_FoodieUITests.framework */,
