@@ -40,9 +40,9 @@
          self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
          self.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
          NSLog(@"lat%@ - lon%@", self.latitude, self.longitude);
-//         PFUser *user = [PFUser currentUser];
-//         user[@"latitude"] = self.latitude;
-//         user[@"longitude"] = self.longitude;
+         PFUser *user = [PFUser currentUser];
+         user[@"latitude"] = self.latitude;
+         user[@"longitude"] = self.longitude;
         [self.locationManager stopUpdatingLocation];
          
     }
@@ -54,8 +54,8 @@
 
         newUser.username = self.usernameField.text;
         newUser.password = self.passwordField.text;
-        newUser[@"latitude"] = self.latitude;
-        newUser[@"longitude"] = self.longitude;
+//        newUser[@"latitude"] = self.latitude;
+//        newUser[@"longitude"] = self.longitude;
 
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
             if (error != nil) {
@@ -75,8 +75,8 @@
     NSString *password = self.passwordField.text;
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
-            user[@"latitude"] = self.latitude;
-            user[@"longitude"] = self.longitude;
+//            user[@"latitude"] = self.latitude;
+//            user[@"longitude"] = self.longitude;
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");
