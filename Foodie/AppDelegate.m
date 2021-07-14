@@ -11,21 +11,33 @@
 
 
 @interface AppDelegate ()
+@property (strong, nonatomic) NSString *GoogleAPIKey;
+@property (strong, nonatomic) NSString *ParseApplicationID;
+@property (strong, nonatomic) NSString *ParseClientKey;
 
 
 @end
 
 @implementation AppDelegate
 
+- (id)init {
+    self = [super init];
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
+    self.GoogleAPIKey = [dict objectForKey: @"GoogleAPIKey"];
+    self.ParseApplicationID = [dict objectForKey: @"ParseApplicationID"];
+    self.ParseClientKey = [dict objectForKey:@"ParseClientKey"];
+    return self;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // GoogleMap set up
-    [GMSServices provideAPIKey:@"AIzaSyD9jMDL11yjtvyziBiUTMALqHAjpMOw5Es"];
+    [GMSServices provideAPIKey:self.GoogleAPIKey];
     // Parse set up
     ParseClientConfiguration *config = [ParseClientConfiguration  configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
 
-            configuration.applicationId = @"FlEVDirtLV4EhG9lwa72tlFGticD54WRzKlRQVnF"; // <- UPDATE
-            configuration.clientKey = @"6TRMhfLhrlYkLhyry6cifzxtkrqQfg0EXLN4xIVC"; // <- UPDATE
+            configuration.applicationId = self.ParseApplicationID;
+            configuration.clientKey = self.ParseClientKey;
             configuration.server = @"https://parseapi.back4app.com";
         }];
 

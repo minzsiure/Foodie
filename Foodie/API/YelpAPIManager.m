@@ -15,20 +15,23 @@
 @interface YelpAPIManager() 
 
 @property (nonatomic, strong) NSURLSession *session;
+@property (nonatomic, strong) NSString *YelpAPIKey;
 
 @end
 
 @implementation YelpAPIManager
 
-
+- (id)init {
+    self = [super init];
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
+    self.YelpAPIKey = [dict objectForKey: @"YelpAPIKey"];
+    return self;
+}
 
 
 - (void)getYelpRestaurantCompletion: (NSString *)lat forLongt: (NSString *)longt completion:(void(^)(NSArray *restaurants, NSError *error))completion{
     
-//    PFUser *user = [PFUser currentUser];
-    
-    // assemble APIKey
-    NSString *APIKey = @"28Yo8kD_K-RyBUR6gCWznPYoMh1ItVdboaEExmr9duOBklai0I21Ww6b-IHLW2ZJyn6Ohh70J_V-xP6Mxv1JV1V8HZ_9hljzdgqkMbouw6oRsY3f12VS0KL3LqHoYHYx";
 
     NSString *baseURL =  @"https://api.yelp.com/v3/businesses/search?term=restaurant&latitude=";
     NSString *latURL = [baseURL stringByAppendingString:lat];
@@ -41,7 +44,7 @@
     [request setHTTPMethod:@"GET"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 
-    NSString *authValue = [NSString stringWithFormat:@"Bearer %@", APIKey];
+    NSString *authValue = [NSString stringWithFormat:@"Bearer %@", self.YelpAPIKey];
     [request setValue:authValue forHTTPHeaderField:@"Authorization"];
 
     NSURLSession *session = [NSURLSession sharedSession];
