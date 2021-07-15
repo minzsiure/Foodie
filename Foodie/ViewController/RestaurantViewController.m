@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSArray *restaurantDetail;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
+
 @end
 
 @implementation RestaurantViewController
@@ -139,13 +140,16 @@
         }
 
         [currentUser saveInBackground];
+        [self.restaurantTable beginUpdates];
+        [self.restaurantTable reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationNone];
+        [self.restaurantTable endUpdates];
         completionHandler(true);
         
         
     }];
     
     // UI Design
-    bookmark.image  = [UIImage imageNamed:@"bookmark"];
+    bookmark.image  = [UIImage imageNamed:@"bookmark_white"];
     bookmark.backgroundColor = [UIColor colorWithRed:228.0f/255.0f
                                               green:78.0f/255.0f
                                                blue:45.0f/255.0f
@@ -167,9 +171,13 @@
         //if currentUser did bookmark, then remove the restaurantID from their bookmark; else, do nothing
         if (([currentUser[@"restaurants"] containsObject:restaurant.id])){
             [currentUser removeObject:restaurant.id forKey:@"restaurants"];
+            
         }
 
         [currentUser saveInBackground];
+        [self.restaurantTable beginUpdates];
+        [self.restaurantTable reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationNone];
+        [self.restaurantTable endUpdates];
         completionHandler(true);
         
         

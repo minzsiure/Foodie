@@ -179,7 +179,7 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4D-j3-gbQ">
                                                     <rect key="frame" x="294" y="0.0" width="100" height="100"/>
-                                                    <state key="normal" image="bookmark_grey_small"/>
+                                                    <state key="normal" image="Image"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -194,6 +194,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="bookmarkLogo" destination="D4D-j3-gbQ" id="eOh-jU-f5D"/>
                                             <outlet property="posterImage" destination="Ten-YM-xnR" id="slx-j9-J6E"/>
                                             <outlet property="restaurantName" destination="tdc-c1-c2j" id="2wT-H0-raT"/>
                                             <segue destination="2uV-1Y-M9w" kind="show" identifier="detailSegue" id="iv0-8V-w9H"/>
@@ -656,8 +657,8 @@
         <segue reference="iv0-8V-w9H"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="Image" width="100" height="100"/>
         <image name="blob" width="356" height="173"/>
-        <image name="bookmark_grey_small" width="100" height="100"/>
         <image name="grey-line-png" width="2088" height="144"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="link.circle.fill" catalog="system" width="128" height="121"/>

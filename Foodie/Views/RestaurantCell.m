@@ -8,6 +8,7 @@
 #import "RestaurantCell.h"
 #import "Restaurant.h"
 #import "UIImageView+AFNetworking.h"
+#import <Parse/Parse.h>
 
 @implementation RestaurantCell
 
@@ -29,6 +30,14 @@
     if (self.restaurant.imageURL != nil){
         [self.posterImage setImageWithURL:self.restaurant.imageURL];
     }
+    PFUser *currentUser = [PFUser currentUser];
+    if ([currentUser[@"restaurants"] containsObject:self.restaurant.id]){
+        [self.bookmarkLogo setImage:[UIImage imageNamed:@"bookmark_red_small"] forState:UIControlStateNormal];
+    }
+    else{
+        [self.bookmarkLogo setImage:[UIImage imageNamed:@"bookmark_grey_small"] forState:UIControlStateNormal];
+    }
 }
+
 
 @end
