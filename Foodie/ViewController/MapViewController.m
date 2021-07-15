@@ -9,6 +9,7 @@
 #import "Restaurant.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "DetailViewController.h"
+#import "RestaurantViewController.h"
 #import <Parse/Parse.h>
 
 @interface MapViewController () <GMSMapViewDelegate>
@@ -24,8 +25,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    _latitude = 42.36001;
-//    _longtitude = -71.0942;
     PFUser *user = [PFUser currentUser];
     _latitude = [user[@"latitude"] doubleValue];
     _longtitude = [user[@"longitude"] doubleValue];

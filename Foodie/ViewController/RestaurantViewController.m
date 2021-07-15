@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSArray *restaurants;
 @property (strong, nonatomic) NSArray *restaurantDetail;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 
 @end
@@ -31,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.activityIndicator startAnimating];
+    
     self.restaurantTable.delegate = self;
     self.restaurantTable.dataSource = self;
     [self accessCurrentLocation];
@@ -53,7 +56,11 @@
              self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
              self.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
                 NSLog(@"restaurant view controller said lat%@ - lon%@", self.latitude, self.longitude);
+            PFUser *user = [PFUser currentUser];
+            user[@"latitude"] = self.latitude;
+            user[@"longitude"] = self.longitude;
             [self fetchRestaurants];
+            
             [self.locationManager stopUpdatingLocation];
                   
             //refresh controller
@@ -74,6 +81,7 @@
             dispatch_async(dispatch_get_main_queue(), ^(void){
                 [self.restaurantTable reloadData];
                 [self.refreshControl endRefreshing];
+                [self.activityIndicator stopAnimating];
             });
             
         }
@@ -95,6 +103,29 @@
     }];
 }
 
+//network error
+- (void)networkError{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies" message:@"The internet connection appears to be offline." preferredStyle:(UIAlertControllerStyleAlert)];
+
+    // create a cancel action
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                        style:UIAlertActionStyleCancel
+                                                      handler:^(UIAlertAction * _Nonnull action) {
+                                                      }];
+    [alert addAction:cancelAction];
+
+    // create an TryAgain action
+    UIAlertAction *TryAgainAction = [UIAlertAction actionWithTitle:@"Try Again"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+        [self fetchRestaurants];
+    }];
+    [alert addAction:TryAgainAction];
+
+    [self presentViewController:alert animated:YES completion:^{
+    }];
+
+}
 
 #pragma mark - Navigation
 
@@ -161,7 +192,7 @@
     return actions;
 }
 
-//swipe left to cancel bookmark
+//swipe right to cancel bookmark
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath{
     UIContextualAction *cancel = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:nil handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
         
