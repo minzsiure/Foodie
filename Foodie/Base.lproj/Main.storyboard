@@ -550,6 +550,45 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EHH-Ga-cgu">
+                                        <rect key="frame" x="0.0" y="252" width="414" height="308"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hXK-ax-X9U">
+                                            <size key="itemSize" width="180" height="307"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RestaurantBookmarkCell" id="9PC-bw-sJR" customClass="RestaurantBookmarkCell">
+                                                <rect key="frame" x="0.0" y="0.0" width="180" height="307"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Fc8-gg-wjb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="307"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cl1-iy-nc9">
+                                                            <rect key="frame" x="8" y="0.0" width="172" height="256"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nv7-bc-Ula">
+                                                            <rect key="frame" x="8" y="264" width="56" height="28"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="23"/>
+                                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="180" height="307"/>
+                                                <connections>
+                                                    <outlet property="cardName" destination="Nv7-bc-Ula" id="fSd-YC-hcd"/>
+                                                    <outlet property="cardPoster" destination="Cl1-iy-nc9" id="rpi-Ex-ktY"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -599,6 +638,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="czO-8V-8FM"/>
                     <connections>
+                        <outlet property="bookmarkCollectionView" destination="EHH-Ga-cgu" id="bVZ-m6-GCQ"/>
                         <outlet property="profileImage" destination="ajM-AB-HlS" id="meb-ot-lOo"/>
                         <outlet property="shadowView" destination="9VB-sD-r4E" id="LNW-CH-0m0"/>
                         <outlet property="userName" destination="mzU-cf-Lfg" id="9We-oF-YSp"/>
@@ -606,7 +646,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wyv-1S-iof" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3733" y="885"/>
+            <point key="canvasLocation" x="3731.884057971015" y="884.59821428571422"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fNd-Hf-gKi">

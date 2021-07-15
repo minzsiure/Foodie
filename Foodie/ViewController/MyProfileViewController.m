@@ -9,12 +9,15 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImageView+AFNetworking.h"
 #import <Parse/Parse.h>
+#import "RestaurantBookmarkCell.h"
 
-@interface MyProfileViewController ()
+@interface MyProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+
 @property (strong, nonatomic) UIImage *resizedImage;
 @property (weak, nonatomic) IBOutlet UIView *shadowView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UICollectionView *bookmarkCollectionView;
 
 @end
 
@@ -22,7 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.bookmarkCollectionView.dataSource = self;
+    self.bookmarkCollectionView.delegate = self;
     self.shadowView.layer.shadowOpacity = 0.35;
     self.shadowView.layer.shadowOffset = CGSizeMake(0, -5);
     self.shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -35,6 +39,7 @@
     [self.profileImage setImageWithURL:profilePicURL];
     
     self.userName.text = user[@"username"];
+    [self.bookmarkCollectionView reloadData];
 }
 
 - (IBAction)onTapEditProfilePic:(id)sender {
@@ -103,5 +108,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    RestaurantBookmarkCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RestaurantBookmarkCell" forIndexPath:indexPath];
+    
+    return cell;
+}
+
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 20;
+}
 
 @end
