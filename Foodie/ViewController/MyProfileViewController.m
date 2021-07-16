@@ -31,6 +31,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.shadowView.layer.shadowOpacity = 0.35;
+    self.shadowView.layer.shadowOffset = CGSizeMake(0, -5);
+    self.shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     // get array of bookmarked restaurantID
     PFUser *currentUser = [PFUser currentUser];
     self.bookmarks = currentUser[@"restaurants"];
@@ -38,15 +47,10 @@
     [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.bookmarkCollectionView addSubview:self.refreshControl];
     [self.bookmarkCollectionView setPagingEnabled:YES];
-    
-    [self fetchBookmarks];
-
     self.bookmarkCollectionView.dataSource = self;
     self.bookmarkCollectionView.delegate = self;
-    self.shadowView.layer.shadowOpacity = 0.35;
-    self.shadowView.layer.shadowOffset = CGSizeMake(0, -5);
-    self.shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
     
+    [self fetchBookmarks];
 }
 
 - (void) beginRefresh:(UIRefreshControl *)refreshControl{

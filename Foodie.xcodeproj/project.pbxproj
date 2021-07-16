@@ -30,6 +30,7 @@
 		8AA088BC269E0B5A004351FC /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA088BB269E0B5A004351FC /* MapViewController.m */; };
 		8AA088BE269E37D0004351FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA088BD269E37D0004351FC /* CoreLocation.framework */; };
 		8ACA07D426A0CF2F00D87F55 /* RestaurantBookmarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACA07D326A0CF2F00D87F55 /* RestaurantBookmarkCell.m */; };
+		8ACA07D726A215EA00D87F55 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACA07D626A215EA00D87F55 /* TabBarController.m */; };
 		B9272DF2021C3A3A963EA9F8 /* Pods_Foodie_FoodieUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E7D464BCF89E48C4B6AA40 /* Pods_Foodie_FoodieUITests.framework */; };
 		DE1803EED51CF9B401A98E98 /* Pods_Foodie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F80AD68F3A04A89403AE86D /* Pods_Foodie.framework */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,8 @@
 		8AA088BD269E37D0004351FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8ACA07D226A0CF2F00D87F55 /* RestaurantBookmarkCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RestaurantBookmarkCell.h; sourceTree = "<group>"; };
 		8ACA07D326A0CF2F00D87F55 /* RestaurantBookmarkCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RestaurantBookmarkCell.m; sourceTree = "<group>"; };
+		8ACA07D526A215EA00D87F55 /* TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		8ACA07D626A215EA00D87F55 /* TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		AEA169FC7C5F8B8EDBD86F30 /* Pods-Foodie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.release.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.release.xcconfig"; sourceTree = "<group>"; };
 		B0101693DE2FF6A26F7A9E7C /* Pods-Foodie-FoodieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie-FoodieUITests.release.xcconfig"; path = "Target Support Files/Pods-Foodie-FoodieUITests/Pods-Foodie-FoodieUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B3725B4F03FE35156DBD8CB8 /* Pods-Foodie-FoodieUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie-FoodieUITests.debug.xcconfig"; path = "Target Support Files/Pods-Foodie-FoodieUITests/Pods-Foodie-FoodieUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -246,6 +249,8 @@
 				8AA088B8269D2BDA004351FC /* YelpViewController.m */,
 				8AA088BA269E0B5A004351FC /* MapViewController.h */,
 				8AA088BB269E0B5A004351FC /* MapViewController.m */,
+				8ACA07D526A215EA00D87F55 /* TabBarController.h */,
+				8ACA07D626A215EA00D87F55 /* TabBarController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -556,6 +561,7 @@
 				8A425C882698D7C1000D7A79 /* Restaurant.m in Sources */,
 				8AA088B9269D2BDA004351FC /* YelpViewController.m in Sources */,
 				8A425C7F2698D4BB000D7A79 /* LoginViewController.m in Sources */,
+				8ACA07D726A215EA00D87F55 /* TabBarController.m in Sources */,
 				8A425C792698D38C000D7A79 /* MyProfileViewController.m in Sources */,
 				8A425C762698D37D000D7A79 /* RestaurantViewController.m in Sources */,
 			);
