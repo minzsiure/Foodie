@@ -30,7 +30,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self fetchRestaurantDetail];
+    if (self.restaurant.id != nil){
+        [self fetchRestaurantDetail];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated{

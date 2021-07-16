@@ -12,6 +12,7 @@
 #import "RestaurantBookmarkCell.h"
 #import "YelpAPIManager.h"
 #import "RestaurantDetail.h"
+#import "DetailViewController.h"
 
 @interface MyProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
@@ -120,60 +121,43 @@
     return newImage;
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"BookmarkDetailSegue"]){
+        UICollectionViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.bookmarkCollectionView indexPathForCell:tappedCell];
+        DetailViewController *detailViewController = [segue destinationViewController];
+        detailViewController.restaurantDetailObj = self.restaurantDetailArray[indexPath.row];
+    }
 }
-*/
-    
-//- (void) fetchBookmarks{
-//    //iterate through each objectID
-//    for (int i = 0; i < self.bookmarks.count; i++){
-//        YelpAPIManager *manager = [YelpAPIManager new];
-//        [manager getRestaurantDetail:(self.bookmarks[i]) completion:^(NSDictionary *dictionary, NSError *error) {
-//            if (dictionary){
-//                RestaurantDetail *tempArray = [[RestaurantDetail alloc] initWithDictionary:dictionary];
-//                NSLog(@"number %d loop", i);
-//                NSLog(@"dict %@", dictionary[@"name"]);
-//                dispatch_async(dispatch_get_main_queue(), ^(void){
-//                    self.restaurantDetailDicts = tempArray;
-//                    [self.bookmarkCollectionView reloadData];
-//
-//                    });
-//                }
-//            }];
-//        }
-//    [self.refreshControl endRefreshing];
-//}
+
 
 - (void) fetchBookmarks{
     YelpAPIManager *manager = [YelpAPIManager new];
     [manager getRestaurantDetailArray:(self.bookmarks) completion:^(NSMutableArray *restaurantDetailArray, NSError * error) {
-//        NSLog(@"new fetch %@", restaurantDetailArray);
         self.restaurantDetailArray = restaurantDetailArray;
         dispatch_async(dispatch_get_main_queue(), ^(void){
             [self.bookmarkCollectionView reloadData];
+            [self.refreshControl endRefreshing];
         });
-        NSLog(@"global %@", self.restaurantDetailArray);
+//        NSLog(@"global %@", self.restaurantDetailArray);
     }];
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     RestaurantBookmarkCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RestaurantBookmarkCell" forIndexPath:indexPath];
+    // only load when API request is fully complete
     if (self.restaurantDetailArray.count == self.bookmarks.count){
         RestaurantDetail *obj = self.restaurantDetailArray[indexPath.row];
         cell.cardName.text = obj.name;
         cell.cardPoster.image = nil;
+        cell.restaurantID = obj.id;
         if (obj.imageURL != nil){
             [cell.cardPoster setImageWithURL:obj.imageURL];
         }
-        NSLog(@"hellp %@", obj.name);
     }
-    
     return cell;
 }
 
