@@ -55,6 +55,9 @@
               //First, checking if the location services are enabled
              self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
              self.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+         
+
+
                 NSLog(@"restaurant view controller said lat%@ - lon%@", self.latitude, self.longitude);
             PFUser *user = [PFUser currentUser];
             user[@"latitude"] = self.latitude;
@@ -74,6 +77,7 @@
 }
 
 - (void) fetchRestaurants{
+    
     YelpAPIManager *manager = [YelpAPIManager new];
     [manager getYelpRestaurantCompletion:self.latitude forLongt:self.longitude completion:^(NSArray *restaurants, NSError *error) {
         if (restaurants){

@@ -10,6 +10,8 @@
 #import "UIImageView+AFNetworking.h"
 #import <Parse/Parse.h>
 #import "RestaurantBookmarkCell.h"
+#import "YelpAPIManager.h"
+#import "RestaurantDetail.h"
 
 @interface MyProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -18,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UICollectionView *bookmarkCollectionView;
+@property (strong, nonatomic) NSArray *bookmarks; //array of IDs
+@property (strong, nonatomic) NSMutableArray *restaurantDetailDicts; //array of RestaurantDetail Objects
+
 
 @end
 
@@ -25,11 +30,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // get array of bookmarked restaurantID
+    PFUser *currentUser = [PFUser currentUser];
+    self.bookmarks = currentUser[@"restaurants"];
+    [self fetchBookmarks];
+    NSLog(@"resID, %@", _restaurantDetailDicts);
+
     self.bookmarkCollectionView.dataSource = self;
     self.bookmarkCollectionView.delegate = self;
     self.shadowView.layer.shadowOpacity = 0.35;
     self.shadowView.layer.shadowOffset = CGSizeMake(0, -5);
     self.shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -39,8 +51,9 @@
     [self.profileImage setImageWithURL:profilePicURL];
     
     self.userName.text = user[@"username"];
-    [self.bookmarkCollectionView reloadData];
+    
 }
+
 
 - (IBAction)onTapEditProfilePic:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
@@ -108,15 +121,36 @@
     // Pass the selected object to the new view controller.
 }
 */
+    
+- (void) fetchBookmarks{
+    //iterate through each objectID
+    for (NSString *resID in self.bookmarks){
+        YelpAPIManager *manager = [YelpAPIManager new];
+        [manager getRestaurantDetail:(resID) completion:^(NSDictionary *dictionary, NSError *error) {
+            if (dictionary){
+                RestaurantDetail *obj = [[RestaurantDetail alloc] initWithDictionary:dictionary];
+                [self.restaurantDetailDicts addObject:obj];
+                
+                }
+            }];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            [self.bookmarkCollectionView reloadData];
+            NSLog(@"reloaded");
+        });
+        
+        
+    }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     RestaurantBookmarkCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RestaurantBookmarkCell" forIndexPath:indexPath];
-    
+    cell.restaurantDetail = self.restaurantDetailDicts[indexPath.row];
     return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 20;
+    return self.bookmarks.count;
+
 }
 
 @end

@@ -39,7 +39,7 @@
 
 - (void) fetchRestaurantDetail{
     YelpAPIManager *manager = [YelpAPIManager new];
-    [manager getRestaurantDetail:(self.restaurant) completion:^(NSDictionary * restaurantDetail, NSError *error) {
+    [manager getRestaurantDetail:(self.restaurant.id) completion:^(NSDictionary * restaurantDetail, NSError *error) {
         self.restaurantDetailObj = [RestaurantDetail detailsWithDictionaries:restaurantDetail];
     }];
 }

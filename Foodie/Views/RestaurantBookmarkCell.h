@@ -6,12 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RestaurantDetail.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RestaurantBookmarkCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *cardPoster;
 @property (weak, nonatomic) IBOutlet UILabel *cardName;
+@property(nonatomic, strong) RestaurantDetail *restaurantDetail;
 
 @end
 
