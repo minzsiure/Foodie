@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YelpAPIManager : NSObject
 - (void)getYelpRestaurantCompletion: (NSString *)lat forLongt: (NSString *)longt completion:(void(^)(NSArray *restaurants, NSError *error))completion;
 - (void)getRestaurantDetail:(NSString *)restaurantID completion:(void (^)(NSDictionary *restaurantDetail, NSError *error))completion;
+- (void)getRestaurantDetailArray:(NSArray *)restaurantIDArray completion:(void (^)(NSMutableArray *restaurantDetailArray, NSError *error))completion;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -100,5 +100,38 @@
     }] resume];
 }
 
+- (void)getRestaurantDetailArray:(NSArray *)restaurantIDArray completion:(void (^)(NSMutableArray *restaurantDetailArray, NSError *error))completion {
+    NSString *APIKey = @"28Yo8kD_K-RyBUR6gCWznPYoMh1ItVdboaEExmr9duOBklai0I21Ww6b-IHLW2ZJyn6Ohh70J_V-xP6Mxv1JV1V8HZ_9hljzdgqkMbouw6oRsY3f12VS0KL3LqHoYHYx";
+    NSString *baseURL = @"https://api.yelp.com/v3/businesses/";
+    NSMutableArray *restaurantDetailArray = [NSMutableArray array];
+    
+    for (NSString *restaurantID in restaurantIDArray){
+        NSString *completeURL = [baseURL stringByAppendingString:restaurantID];
+        NSURL *url = [NSURL URLWithString: completeURL];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+
+        [request setHTTPMethod:@"GET"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+
+        NSString *authValue = [NSString stringWithFormat:@"Bearer %@", APIKey];
+        [request setValue:authValue forHTTPHeaderField:@"Authorization"];
+
+        NSURLSession *session = [NSURLSession sharedSession];
+        [[session dataTaskWithRequest:request
+             completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            
+            RestaurantDetail *restaurantDetail = [[RestaurantDetail alloc] initWithDictionary:responseDictionary];
+            [restaurantDetailArray addObject:restaurantDetail];
+            
+        }
+
+        completion(restaurantDetailArray, nil);
+//        NSLog(@"Restaurant Detail FETCHED SUCCESS %@", restaurantDetailArray);
+        }] resume];
+    }
+}
+
 
 @end

@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UICollectionView *bookmarkCollectionView;
 @property (strong, nonatomic) NSArray *bookmarks; //array of IDs
-@property (strong, nonatomic) RestaurantDetail *restaurantDetailDicts; //array of RestaurantDetail Objects
+@property (strong, nonatomic) NSArray *restaurantDetailArray; //array of RestaurantDetail Objects
 
 
 @end
@@ -130,33 +130,50 @@
 }
 */
     
+//- (void) fetchBookmarks{
+//    //iterate through each objectID
+//    for (int i = 0; i < self.bookmarks.count; i++){
+//        YelpAPIManager *manager = [YelpAPIManager new];
+//        [manager getRestaurantDetail:(self.bookmarks[i]) completion:^(NSDictionary *dictionary, NSError *error) {
+//            if (dictionary){
+//                RestaurantDetail *tempArray = [[RestaurantDetail alloc] initWithDictionary:dictionary];
+//                NSLog(@"number %d loop", i);
+//                NSLog(@"dict %@", dictionary[@"name"]);
+//                dispatch_async(dispatch_get_main_queue(), ^(void){
+//                    self.restaurantDetailDicts = tempArray;
+//                    [self.bookmarkCollectionView reloadData];
+//
+//                    });
+//                }
+//            }];
+//        }
+//    [self.refreshControl endRefreshing];
+//}
+
 - (void) fetchBookmarks{
-    //iterate through each objectID
-    for (NSString *resID in self.bookmarks){
-        YelpAPIManager *manager = [YelpAPIManager new];
-        [manager getRestaurantDetail:(resID) completion:^(NSDictionary *dictionary, NSError *error) {
-            if (dictionary){
-                RestaurantDetail *tempArray = [[RestaurantDetail alloc] initWithDictionary:dictionary];
-                NSLog(@"globalArray %@", tempArray);
-                dispatch_async(dispatch_get_main_queue(), ^(void){
-                    self.restaurantDetailDicts = tempArray;
-                    [self.bookmarkCollectionView reloadData];
-                    
-                    });
-                }
-            }];
-        }
-    [self.refreshControl endRefreshing];
+    YelpAPIManager *manager = [YelpAPIManager new];
+    [manager getRestaurantDetailArray:(self.bookmarks) completion:^(NSMutableArray *restaurantDetailArray, NSError * error) {
+//        NSLog(@"new fetch %@", restaurantDetailArray);
+        self.restaurantDetailArray = restaurantDetailArray;
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            [self.bookmarkCollectionView reloadData];
+        });
+        NSLog(@"global %@", self.restaurantDetailArray);
+    }];
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     RestaurantBookmarkCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RestaurantBookmarkCell" forIndexPath:indexPath];
-    cell.cardName.text = self.restaurantDetailDicts.name;
-    cell.cardPoster.image = nil;
-    if (self.restaurantDetailDicts.imageURL != nil){
-        [cell.cardPoster setImageWithURL:self.restaurantDetailDicts.imageURL];
+    if (self.restaurantDetailArray.count == self.bookmarks.count){
+        RestaurantDetail *obj = self.restaurantDetailArray[indexPath.row];
+        cell.cardName.text = obj.name;
+        cell.cardPoster.image = nil;
+        if (obj.imageURL != nil){
+            [cell.cardPoster setImageWithURL:obj.imageURL];
+        }
+        NSLog(@"hellp %@", obj.name);
     }
-    NSLog(@"hellp %@", self.restaurantDetailDicts.name);
+    
     return cell;
 }
 
