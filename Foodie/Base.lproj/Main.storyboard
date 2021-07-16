@@ -550,81 +550,84 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tan-kY-mad">
-                                        <rect key="frame" x="0.0" y="236" width="414" height="442"/>
-                                        <subviews>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EHH-Ga-cgu">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="342"/>
-                                                <color key="backgroundColor" red="0.89159607890000003" green="0.41093295810000002" blue="0.17637526989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="20" id="H5q-uC-S1b">
-                                                    <size key="itemSize" width="150" height="250"/>
-                                                    <size key="estimatedItemSize" width="150" height="250"/>
-                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                </collectionViewFlowLayout>
-                                                <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RestaurantBookmarkCell" id="9PC-bw-sJR" customClass="RestaurantBookmarkCell">
-                                                        <rect key="frame" x="0.0" y="17.5" width="180" height="307"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Fc8-gg-wjb">
-                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="307"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cl1-iy-nc9">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="259"/>
-                                                                    <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                                                </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nv7-bc-Ula">
-                                                                    <rect key="frame" x="0.0" y="267" width="56" height="28"/>
-                                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="23"/>
-                                                                    <color key="textColor" systemColor="systemGrayColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EHH-Ga-cgu">
+                                        <rect key="frame" x="0.0" y="246" width="414" height="352"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="40" id="H5q-uC-S1b">
+                                            <size key="itemSize" width="150" height="250"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RestaurantBookmarkCell" id="9PC-bw-sJR" customClass="RestaurantBookmarkCell">
+                                                <rect key="frame" x="0.0" y="22.5" width="180" height="307"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Fc8-gg-wjb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="307"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cl1-iy-nc9">
+                                                            <rect key="frame" x="10" y="0.0" width="170" height="259"/>
+                                                            <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                             <constraints>
-                                                                <constraint firstItem="Nv7-bc-Ula" firstAttribute="top" secondItem="Cl1-iy-nc9" secondAttribute="bottom" constant="8" id="2uL-5Q-xsd"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Cl1-iy-nc9" secondAttribute="trailing" id="FaE-ug-Ew8"/>
-                                                                <constraint firstItem="Cl1-iy-nc9" firstAttribute="top" secondItem="Fc8-gg-wjb" secondAttribute="top" id="Sns-bM-F5h"/>
-                                                                <constraint firstAttribute="bottom" secondItem="Nv7-bc-Ula" secondAttribute="bottom" constant="12" id="YXH-bq-WJe"/>
-                                                                <constraint firstItem="Cl1-iy-nc9" firstAttribute="leading" secondItem="Fc8-gg-wjb" secondAttribute="leading" id="ivs-bf-0rQ"/>
-                                                                <constraint firstItem="Nv7-bc-Ula" firstAttribute="leading" secondItem="Fc8-gg-wjb" secondAttribute="leading" id="zkH-AV-vrH"/>
+                                                                <constraint firstAttribute="height" constant="220" id="O1w-a3-QgT"/>
+                                                                <constraint firstAttribute="width" constant="180" id="hhs-DW-q0e"/>
                                                             </constraints>
-                                                        </collectionViewCellContentView>
-                                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                                        <size key="customSize" width="180" height="307"/>
-                                                        <connections>
-                                                            <outlet property="cardName" destination="Nv7-bc-Ula" id="fSd-YC-hcd"/>
-                                                            <outlet property="cardPoster" destination="Cl1-iy-nc9" id="rpi-Ex-ktY"/>
-                                                        </connections>
-                                                    </collectionViewCell>
-                                                </cells>
-                                            </collectionView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="EHH-Ga-cgu" firstAttribute="leading" secondItem="Tan-kY-mad" secondAttribute="leading" id="FJy-Cd-0RI"/>
-                                            <constraint firstAttribute="bottom" secondItem="EHH-Ga-cgu" secondAttribute="bottom" constant="100" id="k8J-0p-ah5"/>
-                                            <constraint firstAttribute="trailing" secondItem="EHH-Ga-cgu" secondAttribute="trailing" id="r7J-Vm-vgg"/>
-                                            <constraint firstItem="EHH-Ga-cgu" firstAttribute="top" secondItem="Tan-kY-mad" secondAttribute="top" id="wlk-D1-NlG"/>
-                                        </constraints>
-                                    </view>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="10"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nv7-bc-Ula">
+                                                            <rect key="frame" x="10" y="267" width="56" height="28"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="28" id="x1w-Oo-KFT"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="23"/>
+                                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="Nv7-bc-Ula" firstAttribute="leading" secondItem="Cl1-iy-nc9" secondAttribute="leading" id="0Q2-Fg-pz7"/>
+                                                        <constraint firstItem="Nv7-bc-Ula" firstAttribute="top" secondItem="Cl1-iy-nc9" secondAttribute="bottom" constant="8" id="2uL-5Q-xsd"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Cl1-iy-nc9" secondAttribute="trailing" id="FaE-ug-Ew8"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Nv7-bc-Ula" secondAttribute="bottom" constant="12" id="YXH-bq-WJe"/>
+                                                        <constraint firstItem="Cl1-iy-nc9" firstAttribute="leading" secondItem="Fc8-gg-wjb" secondAttribute="leading" constant="10" id="ivs-bf-0rQ"/>
+                                                        <constraint firstItem="Cl1-iy-nc9" firstAttribute="top" secondItem="Fc8-gg-wjb" secondAttribute="top" id="qhS-LX-v9g"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="180" height="307"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="cardName" destination="Nv7-bc-Ula" id="fSd-YC-hcd"/>
+                                                    <outlet property="cardPoster" destination="Cl1-iy-nc9" id="rpi-Ex-ktY"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Tan-kY-mad" secondAttribute="trailing" id="04o-tF-vHP"/>
                                     <constraint firstItem="2Q4-0a-tLp" firstAttribute="top" secondItem="mzU-cf-Lfg" secondAttribute="bottom" constant="80" id="2NF-Kh-sVF"/>
                                     <constraint firstItem="5rr-W1-Lip" firstAttribute="centerX" secondItem="mzU-cf-Lfg" secondAttribute="centerX" id="2SS-eV-fOd"/>
-                                    <constraint firstItem="Tan-kY-mad" firstAttribute="leading" secondItem="9VB-sD-r4E" secondAttribute="leading" id="5XJ-rD-RG5"/>
+                                    <constraint firstAttribute="trailing" secondItem="EHH-Ga-cgu" secondAttribute="trailing" id="CWB-8v-rzt"/>
                                     <constraint firstItem="xYF-uP-U99" firstAttribute="top" secondItem="9VB-sD-r4E" secondAttribute="top" constant="100" id="DVr-ZI-xkl"/>
                                     <constraint firstItem="mzU-cf-Lfg" firstAttribute="centerX" secondItem="9VB-sD-r4E" secondAttribute="centerX" id="PiR-9l-vNY"/>
                                     <constraint firstItem="5rr-W1-Lip" firstAttribute="centerX" secondItem="9VB-sD-r4E" secondAttribute="centerX" id="Ucj-bb-zAy"/>
                                     <constraint firstItem="2Q4-0a-tLp" firstAttribute="leading" secondItem="9VB-sD-r4E" secondAttribute="leading" constant="20" id="W46-y9-H7p"/>
                                     <constraint firstAttribute="trailing" secondItem="xYF-uP-U99" secondAttribute="trailing" constant="-28" id="WV1-6O-qdY"/>
                                     <constraint firstItem="5rr-W1-Lip" firstAttribute="top" secondItem="mzU-cf-Lfg" secondAttribute="bottom" constant="8" id="aQe-Zj-CYx"/>
-                                    <constraint firstAttribute="bottom" secondItem="Tan-kY-mad" secondAttribute="bottom" id="poJ-Wb-gaI"/>
-                                    <constraint firstItem="Tan-kY-mad" firstAttribute="top" secondItem="2Q4-0a-tLp" secondAttribute="bottom" constant="8" id="q2G-UG-7lT"/>
+                                    <constraint firstAttribute="bottom" secondItem="EHH-Ga-cgu" secondAttribute="bottom" constant="80" id="faz-BA-JWD"/>
+                                    <constraint firstItem="EHH-Ga-cgu" firstAttribute="leading" secondItem="9VB-sD-r4E" secondAttribute="leading" id="obu-WW-E53"/>
                                     <constraint firstItem="mzU-cf-Lfg" firstAttribute="top" secondItem="9VB-sD-r4E" secondAttribute="top" constant="80" id="rbI-bx-Uxg"/>
+                                    <constraint firstItem="EHH-Ga-cgu" firstAttribute="top" secondItem="2Q4-0a-tLp" secondAttribute="bottom" constant="18" id="sLJ-sk-e0h"/>
                                     <constraint firstItem="xYF-uP-U99" firstAttribute="leading" secondItem="9VB-sD-r4E" secondAttribute="leading" constant="-58" id="xz0-1y-fD8"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -753,9 +756,6 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

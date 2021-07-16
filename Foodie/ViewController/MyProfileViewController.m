@@ -14,14 +14,14 @@
 #import "RestaurantDetail.h"
 
 @interface MyProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
-
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) UIImage *resizedImage;
 @property (weak, nonatomic) IBOutlet UIView *shadowView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UICollectionView *bookmarkCollectionView;
 @property (strong, nonatomic) NSArray *bookmarks; //array of IDs
-@property (strong, nonatomic) NSMutableArray *restaurantDetailDicts; //array of RestaurantDetail Objects
+@property (strong, nonatomic) RestaurantDetail *restaurantDetailDicts; //array of RestaurantDetail Objects
 
 
 @end
@@ -33,8 +33,12 @@
     // get array of bookmarked restaurantID
     PFUser *currentUser = [PFUser currentUser];
     self.bookmarks = currentUser[@"restaurants"];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.bookmarkCollectionView addSubview:self.refreshControl];
+    [self.bookmarkCollectionView setPagingEnabled:YES];
+    
     [self fetchBookmarks];
-    NSLog(@"resID, %@", _restaurantDetailDicts);
 
     self.bookmarkCollectionView.dataSource = self;
     self.bookmarkCollectionView.delegate = self;
@@ -42,6 +46,10 @@
     self.shadowView.layer.shadowOffset = CGSizeMake(0, -5);
     self.shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
     
+}
+
+- (void) beginRefresh:(UIRefreshControl *)refreshControl{
+    [self fetchBookmarks];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -128,23 +136,27 @@
         YelpAPIManager *manager = [YelpAPIManager new];
         [manager getRestaurantDetail:(resID) completion:^(NSDictionary *dictionary, NSError *error) {
             if (dictionary){
-                RestaurantDetail *obj = [[RestaurantDetail alloc] initWithDictionary:dictionary];
-                [self.restaurantDetailDicts addObject:obj];
-                
+                RestaurantDetail *tempArray = [[RestaurantDetail alloc] initWithDictionary:dictionary];
+                NSLog(@"globalArray %@", tempArray);
+                dispatch_async(dispatch_get_main_queue(), ^(void){
+                    self.restaurantDetailDicts = tempArray;
+                    [self.bookmarkCollectionView reloadData];
+                    
+                    });
                 }
             }];
         }
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            [self.bookmarkCollectionView reloadData];
-            NSLog(@"reloaded");
-        });
-        
-        
-    }
+    [self.refreshControl endRefreshing];
+}
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     RestaurantBookmarkCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RestaurantBookmarkCell" forIndexPath:indexPath];
-    cell.restaurantDetail = self.restaurantDetailDicts[indexPath.row];
+    cell.cardName.text = self.restaurantDetailDicts.name;
+    cell.cardPoster.image = nil;
+    if (self.restaurantDetailDicts.imageURL != nil){
+        [cell.cardPoster setImageWithURL:self.restaurantDetailDicts.imageURL];
+    }
+    NSLog(@"hellp %@", self.restaurantDetailDicts.name);
     return cell;
 }
 

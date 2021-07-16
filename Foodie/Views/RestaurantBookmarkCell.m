@@ -11,13 +11,5 @@
 
 @implementation RestaurantBookmarkCell
 
-- (void) setRestaurant:(RestaurantDetail *)restaurantDetail{
-    _restaurantDetail = restaurantDetail;
-    self.cardName.text = self.restaurantDetail.name;
-    self.cardPoster.image = nil;
-    if (self.restaurantDetail.imageURL != nil){
-        [self.cardPoster setImageWithURL:self.restaurantDetail.imageURL];
-    }
-}
 
 @end
