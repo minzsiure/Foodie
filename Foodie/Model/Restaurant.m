@@ -35,6 +35,13 @@
     self.reviewCount = dictionary[@"reviewCount"];
     self.price = dictionary[@"price"];
     
+    if (dictionary[@"is_closed"]){
+        self.status = @"Closed";
+    }
+    else{
+        self.status = @"Open";
+    }
+    
     return self;
 }
 

@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *latitude;
 @property (strong, nonatomic) NSString *longitude;
 @property (strong, nonatomic) NSString *price;
+@property (strong, nonatomic) NSString *status;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 + (NSArray *)restaurantsWithDictionaries:(NSMutableArray *)dictionaries;
