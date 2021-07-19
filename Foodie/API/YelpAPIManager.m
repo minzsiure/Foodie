@@ -30,14 +30,23 @@
 }
 
 
-- (void)getYelpRestaurantCompletion: (NSString *)lat forLongt: (NSString *)longt completion:(void(^)(NSArray *restaurants, NSError *error))completion{
+- (void)getYelpRestaurantCompletion: (NSString *)lat forLongt: (NSString *)longt forLimit: (NSString *)limit forOffset: (NSString *)offset completion:(void(^)(NSArray *restaurants, NSError *error))completion{
+    // https://api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972&limit=20&offset=20
     
-
     NSString *baseURL =  @"https://api.yelp.com/v3/businesses/search?term=restaurant&latitude=";
+    //location
     NSString *latURL = [baseURL stringByAppendingString:lat];
     NSString *longtURL = [latURL stringByAppendingString:@"&longitude="];
     NSString *urlString = [longtURL stringByAppendingString:longt];
-    NSURL *url = [NSURL URLWithString:urlString];
+    
+    //limit, offset for infinite scroll; default is 20 and 0
+    NSString *limitString = [urlString stringByAppendingString:@"&limit="];
+    NSString *limitVal = [limitString stringByAppendingString:limit];
+    NSString *offsetString = [limitVal stringByAppendingString:@"&offset="];
+    NSString *offsetVal = [offsetString stringByAppendingString:offset];
+    
+    
+    NSURL *url = [NSURL URLWithString:offsetVal];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
 
@@ -56,8 +65,7 @@
             NSArray *dictionaries = responseDictionary[@"businesses"];
             
             // this is for testing location manager
-            NSLog(@"at API %@, %@", lat, longt);
-            
+//            NSLog(@"at API %@, %@", lat, longt);
             NSArray *restaurants = [Restaurant restaurantsWithDictionaries:dictionaries];
             completion(restaurants, nil);
             

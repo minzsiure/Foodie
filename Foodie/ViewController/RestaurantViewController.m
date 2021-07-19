@@ -17,18 +17,20 @@
 #import "DetailViewController.h"
 #import "MapViewController.h"
 
-@interface RestaurantViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
+@interface RestaurantViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *restaurantTable;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
-@property (strong, nonatomic) NSArray *restaurants;
+@property (strong, nonatomic) NSMutableArray *restaurants;
 @property (strong, nonatomic) NSArray *restaurantDetail;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-
+@property (assign, nonatomic) BOOL isMoreDataLoading;
 
 @end
 
 @implementation RestaurantViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -75,7 +77,7 @@
 
 - (void) fetchRestaurants{
     YelpAPIManager *manager = [YelpAPIManager new];
-    [manager getYelpRestaurantCompletion:self.latitude forLongt:self.longitude completion:^(NSArray *restaurants, NSError *error) {
+    [manager getYelpRestaurantCompletion:self.latitude forLongt:self.longitude forLimit:@"20" forOffset:@"0" completion:^(NSArray *restaurants, NSError *error) {
         if (restaurants){
             self.restaurants = restaurants;
             dispatch_async(dispatch_get_main_queue(), ^(void){
@@ -141,6 +143,48 @@
         mapViewController.restaurantDictionaries = self.restaurants;
     }
 
+}
+
+- (void) loadMoreData: (NSString *)currentCount {
+    YelpAPIManager *manager = [YelpAPIManager new];
+    [manager getYelpRestaurantCompletion:self.latitude forLongt:self.longitude forLimit:@"20" forOffset:currentCount completion:^(NSArray *restaurants, NSError *error) {
+        if (restaurants){
+            [self.restaurants addObjectsFromArray:restaurants];
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                // update flag
+                self.isMoreDataLoading = false;
+                [self.restaurantTable reloadData];
+                [self.refreshControl endRefreshing];
+                [self.activityIndicator stopAnimating];
+
+            });
+        }
+        else{
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row + 1 == [self.restaurants count]){
+        NSString *moreCount = [NSString stringWithFormat:@"%lu", [self.restaurants count]];
+        [self loadMoreData:moreCount];
+    }
+}
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    if(!self.isMoreDataLoading){
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.restaurantTable.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.restaurantTable.bounds.size.height;
+
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.restaurantTable.isDragging) {
+            self.isMoreDataLoading = true;
+            NSString *moreCount = [NSString stringWithFormat:@"%lu", [self.restaurants count]];
+            [self loadMoreData:moreCount];
+        }
+    }
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
