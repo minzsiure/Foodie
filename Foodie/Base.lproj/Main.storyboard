@@ -153,11 +153,11 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RestaurantCell" rowHeight="223" id="NXa-Oj-oHY" customClass="RestaurantCell">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="223"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RestaurantCell" rowHeight="250" id="NXa-Oj-oHY" customClass="RestaurantCell">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NXa-Oj-oHY" id="cG6-M8-eCi">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="223"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ten-YM-xnR">
@@ -172,30 +172,40 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdc-c1-c2j">
-                                                    <rect key="frame" x="20" y="191" width="57" height="13"/>
+                                                    <rect key="frame" x="20" y="186" width="57" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4D-j3-gbQ">
                                                     <rect key="frame" x="294" y="0.0" width="100" height="100"/>
                                                     <state key="normal" image="Image"/>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="rating  category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJO-Fb-lQw">
+                                                    <rect key="frame" x="20" y="215" width="374" height="19"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Ten-YM-xnR" firstAttribute="leading" secondItem="cG6-M8-eCi" secondAttribute="leadingMargin" id="CIv-Ca-LZG"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="tdc-c1-c2j" secondAttribute="bottom" constant="8" id="OTh-wq-0oo"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="PJO-Fb-lQw" secondAttribute="trailing" id="F9z-zi-oyY"/>
+                                                <constraint firstItem="PJO-Fb-lQw" firstAttribute="top" secondItem="tdc-c1-c2j" secondAttribute="bottom" constant="5" id="OlB-wO-P5k"/>
                                                 <constraint firstItem="Ten-YM-xnR" firstAttribute="top" secondItem="cG6-M8-eCi" secondAttribute="topMargin" id="PU9-N6-qcB"/>
                                                 <constraint firstAttribute="trailing" secondItem="D4D-j3-gbQ" secondAttribute="trailing" constant="20" id="WC4-ih-1rL"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="PJO-Fb-lQw" secondAttribute="bottom" constant="5" id="YU2-zA-W01"/>
+                                                <constraint firstItem="PJO-Fb-lQw" firstAttribute="leading" secondItem="tdc-c1-c2j" secondAttribute="leading" id="Zc8-nv-2Ne"/>
                                                 <constraint firstItem="D4D-j3-gbQ" firstAttribute="top" secondItem="cG6-M8-eCi" secondAttribute="top" id="dJb-wM-TbV"/>
                                                 <constraint firstItem="Ten-YM-xnR" firstAttribute="trailing" secondItem="cG6-M8-eCi" secondAttribute="trailingMargin" id="fTW-Lz-BMg"/>
                                                 <constraint firstItem="tdc-c1-c2j" firstAttribute="leading" secondItem="Ten-YM-xnR" secondAttribute="leading" id="hUT-cg-mWj"/>
-                                                <constraint firstItem="tdc-c1-c2j" firstAttribute="top" secondItem="Ten-YM-xnR" secondAttribute="bottom" constant="10" id="spI-hi-AR0"/>
+                                                <constraint firstItem="tdc-c1-c2j" firstAttribute="top" secondItem="Ten-YM-xnR" secondAttribute="bottom" constant="5" id="spI-hi-AR0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bookmarkLogo" destination="D4D-j3-gbQ" id="eOh-jU-f5D"/>
                                             <outlet property="posterImage" destination="Ten-YM-xnR" id="slx-j9-J6E"/>
+                                            <outlet property="ratingCategory" destination="PJO-Fb-lQw" id="gB3-30-xH5"/>
                                             <outlet property="restaurantName" destination="tdc-c1-c2j" id="2wT-H0-raT"/>
                                             <segue destination="2uV-1Y-M9w" kind="show" identifier="detailSegue" id="iv0-8V-w9H"/>
                                         </connections>
@@ -729,7 +739,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oJJ-al-duT"/>
+        <segue reference="iv0-8V-w9H"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Image" width="100" height="100"/>

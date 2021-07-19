@@ -30,6 +30,16 @@
     if (self.restaurant.imageURL != nil){
         [self.posterImage setImageWithURL:self.restaurant.imageURL];
     }
+    NSString *rating = self.restaurant.rating;
+    NSArray *categoryArr = self.restaurant.categories;
+    NSMutableArray *newArray = [NSMutableArray new];
+    for (NSDictionary *dic in categoryArr){
+        [newArray addObject:dic[@"title"]];
+    }
+    NSString *categoryStr = [newArray componentsJoinedByString:@", "];
+    NSString *holder = [rating stringByAppendingString: @" "];
+    self.ratingCategory.text = [holder stringByAppendingString:categoryStr];
+    
     PFUser *currentUser = [PFUser currentUser];
     if ([currentUser[@"restaurants"] containsObject:self.restaurant.id]){
         [self.bookmarkLogo setImage:[UIImage imageNamed:@"bookmark_red_small"] forState:UIControlStateNormal];

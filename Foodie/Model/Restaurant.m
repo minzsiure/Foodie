@@ -27,7 +27,7 @@
     self.longitude = dictionary[@"coordinates"][@"longitude"];
 
     double voteDouble = [(NSNumber *)  dictionary[@"rating"] doubleValue];
-    NSString *voteString = [NSString stringWithFormat:@" %0.1f ",voteDouble];
+    NSString *voteString = [NSString stringWithFormat:@"%0.1f ",voteDouble];
     NSString *star = @"★";
     NSString *ratingString = [voteString stringByAppendingString:star];
     self.rating = ratingString;
