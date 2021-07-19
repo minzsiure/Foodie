@@ -30,6 +30,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // id is passed in from tableView, so we fetch API using /search{id} request;
+    //otherwise we will set up this page with passed-in restaurantDetail object (no restaurant.id)
     if (self.restaurant.id != nil){
         [self fetchRestaurantDetail];
     }
@@ -43,6 +46,8 @@
     YelpAPIManager *manager = [YelpAPIManager new];
     [manager getRestaurantDetail:(self.restaurant.id) completion:^(NSDictionary * restaurantDetail, NSError *error) {
         self.restaurantDetailObj = [RestaurantDetail detailsWithDictionaries:restaurantDetail];
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+        });
     }];
 }
 
@@ -72,6 +77,7 @@
     //address
     NSArray *locArray = self.restaurantDetailObj.location[@"display_address"];
     self.addressLabel.text = [locArray componentsJoinedByString:@" "];
+    
 }
 
 - (IBAction)onTapCall:(id)sender {

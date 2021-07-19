@@ -51,25 +51,22 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
      {
-             CLLocation *location = [locations lastObject];
-              //First, checking if the location services are enabled
-             self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
-             self.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+        CLLocation *location = [locations lastObject];
+        //First, checking if the location services are enabled
+        self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
+        self.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
          
-
-
-                NSLog(@"restaurant view controller said lat%@ - lon%@", self.latitude, self.longitude);
-            PFUser *user = [PFUser currentUser];
-            user[@"latitude"] = self.latitude;
-            user[@"longitude"] = self.longitude;
-            [self fetchRestaurants];
-            
-            [self.locationManager stopUpdatingLocation];
+        NSLog(@"restaurant view controller said lat%@ - lon%@", self.latitude, self.longitude);
+        PFUser *user = [PFUser currentUser];
+        user[@"latitude"] = self.latitude;
+        user[@"longitude"] = self.longitude;
+        [self fetchRestaurants];
+        [self.locationManager stopUpdatingLocation];
                   
-            //refresh controller
-            self.refreshControl = [[UIRefreshControl alloc] init];
-            [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
-            [self.restaurantTable insertSubview:self.refreshControl atIndex:0];
+        //refresh controller
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+        [self.restaurantTable insertSubview:self.refreshControl atIndex:0];
     }
 
 - (void) beginRefresh:(UIRefreshControl *)refreshControl{
@@ -77,7 +74,6 @@
 }
 
 - (void) fetchRestaurants{
-    
     YelpAPIManager *manager = [YelpAPIManager new];
     [manager getYelpRestaurantCompletion:self.latitude forLongt:self.longitude completion:^(NSArray *restaurants, NSError *error) {
         if (restaurants){
@@ -87,23 +83,19 @@
                 [self.refreshControl endRefreshing];
                 [self.activityIndicator stopAnimating];
             });
-            
         }
         else{
             NSLog(@"%@", error.localizedDescription);
         }
-        
     }];
 }
 
 - (IBAction)logOut:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         [self dismissViewControllerAnimated:YES completion:nil];
-        
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UIViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         [[UIApplication sharedApplication].keyWindow setRootViewController: loginViewController];
-        
     }];
 }
 
