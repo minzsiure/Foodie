@@ -28,7 +28,7 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 **Required Must-have Stories**
 - [x] User can create a new account
 - [x] User can login/logout
-- [x] User can bookmark a restaurant
+- [x] User can bookmark/unbookmark a restaurant
 - [x] User can view a feed of restraunt cards
 - [x] User can see detial page of a restaurant
 - [x] User can see nearby restraurants in a map and mark down restaurants 
