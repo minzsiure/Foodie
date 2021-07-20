@@ -12,6 +12,7 @@
 #import "YelpAPIManager.h"
 #import "YelpViewController.h"
 #import "OtherUsersCell.h"
+#import <Parse/Parse.h>
 
 @interface DetailViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *posterImage;
@@ -23,7 +24,7 @@
 @property (strong, nonatomic) NSString *categoryString;
 @property (strong, nonatomic) NSString *locString;
 @property (weak, nonatomic) IBOutlet UICollectionView *otherUsersCollectionView;
-@property(strong, nonatomic) NSArray *userWhoLiked;
+@property(strong, nonatomic) NSArray *userArray;
 
 
 @end
@@ -34,6 +35,10 @@
     [super viewDidLoad];
     self.otherUsersCollectionView.dataSource = self;
     self.otherUsersCollectionView.delegate = self;
+    PFQuery *query = [PFQuery queryWithClassName:@"Restaurant"];
+    [query whereKey:@"restaurantID" equalTo:self.restaurant.id];
+    PFObject *object = [query getFirstObject];
+    self.userArray = object[@"userArray"];
     // id is passed in from tableView, so we fetch API using /search{id} request;
     //otherwise we will set up this page with passed-in restaurantDetail object (no restaurant.id)
     if (self.restaurant.id != nil){
@@ -53,6 +58,7 @@
         });
     }];
 }
+
 
 - (void) pageSetUp{
     self.posterImage.image = nil;
@@ -106,11 +112,30 @@
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     OtherUsersCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"OtherUserCell" forIndexPath:indexPath];
     
+//    PFQuery *query = [PFQuery queryWithClassName:@"Restaurant"];
+//    [query whereKey:@"restaurantID" equalTo:self.restaurant.id];
+//    PFObject *object = [query getFirstObject];
+//    self.userArray = object[@"userArray"];
+
+    PFQuery *userQuery = [PFUser query];
+    [userQuery whereKey:@"objectId" equalTo:self.userArray[indexPath.row]]; // find all the women
+    PFUser *thisUser = [userQuery getFirstObject];
+    cell.userID = thisUser[@"objectId"];
+    cell.userProfilePic.image = nil;
+    if (thisUser[@"profilePic"] != nil){
+        PFFileObject *profilePic = thisUser[@"profilePic"];
+        NSURL *profilePicURL = [NSURL URLWithString:profilePic.url];
+        [cell.userProfilePic setImageWithURL:profilePicURL];
+        
+    }
     return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 2;
+//    if (!self.userArray || !self.userArray.count){
+//        return 0;
+//    }
+    return self.userArray.count;
 }
 
 @end

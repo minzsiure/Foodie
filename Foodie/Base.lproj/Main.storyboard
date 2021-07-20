@@ -406,20 +406,19 @@
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="res-BP-cou">
                                 <rect key="frame" x="0.0" y="656.5" width="414" height="80"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="20S-gm-5Xo"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="miK-HM-xqG">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="40" id="miK-HM-xqG">
                                     <size key="itemSize" width="80" height="80"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OtherUsersCell" id="6ML-du-i48" customClass="OtherUsersCell">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OtherUserCell" id="6ML-du-i48" customClass="OtherUsersCell">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="iWe-KV-hK2">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -430,9 +429,13 @@
                                                         <constraint firstAttribute="width" constant="80" id="0Ag-Ph-hlP"/>
                                                         <constraint firstAttribute="height" constant="80" id="rFX-Lc-Rc2"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="30"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.89159607890000003" green="0.41093295810000002" blue="0.17637526989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="eaW-lk-a6p" firstAttribute="leading" secondItem="iWe-KV-hK2" secondAttribute="leading" id="CEa-S0-Kmn"/>
                                                 <constraint firstItem="eaW-lk-a6p" firstAttribute="top" secondItem="iWe-KV-hK2" secondAttribute="top" id="ECK-Zp-Xph"/>
@@ -765,7 +768,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iv0-8V-w9H"/>
+        <segue reference="oJJ-al-duT"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Image" width="100" height="100"/>

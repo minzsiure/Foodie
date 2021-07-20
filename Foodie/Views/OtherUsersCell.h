@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OtherUsersCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *userProfilePic;
+@property (weak, nonatomic) NSString *userID;
+
 
 @end
 
