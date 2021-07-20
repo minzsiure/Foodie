@@ -220,11 +220,13 @@
         // if previously created, add directly
         if (object && !([object[@"userArray"] containsObject:currentUser.objectId])) {
             [object addObject:currentUser.objectId forKey:@"userArray"];
+            [object saveInBackground];
         }
         // else, create first then add
         else{
             PFObject *resObj = [PFObject objectWithClassName:@"Restaurant"];
             resObj[@"restaurantID"] = restaurant.id;
+            resObj[@"name"] = restaurant.name;
             [resObj addObject:currentUser.objectId forKey:@"userArray"];
             [resObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
              if (succeeded) {
@@ -268,8 +270,19 @@
             [currentUser removeObject:restaurant.id forKey:@"restaurants"];
             
         }
-
         [currentUser saveInBackground];
+        
+        // remove current userID from this Restaurant Parse Obj's userArray
+        PFQuery *query = [PFQuery queryWithClassName:@"Restaurant"];
+        [query whereKey:@"restaurantID" equalTo:restaurant.id];
+        PFObject *object = [query getFirstObject];
+        if (object) {
+            [object removeObject:currentUser.objectId forKey:@"userArray"];
+            [object saveInBackground];
+            NSLog(@"removed");
+        }
+
+        
         [self.restaurantTable beginUpdates];
         [self.restaurantTable reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationNone];
         [self.restaurantTable endUpdates];
