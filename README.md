@@ -78,6 +78,7 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
        * Detail screen once tab on a card
    * google map view
        * Google map view of all cards in stream screen  
+          * Detil screen once tab on a marker info page  
 * Profile screen
     * Bookmarks
 
