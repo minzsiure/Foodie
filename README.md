@@ -36,10 +36,10 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 
 **Optional Nice-to-have Stories**
 - [x] User can see other users who bookedmarked the restaurant on restaurant detail page
-- [] User can tap a photo to view a more detailed photo screen
+- [ ] User can tap a photo to view a more detailed photo screen
 - [x] User can see their profile page with their bookmarks
-- [] User can view other user’s profiles and see their bookmarks
-- [] User can see restraunts nearby or choose a region
+- [ ] User can view other user’s profiles and see their bookmarks
+- [ ] User can see restraunts nearby or choose a region
 
 
 ### 2. Screen Archetypes
