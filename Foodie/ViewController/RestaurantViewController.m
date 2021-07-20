@@ -211,6 +211,30 @@
         }
 
         [currentUser saveInBackground];
+        
+        // check if this restaurant is previously created
+        PFQuery *query = [PFQuery queryWithClassName:@"Restaurant"];
+        [query whereKey:@"restaurantID" equalTo:restaurant.id];
+        PFObject *object = [query getFirstObject];
+        
+        // if previously created, add directly
+        if (object && !([object[@"userArray"] containsObject:currentUser.objectId])) {
+            [object addObject:currentUser.objectId forKey:@"userArray"];
+        }
+        // else, create first then add
+        else{
+            PFObject *resObj = [PFObject objectWithClassName:@"Restaurant"];
+            resObj[@"restaurantID"] = restaurant.id;
+            [resObj addObject:currentUser.objectId forKey:@"userArray"];
+            [resObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+             if (succeeded) {
+                    NSLog(@"Object saved!");
+             } else {
+                    NSLog(@"Error: %@", error.description);
+                }
+            }];
+        }
+
         [self.restaurantTable beginUpdates];
         [self.restaurantTable reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationNone];
         [self.restaurantTable endUpdates];

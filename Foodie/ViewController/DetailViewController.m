@@ -11,8 +11,9 @@
 #import "UIImageView+AFNetworking.h"
 #import "YelpAPIManager.h"
 #import "YelpViewController.h"
+#import "OtherUsersCell.h"
 
-@interface DetailViewController ()
+@interface DetailViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *posterImage;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -21,7 +22,8 @@
 @property (nonatomic, strong) NSDictionary *detailDictionary;
 @property (strong, nonatomic) NSString *categoryString;
 @property (strong, nonatomic) NSString *locString;
-
+@property (weak, nonatomic) IBOutlet UICollectionView *otherUsersCollectionView;
+@property(strong, nonatomic) NSArray *userWhoLiked;
 
 
 @end
@@ -30,7 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.otherUsersCollectionView.dataSource = self;
+    self.otherUsersCollectionView.delegate = self;
     // id is passed in from tableView, so we fetch API using /search{id} request;
     //otherwise we will set up this page with passed-in restaurantDetail object (no restaurant.id)
     if (self.restaurant.id != nil){
@@ -97,8 +100,17 @@
         YelpViewController *yelpViewController = [segue destinationViewController];
         yelpViewController.yelpURL = self.restaurant.yelpURL;
     }
-
 }
 
+
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    OtherUsersCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"OtherUserCell" forIndexPath:indexPath];
+    
+    return cell;
+}
+
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 2;
+}
 
 @end
