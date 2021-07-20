@@ -143,7 +143,7 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 * Detail screen
     * (Read/Get) Query restaurant detail from Yelp given restaurantID of tapped cell in stream page
     * (Read/Get) Query all users who bookmarked the restaurant given restaurantID from Parse 
-- [Create basic snippets for each Parse network request]
+ 
 #### Google Map SDK
 - Base URL - https://developers.google.com/maps/documentation/ios-sdk/overview
 
