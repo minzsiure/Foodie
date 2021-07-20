@@ -35,15 +35,20 @@
     [super viewDidLoad];
     self.otherUsersCollectionView.dataSource = self;
     self.otherUsersCollectionView.delegate = self;
+
     PFQuery *query = [PFQuery queryWithClassName:@"Restaurant"];
-    [query whereKey:@"restaurantID" equalTo:self.restaurant.id];
-    PFObject *object = [query getFirstObject];
-    self.userArray = object[@"userArray"];
     // id is passed in from tableView, so we fetch API using /search{id} request;
     //otherwise we will set up this page with passed-in restaurantDetail object (no restaurant.id)
     if (self.restaurant.id != nil){
         [self fetchRestaurantDetail];
+        [query whereKey:@"restaurantID" equalTo:self.restaurant.id];
     }
+    else{
+        [query whereKey:@"restaurantID" equalTo:self.restaurantDetailObj.id];
+    }
+    PFObject *object = [query getFirstObject];
+    self.userArray = object[@"userArray"];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -55,6 +60,7 @@
     [manager getRestaurantDetail:(self.restaurant.id) completion:^(NSDictionary * restaurantDetail, NSError *error) {
         self.restaurantDetailObj = [RestaurantDetail detailsWithDictionaries:restaurantDetail];
         dispatch_async(dispatch_get_main_queue(), ^(void){
+//            NSLog(@"hours %@", self.restaurantDetailObj.hours);
         });
     }];
 }
