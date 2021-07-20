@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSString *locString;
 @property (weak, nonatomic) IBOutlet UICollectionView *otherUsersCollectionView;
 @property(strong, nonatomic) NSArray *userArray;
+@property (weak, nonatomic) IBOutlet UILabel *hourLabel;
 
 
 @end
@@ -38,16 +39,17 @@
 
     PFQuery *query = [PFQuery queryWithClassName:@"Restaurant"];
     // id is passed in from tableView, so we fetch API using /search{id} request;
-    //otherwise we will set up this page with passed-in restaurantDetail object (no restaurant.id)
     if (self.restaurant.id != nil){
         [self fetchRestaurantDetail];
         [query whereKey:@"restaurantID" equalTo:self.restaurant.id];
     }
+    //otherwise from profile page, we will set up this page with passed-in restaurantDetail object (no restaurant.id)
     else{
         [query whereKey:@"restaurantID" equalTo:self.restaurantDetailObj.id];
     }
     PFObject *object = [query getFirstObject];
     self.userArray = object[@"userArray"];
+    
     
 }
 
@@ -60,9 +62,10 @@
     [manager getRestaurantDetail:(self.restaurant.id) completion:^(NSDictionary * restaurantDetail, NSError *error) {
         self.restaurantDetailObj = [RestaurantDetail detailsWithDictionaries:restaurantDetail];
         dispatch_async(dispatch_get_main_queue(), ^(void){
-//            NSLog(@"hours %@", self.restaurantDetailObj.hours);
+            
         });
     }];
+    
 }
 
 
@@ -93,6 +96,27 @@
     NSArray *locArray = self.restaurantDetailObj.location[@"display_address"];
     self.addressLabel.text = [locArray componentsJoinedByString:@" "];
     
+    //hour
+    NSMutableArray *hourArray = [NSMutableArray array];
+    NSArray *week = [NSArray arrayWithObjects:@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday", nil];
+    for (int i = 0; i < 7; i++){
+        //start
+        NSString *dayString = [NSString stringWithFormat:@"%@ ",week[i]];
+        NSString *startOne = [self.restaurantDetailObj.hours[i][@"start"] substringWithRange: NSMakeRange(0, 2)];
+        NSString *startTwo = [self.restaurantDetailObj.hours[i][@"start"] substringFromIndex:2];
+        NSString *startHour = [startOne stringByAppendingFormat:@":%@", startTwo];
+        NSString *startResult = [dayString stringByAppendingString:startHour];
+        
+        //end
+        NSString *endOne = [self.restaurantDetailObj.hours[i][@"end"] substringWithRange: NSMakeRange(0, 2)];
+        NSString *endTwo = [self.restaurantDetailObj.hours[i][@"end"] substringFromIndex:2];
+        NSString *endHour = [endOne stringByAppendingFormat:@":%@", endTwo];
+        NSString *result = [startResult stringByAppendingFormat:@"-%@", endHour];
+    
+        [hourArray addObject:result];
+    }
+    
+    self.hourLabel.text = [hourArray componentsJoinedByString:@"\n"];
 }
 
 - (IBAction)onTapCall:(id)sender {
@@ -117,12 +141,6 @@
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     OtherUsersCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"OtherUserCell" forIndexPath:indexPath];
-    
-//    PFQuery *query = [PFQuery queryWithClassName:@"Restaurant"];
-//    [query whereKey:@"restaurantID" equalTo:self.restaurant.id];
-//    PFObject *object = [query getFirstObject];
-//    self.userArray = object[@"userArray"];
-
     PFQuery *userQuery = [PFUser query];
     [userQuery whereKey:@"objectId" equalTo:self.userArray[indexPath.row]]; // find all the women
     PFUser *thisUser = [userQuery getFirstObject];
@@ -132,15 +150,14 @@
         PFFileObject *profilePic = thisUser[@"profilePic"];
         NSURL *profilePicURL = [NSURL URLWithString:profilePic.url];
         [cell.userProfilePic setImageWithURL:profilePicURL];
-        
     }
+    
+    
+    
     return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    if (!self.userArray || !self.userArray.count){
-//        return 0;
-//    }
     return self.userArray.count;
 }
 

@@ -38,7 +38,7 @@
     self.photoTwo = [NSURL URLWithString:photos[1]];
     self.photoThree = [NSURL URLWithString:photos[2]];
     
-    self.hours = dictionary[@"hours"];
+    self.hours = dictionary[@"hours"][0][@"open"];
     
     return self;
 }
