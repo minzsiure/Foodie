@@ -76,6 +76,8 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
        * Detail screen once tab on a card
    * restaurant cards
        * Detail screen once tab on a card
+   * google map view
+       * Google map view of all cards in stream screen  
 * Profile screen
     * Bookmarks
 
@@ -123,11 +125,27 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 | address      | String                | restraunt address                                  |
 
 ### Networking
-- [Add list of network requests by screen ]
+* Login screen
+   * (Create/POST) Create a new user when Sign Up in Parse
+   * (Read/GET) Query form Parse corresponding user object when Sign in
+* Stream screen
+   * (Read/GET) Query restaurant cards from Yelp based on given location
+   * (Read/GET) Query User bookmarks
+   * (Create/POST) Create a new restaurant object if it's the first time being bookmarked
+   * (Create/POST) Append current userID to restaurant object UserArray meaning current user bookmarked this restaurant
+* Google map view screen
+   * (Read/GET) Query map by centering map on user current location
+   * (Read/GET) Query cards on user object in Streem screen to display location markers
+* Profile screen
+    * (Read/GET) Query logged in user object (userID and profile image)
+    * (Read/GET) Quert logged in user bookmarks
+    * (Update/PUT) Update user profile image
+* Detail screen
+    * (Read/Get) Query restaurant detail from Yelp given restaurantID of tapped cell in stream page
+    * (Read/Get) Query all users who bookmarked the restaurant given restaurantID from Parse 
 - [Create basic snippets for each Parse network request]
-#### Google Map SDK or Apple MapKit
+#### Google Map SDK
 - Base URL - https://developers.google.com/maps/documentation/ios-sdk/overview
-- Base URL - https://developer.apple.com/documentation/mapkit/
 
 #### Yelp Business Endpoints
 - Base URL - https://www.yelp.com/developers/documentation/v3
