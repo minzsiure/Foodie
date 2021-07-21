@@ -13,7 +13,6 @@
 #import "YelpViewController.h"
 #import "OtherUsersCell.h"
 #import <Parse/Parse.h>
-#import <MaterialPageControl.h>
 
 @interface DetailViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *posterImage;
@@ -59,21 +58,20 @@
 }
 
 - (void) scrollViewSetUp{
-    // page controller
     NSArray *imageArray = [[NSArray alloc] initWithObjects:self.restaurantDetailObj.photoOne, self.restaurantDetailObj.photoTwo, self.restaurantDetailObj.photoThree, nil];
     [self.pageControl setNumberOfPages:imageArray.count];
     for (int i = 0; i < [imageArray count]; i++) {
-    //We'll create an imageView object in every 'page' of our scrollView.
-    CGRect frame;
-    frame.origin.x = 390 * i;
-    frame.origin.y = 0;
-    frame.size = self.imageScrollView.frame.size;
+        //We'll create an imageView object in every 'page' of our scrollView.
+        CGRect frame;
+        frame.origin.x = 390 * i;
+        frame.origin.y = 0;
+        frame.size = self.imageScrollView.frame.size;
 
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
-    [imageView setContentMode:UIViewContentModeScaleToFill];
-    imageView.image = nil;
-    [imageView setImageWithURL:[imageArray objectAtIndex:i]];
-    [self.imageScrollView addSubview:imageView];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+        [imageView setContentMode:UIViewContentModeScaleToFill];
+        imageView.image = nil;
+        [imageView setImageWithURL:[imageArray objectAtIndex:i]];
+        [self.imageScrollView addSubview:imageView];
     }
     //Set the content size of our scrollview according to the total width of our imageView objects.
     self.imageScrollView.contentSize = CGSizeMake(390 * [imageArray count], 170);

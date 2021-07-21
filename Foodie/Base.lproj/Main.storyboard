@@ -297,7 +297,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLm-0Z-2Ve">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tw2-Ka-ayP">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tw2-Ka-ayP">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UXE-Xk-Cum" userLabel="imageContainer">
@@ -310,7 +310,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="rdR-hO-4eP" secondAttribute="trailing" id="0po-M5-cr7"/>
                                                             <constraint firstItem="rdR-hO-4eP" firstAttribute="leading" secondItem="UXE-Xk-Cum" secondAttribute="leading" id="2lN-SE-Beh"/>
@@ -320,6 +320,9 @@
                                                     </view>
                                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="HCX-Zw-alR">
                                                         <rect key="frame" x="146.66666666666666" y="220" width="120.99999999999997" height="27"/>
+                                                        <color key="backgroundColor" red="0.89159607890000003" green="0.41093295810000002" blue="0.17637526989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="pageIndicatorTintColor" systemColor="tertiarySystemBackgroundColor"/>
+                                                        <color key="currentPageIndicatorTintColor" systemColor="systemGrayColor"/>
                                                     </pageControl>
                                                 </subviews>
                                                 <constraints>
