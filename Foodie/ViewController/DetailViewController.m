@@ -59,11 +59,13 @@
 
 - (void) scrollViewSetUp{
     NSArray *imageArray = [[NSArray alloc] initWithObjects:self.restaurantDetailObj.photoOne, self.restaurantDetailObj.photoTwo, self.restaurantDetailObj.photoThree, nil];
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    CGFloat width = CGRectGetWidth(screen);
     [self.pageControl setNumberOfPages:imageArray.count];
     for (int i = 0; i < [imageArray count]; i++) {
         //We'll create an imageView object in every 'page' of our scrollView.
         CGRect frame;
-        frame.origin.x = 390 * i;
+        frame.origin.x = width * i;
         frame.origin.y = 0;
         frame.size = self.imageScrollView.frame.size;
 
@@ -72,9 +74,11 @@
         imageView.image = nil;
         [imageView setImageWithURL:[imageArray objectAtIndex:i]];
         [self.imageScrollView addSubview:imageView];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     //Set the content size of our scrollview according to the total width of our imageView objects.
-    self.imageScrollView.contentSize = CGSizeMake(390 * [imageArray count], 170);
+    
+    self.imageScrollView.contentSize = CGSizeMake(width * [imageArray count], 170);
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender{
@@ -97,7 +101,6 @@
             [self scrollViewSetUp];
         });
     }];
-    
 }
 
 

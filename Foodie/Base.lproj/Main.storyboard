@@ -297,24 +297,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLm-0Z-2Ve">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tw2-Ka-ayP">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tw2-Ka-ayP">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UXE-Xk-Cum" userLabel="imageContainer">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
-                                                        <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rdR-hO-4eP">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="250" id="QlV-Wg-ANE"/>
-                                                                </constraints>
-                                                            </imageView>
-                                                        </subviews>
                                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="rdR-hO-4eP" secondAttribute="trailing" id="0po-M5-cr7"/>
-                                                            <constraint firstItem="rdR-hO-4eP" firstAttribute="leading" secondItem="UXE-Xk-Cum" secondAttribute="leading" id="2lN-SE-Beh"/>
-                                                            <constraint firstItem="rdR-hO-4eP" firstAttribute="top" secondItem="UXE-Xk-Cum" secondAttribute="top" id="ExD-90-5JT"/>
                                                             <constraint firstAttribute="height" constant="250" id="iHc-lV-833"/>
                                                         </constraints>
                                                     </view>
@@ -620,7 +609,6 @@
                         <outlet property="nameLabel" destination="Edp-fp-FmW" id="jhj-bd-uwk"/>
                         <outlet property="otherUsersCollectionView" destination="res-BP-cou" id="GbO-6A-IHI"/>
                         <outlet property="pageControl" destination="HCX-Zw-alR" id="z3S-ca-4F3"/>
-                        <outlet property="posterImage" destination="rdR-hO-4eP" id="tdk-Ed-oJq"/>
                         <outlet property="priceLabel" destination="M0v-Q6-SW7" id="3U8-fU-Leu"/>
                         <outlet property="ratingLabel" destination="kuJ-tI-v4q" id="U28-dx-i5Y"/>
                     </connections>
