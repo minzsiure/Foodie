@@ -52,6 +52,7 @@
     //otherwise from profile page, we will set up this page with passed-in restaurantDetail object (no restaurant.id)
     else{
         [query whereKey:@"restaurantID" equalTo:self.restaurantDetailObj.id];
+        
     }
     PFObject *object = [query getFirstObject];
     self.userArray = object[@"userArray"];
@@ -91,6 +92,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [self pageSetUp];
+    [self scrollViewSetUp];
 }
 
 - (void) fetchRestaurantDetail{
@@ -98,7 +100,6 @@
     [manager getRestaurantDetail:(self.restaurant.id) completion:^(NSDictionary * restaurantDetail, NSError *error) {
         self.restaurantDetailObj = [RestaurantDetail detailsWithDictionaries:restaurantDetail];
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            [self scrollViewSetUp];
         });
     }];
 }

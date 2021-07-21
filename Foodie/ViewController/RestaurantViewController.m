@@ -36,9 +36,15 @@
     [super viewDidLoad];
     [self.activityIndicator startAnimating];
     
+    // for simulator
+    self.latitude = @"42.376970";
+    self.longitude = @"-71.102400";
+    [self fetchRestaurants];
+    //
+    
     self.restaurantTable.delegate = self;
     self.restaurantTable.dataSource = self;
-    [self accessCurrentLocation];
+//    [self accessCurrentLocation]; <- this is for real phone
     
 }
 
@@ -60,6 +66,8 @@
          
         NSLog(@"restaurant view controller said lat%@ - lon%@", self.latitude, self.longitude);
         PFUser *user = [PFUser currentUser];
+         
+        // regular phone
         user[@"latitude"] = self.latitude;
         user[@"longitude"] = self.longitude;
         [self fetchRestaurants];
