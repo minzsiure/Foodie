@@ -21,6 +21,9 @@ PODS:
   - GoogleMaps/Base (5.1.0)
   - GoogleMaps/Maps (5.1.0):
     - GoogleMaps/Base
+  - MaterialComponents/PageControl (124.2.0):
+    - MDFInternationalization
+  - MDFInternationalization (3.0.0)
   - Parse (1.19.2):
     - Parse/Core (= 1.19.2)
   - Parse/Core (1.19.2):
@@ -31,6 +34,7 @@ DEPENDENCIES:
   - AFNetworking
   - DateTools
   - GoogleMaps (= 5.1.0)
+  - MaterialComponents/PageControl
   - Parse
   - YelpAPI
 
@@ -40,6 +44,8 @@ SPEC REPOS:
     - Bolts
     - DateTools
     - GoogleMaps
+    - MaterialComponents
+    - MDFInternationalization
     - Parse
     - YelpAPI
 
@@ -48,9 +54,11 @@ SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   GoogleMaps: 086ae1dab659eaa7339bdb30fc88e2f44e7c597c
+  MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
+  MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
   YelpAPI: 9ae0ee45b998d306c1aff9b2d966dc23121f191e
 
-PODFILE CHECKSUM: 35d64085cb78a4d447dbe86ae90c0c5cb3ecedfa
+PODFILE CHECKSUM: 925f1248cd02905ec3af424479eb465e0205efd9
 
 COCOAPODS: 1.10.1

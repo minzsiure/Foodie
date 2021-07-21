@@ -11,6 +11,7 @@ target 'Foodie' do
   pod 'DateTools'
   pod "YelpAPI"
   pod 'GoogleMaps', '5.1.0'
+  pod 'MaterialComponents/PageControl'
 
   target 'FoodieTests' do
     inherit! :search_paths

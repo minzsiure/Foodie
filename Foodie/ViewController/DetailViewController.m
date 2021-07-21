@@ -13,8 +13,9 @@
 #import "YelpViewController.h"
 #import "OtherUsersCell.h"
 #import <Parse/Parse.h>
+#import <MaterialPageControl.h>
 
-@interface DetailViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface DetailViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *posterImage;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -26,6 +27,10 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *otherUsersCollectionView;
 @property(strong, nonatomic) NSArray *userArray;
 @property (weak, nonatomic) IBOutlet UILabel *hourLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+//var frame = CGRect.zero
+@property (nonatomic) CGRect frame;
 
 
 @end
@@ -36,6 +41,8 @@
     [super viewDidLoad];
     self.otherUsersCollectionView.dataSource = self;
     self.otherUsersCollectionView.delegate = self;
+    self.imageScrollView.delegate = self;
+    
 
     PFQuery *query = [PFQuery queryWithClassName:@"Restaurant"];
     // id is passed in from tableView, so we fetch API using /search{id} request;
@@ -49,9 +56,36 @@
     }
     PFObject *object = [query getFirstObject];
     self.userArray = object[@"userArray"];
-    
-    
 }
+
+- (void) scrollViewSetUp{
+    // page controller
+    NSArray *imageArray = [[NSArray alloc] initWithObjects:self.restaurantDetailObj.photoOne, self.restaurantDetailObj.photoTwo, self.restaurantDetailObj.photoThree, nil];
+    [self.pageControl setNumberOfPages:imageArray.count];
+    for (int i = 0; i < [imageArray count]; i++) {
+    //We'll create an imageView object in every 'page' of our scrollView.
+    CGRect frame;
+    frame.origin.x = 390 * i;
+    frame.origin.y = 0;
+    frame.size = self.imageScrollView.frame.size;
+
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+    [imageView setContentMode:UIViewContentModeScaleToFill];
+    imageView.image = nil;
+    [imageView setImageWithURL:[imageArray objectAtIndex:i]];
+    [self.imageScrollView addSubview:imageView];
+    }
+    //Set the content size of our scrollview according to the total width of our imageView objects.
+    self.imageScrollView.contentSize = CGSizeMake(390 * [imageArray count], 170);
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)sender{
+    // Update the page when more than 50% of the previous/next page is visible
+    CGFloat pageWidth = self.imageScrollView.frame.size.width;
+    int page = floor((self.imageScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    self.pageControl.currentPage = page;
+}
+
 
 - (void)viewDidAppear:(BOOL)animated{
     [self pageSetUp];
@@ -62,7 +96,7 @@
     [manager getRestaurantDetail:(self.restaurant.id) completion:^(NSDictionary * restaurantDetail, NSError *error) {
         self.restaurantDetailObj = [RestaurantDetail detailsWithDictionaries:restaurantDetail];
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            
+            [self scrollViewSetUp];
         });
     }];
     
