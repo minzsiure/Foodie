@@ -307,25 +307,22 @@
                                                             <constraint firstAttribute="height" constant="250" id="iHc-lV-833"/>
                                                         </constraints>
                                                     </view>
-                                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="HCX-Zw-alR">
-                                                        <rect key="frame" x="146.66666666666666" y="220" width="120.99999999999997" height="27"/>
-                                                        <color key="backgroundColor" red="0.89159607890000003" green="0.41093295810000002" blue="0.17637526989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <color key="pageIndicatorTintColor" systemColor="tertiarySystemBackgroundColor"/>
-                                                        <color key="currentPageIndicatorTintColor" systemColor="systemGrayColor"/>
-                                                    </pageControl>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="250" id="2yY-39-Chk"/>
-                                                    <constraint firstItem="HCX-Zw-alR" firstAttribute="top" secondItem="y9u-6k-ddb" secondAttribute="top" constant="220" id="DBu-w4-c3u"/>
                                                     <constraint firstAttribute="bottom" secondItem="UXE-Xk-Cum" secondAttribute="bottom" id="LJ1-LU-aG5"/>
                                                     <constraint firstAttribute="trailing" secondItem="UXE-Xk-Cum" secondAttribute="trailing" constant="20" id="cWz-3o-sag"/>
                                                     <constraint firstItem="UXE-Xk-Cum" firstAttribute="top" secondItem="gFf-zh-abQ" secondAttribute="top" id="kZH-AZ-t6M"/>
-                                                    <constraint firstItem="HCX-Zw-alR" firstAttribute="centerX" secondItem="tw2-Ka-ayP" secondAttribute="centerX" id="kf5-Bz-TOg"/>
                                                     <constraint firstItem="UXE-Xk-Cum" firstAttribute="centerX" secondItem="tw2-Ka-ayP" secondAttribute="centerX" id="pyT-ae-tFp"/>
                                                 </constraints>
                                                 <viewLayoutGuide key="contentLayoutGuide" id="gFf-zh-abQ"/>
                                                 <viewLayoutGuide key="frameLayoutGuide" id="y9u-6k-ddb"/>
                                             </scrollView>
+                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="HCX-Zw-alR">
+                                                <rect key="frame" x="146.66666666666666" y="206.33333333333334" width="120.99999999999997" height="27"/>
+                                                <color key="pageIndicatorTintColor" systemColor="tertiarySystemBackgroundColor"/>
+                                                <color key="currentPageIndicatorTintColor" systemColor="systemGrayColor"/>
+                                            </pageControl>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wgs-Nk-MRm">
                                                 <rect key="frame" x="20" y="198" width="63" height="35.333333333333343"/>
                                                 <subviews>
@@ -526,6 +523,7 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="Wgs-Nk-MRm" firstAttribute="bottom" secondItem="HCX-Zw-alR" secondAttribute="bottom" id="1NK-78-h3e"/>
                                             <constraint firstItem="UXE-Xk-Cum" firstAttribute="width" secondItem="hLm-0Z-2Ve" secondAttribute="width" id="24d-fT-32f"/>
                                             <constraint firstItem="AT2-BI-Au5" firstAttribute="leading" secondItem="pYe-Il-BjM" secondAttribute="trailing" constant="85.000000000000028" id="2FZ-Dn-Gf9"/>
                                             <constraint firstItem="Wgs-Nk-MRm" firstAttribute="leading" secondItem="hLm-0Z-2Ve" secondAttribute="leading" constant="20" id="2iA-oK-8Mp"/>
@@ -548,6 +546,7 @@
                                             <constraint firstItem="pYe-Il-BjM" firstAttribute="top" secondItem="zm5-G1-fYh" secondAttribute="top" id="QrQ-lM-cba"/>
                                             <constraint firstItem="Svo-tP-vIh" firstAttribute="top" secondItem="pYe-Il-BjM" secondAttribute="bottom" constant="15" id="SHO-hd-ZII"/>
                                             <constraint firstAttribute="trailing" secondItem="cfK-5I-lP8" secondAttribute="trailing" id="Ssi-Me-S5e"/>
+                                            <constraint firstItem="HCX-Zw-alR" firstAttribute="centerX" secondItem="hLm-0Z-2Ve" secondAttribute="centerX" id="TlJ-tP-amH"/>
                                             <constraint firstItem="cfK-5I-lP8" firstAttribute="top" secondItem="res-BP-cou" secondAttribute="bottom" constant="15" id="UcN-ur-Rco"/>
                                             <constraint firstItem="Edp-fp-FmW" firstAttribute="top" secondItem="Wgs-Nk-MRm" secondAttribute="bottom" constant="20" id="VGX-nI-eye"/>
                                             <constraint firstItem="1Hk-Rc-pXS" firstAttribute="top" secondItem="M0v-Q6-SW7" secondAttribute="bottom" constant="15" id="W3B-0Y-Vxr"/>
