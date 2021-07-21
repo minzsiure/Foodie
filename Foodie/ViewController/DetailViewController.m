@@ -15,7 +15,6 @@
 #import <Parse/Parse.h>
 
 @interface DetailViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
-@property (weak, nonatomic) IBOutlet UIImageView *posterImage;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
@@ -28,8 +27,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *hourLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
-//var frame = CGRect.zero
-@property (nonatomic) CGRect frame;
 
 
 @end
@@ -106,10 +103,6 @@
 
 
 - (void) pageSetUp{
-    self.posterImage.image = nil;
-    if (self.restaurantDetailObj.imageURL != nil){
-        [self.posterImage setImageWithURL:self.restaurantDetailObj.imageURL];
-    }
     self.nameLabel.text = self.restaurantDetailObj.name;
     self.ratingLabel.text = self.restaurantDetailObj.rating;
     
@@ -177,23 +170,28 @@
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     OtherUsersCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"OtherUserCell" forIndexPath:indexPath];
-    PFQuery *userQuery = [PFUser query];
-    [userQuery whereKey:@"objectId" equalTo:self.userArray[indexPath.row]]; // find all the women
-    PFUser *thisUser = [userQuery getFirstObject];
-    cell.userID = thisUser[@"objectId"];
-    cell.userProfilePic.image = nil;
-    if (thisUser[@"profilePic"] != nil){
-        PFFileObject *profilePic = thisUser[@"profilePic"];
-        NSURL *profilePicURL = [NSURL URLWithString:profilePic.url];
-        [cell.userProfilePic setImageWithURL:profilePicURL];
+    PFUser *currentUser = [PFUser currentUser];
+    // if current user did not bookmark OR current indexPath.row does not refer to current user, then proceed to load profile picture
+    if (!([self.userArray containsObject:currentUser.objectId]) || self.userArray[indexPath.row] != currentUser.objectId){
+        PFQuery *userQuery = [PFUser query];
+        [userQuery whereKey:@"objectId" equalTo:self.userArray[indexPath.row]];
+        PFUser *thisUser = [userQuery getFirstObject];
+        cell.userID = thisUser[@"objectId"];
+        cell.userProfilePic.image = nil;
+        if (thisUser[@"profilePic"] != nil){
+            PFFileObject *profilePic = thisUser[@"profilePic"];
+            NSURL *profilePicURL = [NSURL URLWithString:profilePic.url];
+            [cell.userProfilePic setImageWithURL:profilePicURL];
+        }
     }
-    
-    
-    
     return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    PFUser *currentUser = [PFUser currentUser];
+    if ([self.userArray containsObject:currentUser.objectId]){
+        return self.userArray.count-1;
+    }
     return self.userArray.count;
 }
 
