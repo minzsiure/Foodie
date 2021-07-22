@@ -13,6 +13,7 @@
 #import "YelpViewController.h"
 #import "OtherUsersCell.h"
 #import <Parse/Parse.h>
+#import "OtherUserViewController.h"
 
 @interface DetailViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
@@ -126,26 +127,30 @@
     self.addressLabel.text = [locArray componentsJoinedByString:@" "];
     
     //hour
-    NSMutableArray *hourArray = [NSMutableArray array];
-    NSArray *week = [NSArray arrayWithObjects:@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday", nil];
-    for (int i = 0; i < 7; i++){
-        //start
-        NSString *dayString = [NSString stringWithFormat:@"%@ ",week[i]];
-        NSString *startOne = [self.restaurantDetailObj.hours[i][@"start"] substringWithRange: NSMakeRange(0, 2)];
-        NSString *startTwo = [self.restaurantDetailObj.hours[i][@"start"] substringFromIndex:2];
-        NSString *startHour = [startOne stringByAppendingFormat:@":%@", startTwo];
-        NSString *startResult = [dayString stringByAppendingString:startHour];
+    if (self.restaurantDetailObj.hours != nil && (self.restaurantDetailObj.hours.count == 7)){
+        NSMutableArray *hourArray = [NSMutableArray array];
+        NSArray *week = [NSArray arrayWithObjects:@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday", nil];
+        for (int i = 0; i < 7; i++){
+            //start
+            NSString *dayString = [NSString stringWithFormat:@"%@ ",week[i]];
+            NSString *startOne = [self.restaurantDetailObj.hours[i][@"start"] substringWithRange: NSMakeRange(0, 2)];
+            NSString *startTwo = [self.restaurantDetailObj.hours[i][@"start"] substringFromIndex:2];
+            NSString *startHour = [startOne stringByAppendingFormat:@":%@", startTwo];
+            NSString *startResult = [dayString stringByAppendingString:startHour];
         
-        //end
-        NSString *endOne = [self.restaurantDetailObj.hours[i][@"end"] substringWithRange: NSMakeRange(0, 2)];
-        NSString *endTwo = [self.restaurantDetailObj.hours[i][@"end"] substringFromIndex:2];
-        NSString *endHour = [endOne stringByAppendingFormat:@":%@", endTwo];
-        NSString *result = [startResult stringByAppendingFormat:@"-%@", endHour];
+            //end
+            NSString *endOne = [self.restaurantDetailObj.hours[i][@"end"] substringWithRange: NSMakeRange(0, 2)];
+            NSString *endTwo = [self.restaurantDetailObj.hours[i][@"end"] substringFromIndex:2];
+            NSString *endHour = [endOne stringByAppendingFormat:@":%@", endTwo];
+            NSString *result = [startResult stringByAppendingFormat:@"-%@", endHour];
     
-        [hourArray addObject:result];
+            [hourArray addObject:result];
+        }
+        self.hourLabel.text = [hourArray componentsJoinedByString:@"\n"];
     }
-    
-    self.hourLabel.text = [hourArray componentsJoinedByString:@"\n"];
+    else{
+        self.hourLabel.text = @"Hours unavailable.";
+    }
 }
 
 - (IBAction)onTapCall:(id)sender {
@@ -164,6 +169,13 @@
     if ([segue.identifier isEqual:@"yelpSegue"]){
         YelpViewController *yelpViewController = [segue destinationViewController];
         yelpViewController.yelpURL = self.restaurant.yelpURL;
+    }
+    if ([segue.identifier isEqual:@"otherUserSegue"]){
+        UICollectionViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.otherUsersCollectionView indexPathForCell:tappedCell];
+        OtherUserViewController *ouv = [segue destinationViewController];
+        ouv.userID = self.userArray[indexPath.row];
+        
     }
 }
 

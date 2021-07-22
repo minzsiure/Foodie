@@ -64,7 +64,6 @@
     [self.profileImage setImageWithURL:profilePicURL];
     
     self.userName.text = user[@"username"];
-    
 }
 
 
