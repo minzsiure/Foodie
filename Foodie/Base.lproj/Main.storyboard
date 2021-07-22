@@ -838,7 +838,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EHH-Ga-cgu">
-                                        <rect key="frame" x="0.0" y="246" width="414" height="352"/>
+                                        <rect key="frame" x="0.0" y="238" width="414" height="360"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="40" id="H5q-uC-S1b">
                                             <size key="itemSize" width="150" height="250"/>
@@ -848,7 +848,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RestaurantBookmarkCell" id="9PC-bw-sJR" customClass="RestaurantBookmarkCell">
-                                                <rect key="frame" x="0.0" y="22.666666666666668" width="180" height="307"/>
+                                                <rect key="frame" x="0.0" y="26.666666666666668" width="180" height="307"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Fc8-gg-wjb">
                                                     <rect key="frame" x="0.0" y="0.0" width="180" height="307"/>
@@ -910,7 +910,7 @@
                                     <constraint firstAttribute="bottom" secondItem="EHH-Ga-cgu" secondAttribute="bottom" constant="80" id="faz-BA-JWD"/>
                                     <constraint firstItem="EHH-Ga-cgu" firstAttribute="leading" secondItem="9VB-sD-r4E" secondAttribute="leading" id="obu-WW-E53"/>
                                     <constraint firstItem="mzU-cf-Lfg" firstAttribute="top" secondItem="9VB-sD-r4E" secondAttribute="top" constant="80" id="rbI-bx-Uxg"/>
-                                    <constraint firstItem="EHH-Ga-cgu" firstAttribute="top" secondItem="2Q4-0a-tLp" secondAttribute="bottom" constant="18" id="sLJ-sk-e0h"/>
+                                    <constraint firstItem="EHH-Ga-cgu" firstAttribute="top" secondItem="2Q4-0a-tLp" secondAttribute="bottom" constant="10" id="sLJ-sk-e0h"/>
                                     <constraint firstItem="xYF-uP-U99" firstAttribute="leading" secondItem="9VB-sD-r4E" secondAttribute="leading" constant="-58" id="xz0-1y-fD8"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -1016,7 +1016,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="x3X-eE-fWx"/>
+        <segue reference="oJJ-al-duT"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Image" width="100" height="100"/>
