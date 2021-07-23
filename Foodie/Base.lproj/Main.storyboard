@@ -152,9 +152,14 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6z9-Is-Nxn">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="0RN-SB-CGc">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RestaurantCell" rowHeight="250" id="NXa-Oj-oHY" customClass="RestaurantCell">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="250"/>
+                                        <rect key="frame" x="0.0" y="68.333333969116211" width="414" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NXa-Oj-oHY" id="cG6-M8-eCi">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
@@ -267,6 +272,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="85w-7K-uKs" id="bBu-Xh-Gx3"/>
                         <outlet property="restaurantTable" destination="6z9-Is-Nxn" id="PSP-Bp-tLi"/>
+                        <outlet property="searchBar" destination="0RN-SB-CGc" id="ZUB-2I-odG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RnR-47-lsq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

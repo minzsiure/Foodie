@@ -35,9 +35,7 @@
     if (self.detailLatitude != nil && self.detailLongitude != nil){
         [self createPolyline];
     }
-    
 }
-
 
 - (void) createCameraPosition{
     // Create a GMSCameraPosition that tells the map to display the given
@@ -112,10 +110,9 @@
 
 #pragma mark - GMSMapViewDelegate
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker{
-    NSLog(@"You long tapped at marker");
+    //send when tap on marker
     [self performSegueWithIdentifier:@"MarkerDetail" sender:marker.userData];
 }
-
 
 #pragma mark - Navigation
 

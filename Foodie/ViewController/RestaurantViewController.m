@@ -17,7 +17,7 @@
 #import "DetailViewController.h"
 #import "MapViewController.h"
 
-@interface RestaurantViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, CLLocationManagerDelegate>
+@interface RestaurantViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *restaurantTable;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSMutableArray *restaurants;
@@ -25,6 +25,8 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSArray *filteredData;
 
 @end
 
@@ -44,6 +46,7 @@
     
     self.restaurantTable.delegate = self;
     self.restaurantTable.dataSource = self;
+    self.searchBar.delegate = self;
 //    [self accessCurrentLocation]; <- this is for real phone
     
 }
@@ -92,6 +95,7 @@
     [manager getYelpRestaurantCompletion:self.latitude forLongt:self.longitude forLimit:@"20" forOffset:@"0" completion:^(NSArray *restaurants, NSError *error) {
         if (restaurants){
             self.restaurants = restaurants;
+            self.filteredData = restaurants;
             dispatch_async(dispatch_get_main_queue(), ^(void){
                 [self.restaurantTable reloadData];
                 [self.refreshControl endRefreshing];
@@ -102,6 +106,31 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if (searchText.length != 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(name CONTAINS[cd] %@)", searchText];
+        self.filteredData = [self.restaurants filteredArrayUsingPredicate:predicate];
+        NSLog(@"%@", self.filteredData);
+        
+    }
+    else {
+        self.filteredData = self.restaurants;
+    }
+    
+    [self.restaurantTable reloadData];
+ 
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = NO;
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
 }
 
 - (IBAction)logOut:(id)sender {
@@ -144,14 +173,13 @@
     if ([segue.identifier isEqual:@"detailSegue"]){
         UITableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.restaurantTable indexPathForCell:tappedCell];
-        Restaurant *restaurant = self.restaurants[indexPath.row];
+        Restaurant *restaurant = self.filteredData[indexPath.row];
     
         DetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.restaurant = restaurant;
         detailViewController.restaurantDictionaries = self.restaurants;
     }
     if ([segue.identifier isEqual:@"mapSegue"]){
-        
         MapViewController *mapViewController = [segue destinationViewController];
         mapViewController.restaurantDictionaries = self.restaurants;
     }
@@ -202,12 +230,12 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     RestaurantCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RestaurantCell"];
-    cell.restaurant = self.restaurants[indexPath.row];
+    cell.restaurant = self.filteredData[indexPath.row];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.restaurants.count;
+    return self.filteredData.count;
 }
 
 
@@ -216,7 +244,7 @@
     UIContextualAction *bookmark = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:nil handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
         
         PFUser *currentUser = [PFUser currentUser];
-        Restaurant *restaurant = self.restaurants[indexPath.row];
+        Restaurant *restaurant = self.filteredData[indexPath.row];
         
         //if currentUser did not bookmark, then add the restaurantID to their bookmark; else, do nothing
         if (!([currentUser[@"restaurants"] containsObject:restaurant.id])){
@@ -276,7 +304,7 @@
     UIContextualAction *cancel = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:nil handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
         
         PFUser *currentUser = [PFUser currentUser];
-        Restaurant *restaurant = self.restaurants[indexPath.row];
+        Restaurant *restaurant = self.filteredData[indexPath.row];
         
         //if currentUser did bookmark, then remove the restaurantID from their bookmark; else, do nothing
         if (([currentUser[@"restaurants"] containsObject:restaurant.id])){
