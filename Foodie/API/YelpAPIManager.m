@@ -79,7 +79,7 @@
 }
 
 - (void)getRestaurantDetail:(NSString *)restaurantID completion:(void (^)(NSDictionary *restaurantDetail, NSError *error))completion {
-    NSString *APIKey = @"28Yo8kD_K-RyBUR6gCWznPYoMh1ItVdboaEExmr9duOBklai0I21Ww6b-IHLW2ZJyn6Ohh70J_V-xP6Mxv1JV1V8HZ_9hljzdgqkMbouw6oRsY3f12VS0KL3LqHoYHYx";
+    NSString *APIKey = self.YelpAPIKey;
     NSString *baseURL = @"https://api.yelp.com/v3/businesses/";
     NSString *completeURL = [baseURL stringByAppendingString:restaurantID];
     NSURL *url = [NSURL URLWithString: completeURL];
@@ -110,7 +110,7 @@
 
 // takes in an array of ID, return an array of restaurantDetailObject
 - (void)getRestaurantDetailArray:(NSArray *)restaurantIDArray completion:(void (^)(NSMutableArray *restaurantDetailArray, NSError *error))completion {
-    NSString *APIKey = @"28Yo8kD_K-RyBUR6gCWznPYoMh1ItVdboaEExmr9duOBklai0I21Ww6b-IHLW2ZJyn6Ohh70J_V-xP6Mxv1JV1V8HZ_9hljzdgqkMbouw6oRsY3f12VS0KL3LqHoYHYx";
+    NSString *APIKey = self.YelpAPIKey;
     NSString *baseURL = @"https://api.yelp.com/v3/businesses/";
     NSMutableArray *restaurantDetailArray = [NSMutableArray array];
     

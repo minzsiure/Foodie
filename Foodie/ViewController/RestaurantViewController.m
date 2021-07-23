@@ -48,6 +48,10 @@
     
 }
 
+- (void) viewWillAppear:(BOOL)animated{
+    [self.restaurantTable reloadData];
+}
+
 - (void) accessCurrentLocation{
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;

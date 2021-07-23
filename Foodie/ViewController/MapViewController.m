@@ -45,6 +45,7 @@
     self.mapView.myLocationEnabled = YES;
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
+    self.mapView.settings.myLocationButton = YES;
 }
 
 - (void) createCenterMarker{
@@ -54,6 +55,7 @@
     marker.title = @"Current Location";
 //    marker.snippet = @"";
     marker.map = self.mapView;
+    marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
 }
 
 - (void) processRestaurantMarker: (Restaurant *)restaurantObj{

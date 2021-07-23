@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *hourLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UIButton *bookmarkButton;
 
 
 @end
@@ -102,8 +103,37 @@
     }];
 }
 
+- (IBAction)onTapBookmark:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    PFUser *currentUser = [PFUser currentUser];
+//    if currentUser did not bookmark, then add the restaurantID to their bookmark;
+    if (!([currentUser[@"restaurants"] containsObject:self.restaurantDetailObj.id])){
+        [currentUser addObject:self.restaurantDetailObj.id forKey:@"restaurants"];
+        [currentUser saveInBackground];
+        [btn setImage:[UIImage systemImageNamed:@"bookmark.fill"] forState:UIControlStateNormal];
+    }
+//    else, do the opposite
+    else{
+        [currentUser removeObject:self.restaurantDetailObj.id forKey:@"restaurants"];
+        [currentUser saveInBackground];
+        [btn setImage:[UIImage systemImageNamed:@"bookmark"] forState:UIControlStateNormal];
+    }
+    
+    
+    
+}
+
+
 
 - (void) pageSetUp{
+    PFUser *currentUser = [PFUser currentUser];
+    if (!([currentUser[@"restaurants"] containsObject:self.restaurantDetailObj.id])){
+        [self.bookmarkButton setImage:[UIImage systemImageNamed:@"bookmark"] forState:UIControlStateNormal];
+    }
+    else{
+        [self.bookmarkButton setImage:[UIImage systemImageNamed:@"bookmark.fill"] forState:UIControlStateNormal];
+    }
+    
     self.nameLabel.text = self.restaurantDetailObj.name;
     self.ratingLabel.text = self.restaurantDetailObj.rating;
     
