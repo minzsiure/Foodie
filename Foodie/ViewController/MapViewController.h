@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MapViewController : UIViewController
 @property (nonatomic, strong) NSArray *restaurantDictionaries;
+@property (strong, nonatomic) NSString *detailLatitude;
+@property (strong, nonatomic) NSString *detailLongitude;
 
 @end
 

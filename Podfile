@@ -12,6 +12,7 @@ target 'Foodie' do
   pod "YelpAPI"
   pod 'GoogleMaps', '5.1.0'
   pod 'MaterialComponents/PageControl'
+  pod 'ASIHTTPRequest'
 
   target 'FoodieTests' do
     inherit! :search_paths

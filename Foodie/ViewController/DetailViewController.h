@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DetailViewController : UIViewController
 @property (nonatomic, strong) Restaurant *restaurant;
 @property (nonatomic, strong) RestaurantDetail *restaurantDetailObj;
+@property (nonatomic, strong) NSArray *restaurantDictionaries;
 
 
 @end

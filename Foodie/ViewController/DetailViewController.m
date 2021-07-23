@@ -14,6 +14,7 @@
 #import "OtherUsersCell.h"
 #import <Parse/Parse.h>
 #import "OtherUserViewController.h"
+#import "MapViewController.h"
 
 @interface DetailViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
@@ -205,7 +206,12 @@
         NSIndexPath *indexPath = [self.otherUsersCollectionView indexPathForCell:tappedCell];
         OtherUserViewController *ouv = [segue destinationViewController];
         ouv.userID = self.userArray[indexPath.row];
-        
+    }
+    if ([segue.identifier isEqual:@"detailMapSegue"]){
+        MapViewController *mapViewController = [segue destinationViewController];
+        mapViewController.restaurantDictionaries = self.restaurantDictionaries;
+        mapViewController.detailLatitude = self.restaurantDetailObj.latitude;
+        mapViewController.detailLongitude = self.restaurantDetailObj.longitude;
     }
 }
 

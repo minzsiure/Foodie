@@ -40,6 +40,10 @@
     
     self.hours = dictionary[@"hours"][0][@"open"];
     
+    self.latitude = dictionary[@"coordinates"][@"latitude"];
+    self.longitude = dictionary[@"coordinates"][@"longitude"];
+    
+    
     return self;
 }
 

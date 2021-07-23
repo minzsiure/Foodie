@@ -148,6 +148,7 @@
     
         DetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.restaurant = restaurant;
+        detailViewController.restaurantDictionaries = self.restaurants;
     }
     if ([segue.identifier isEqual:@"mapSegue"]){
         

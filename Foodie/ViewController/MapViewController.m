@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 #import "RestaurantViewController.h"
 #import <Parse/Parse.h>
+#import <ASIHTTPRequest/ASIHTTPRequest.h>
 
 @interface MapViewController () <GMSMapViewDelegate>
 @property double latitude;
@@ -31,6 +32,9 @@
     [self createCameraPosition];
     [self createCenterMarker];
     [self processRestaurantArray:self.restaurantDictionaries];
+    if (self.detailLatitude != nil && self.detailLongitude != nil){
+        [self createPolyline];
+    }
     
 }
 
@@ -57,6 +61,45 @@
     marker.map = self.mapView;
     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
 }
+
+- (void) createPolyline{
+//    GMSMutablePath *path = [GMSMutablePath path];
+//    [path addCoordinate:CLLocationCoordinate2DMake(_latitude,_longtitude)];
+//    [path addCoordinate:CLLocationCoordinate2DMake(self.detailLatitude.doubleValue,self.detailLongitude.doubleValue)];
+//
+//    GMSPolyline *rectangle = [GMSPolyline polylineWithPath:path];
+//    rectangle.strokeWidth = 2.f;
+//    rectangle.map = self.mapView;
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
+    NSString *GoogleAPIKey = [dict objectForKey: @"GoogleAPIKey"];
+    PFUser *user = [PFUser currentUser];
+    NSString *urlString = [NSString stringWithFormat:
+                       @"%@?origin=%f,%f&destination=%f,%f&sensor=true&key=%@",
+                       @"https://maps.googleapis.com/maps/api/directions/json",
+                        [user[@"latitude"] doubleValue],
+                        [user[@"longitude"] doubleValue],
+                       [self.detailLatitude doubleValue],
+                       [self.detailLongitude doubleValue],
+                       GoogleAPIKey];
+    NSURL *directionsURL = [NSURL URLWithString:urlString];
+
+
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:directionsURL];
+    [request startSynchronous];
+    NSError *error = [request error];
+    if (!error) {
+        NSString *response = [request responseString];
+        NSLog(@"%@",response);
+        NSDictionary *json =[NSJSONSerialization JSONObjectWithData:[request responseData] options:NSJSONReadingMutableContainers error:&error];
+        GMSPath *path =[GMSPath pathFromEncodedPath:json[@"routes"][0][@"overview_polyline"][@"points"]];
+        GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];
+        singleLine.strokeWidth = 7;
+        singleLine.strokeColor = [UIColor blueColor];
+        singleLine.map = self.mapView;
+    }
+    else NSLog(@"%@",[request error]);
+    }
 
 - (void) processRestaurantMarker: (Restaurant *)restaurantObj{
     // process all restaurant objects from main stream Yelp API

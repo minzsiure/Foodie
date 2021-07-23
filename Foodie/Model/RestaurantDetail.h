@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSURL *photoTwo;
 @property (strong, nonatomic) NSURL *photoThree;
 @property (strong, nonatomic) NSArray *hours;
+@property (strong, nonatomic) NSString *latitude;
+@property (strong, nonatomic) NSString *longitude;
 
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;

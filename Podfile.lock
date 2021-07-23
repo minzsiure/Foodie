@@ -14,6 +14,19 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - ASIHTTPRequest (1.8.2):
+    - ASIHTTPRequest/ASIWebPageRequest (= 1.8.2)
+    - ASIHTTPRequest/CloudFiles (= 1.8.2)
+    - ASIHTTPRequest/Core (= 1.8.2)
+    - ASIHTTPRequest/S3 (= 1.8.2)
+  - ASIHTTPRequest/ASIWebPageRequest (1.8.2):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/CloudFiles (1.8.2):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/Core (1.8.2):
+    - Reachability
+  - ASIHTTPRequest/S3 (1.8.2):
+    - ASIHTTPRequest/Core
   - Bolts/Tasks (1.9.1)
   - DateTools (2.0.0)
   - GoogleMaps (5.1.0):
@@ -28,10 +41,12 @@ PODS:
     - Parse/Core (= 1.19.2)
   - Parse/Core (1.19.2):
     - Bolts/Tasks (= 1.9.1)
+  - Reachability (3.2)
   - YelpAPI (3.0.0)
 
 DEPENDENCIES:
   - AFNetworking
+  - ASIHTTPRequest
   - DateTools
   - GoogleMaps (= 5.1.0)
   - MaterialComponents/PageControl
@@ -41,24 +56,28 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - ASIHTTPRequest
     - Bolts
     - DateTools
     - GoogleMaps
     - MaterialComponents
     - MDFInternationalization
     - Parse
+    - Reachability
     - YelpAPI
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   GoogleMaps: 086ae1dab659eaa7339bdb30fc88e2f44e7c597c
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   YelpAPI: 9ae0ee45b998d306c1aff9b2d966dc23121f191e
 
-PODFILE CHECKSUM: 925f1248cd02905ec3af424479eb465e0205efd9
+PODFILE CHECKSUM: c64f618c15bfc023989acdd3b518ecb364ae2bf2
 
 COCOAPODS: 1.10.1

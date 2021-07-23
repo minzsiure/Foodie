@@ -278,7 +278,7 @@
             <objects>
                 <viewController id="KbZ-Kc-1Rb" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zxu-Ma-Vj9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="2Vc-0m-gmu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -290,18 +290,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ro-Pa-Ge6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1884" y="885"/>
+            <point key="canvasLocation" x="1984" y="885"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="dDb-dp-FYN">
             <objects>
                 <viewController storyboardIdentifier="DetailViewController" id="2uV-1Y-M9w" customClass="DetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l1A-wX-KXB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQh-yc-paC">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLm-0Z-2Ve">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
@@ -397,6 +397,7 @@
                                                 <state key="normal" backgroundImage="location.circle.fill" catalog="system"/>
                                                 <connections>
                                                     <action selector="onTapLocation:" destination="2uV-1Y-M9w" eventType="touchUpInside" id="Ncs-Xg-lbO"/>
+                                                    <segue destination="KbZ-Kc-1Rb" kind="show" identifier="detailMapSegue" id="QeT-bs-w01"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Hk-Rc-pXS">
@@ -636,14 +637,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyP-GP-4or" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1389.8550724637682" y="1614.5089285714284"/>
+            <point key="canvasLocation" x="1254" y="1615"/>
         </scene>
         <!--Other User View Controller-->
         <scene sceneID="n44-sH-WEl">
             <objects>
                 <viewController id="x3t-Ox-BET" customClass="OtherUserViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nPp-ah-6mS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="mWV-P0-95u">
@@ -651,7 +652,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laB-wl-tCk" userLabel="ShadowView">
-                                        <rect key="frame" x="0.0" y="218" width="414" height="678"/>
+                                        <rect key="frame" x="0.0" y="130" width="414" height="766"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snoopy Dog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoT-Vg-5bM">
                                                 <rect key="frame" x="118.66666666666669" y="80" width="177" height="39"/>
@@ -670,7 +671,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7gH-CY-iQI">
-                                                <rect key="frame" x="0.0" y="238" width="414" height="360"/>
+                                                <rect key="frame" x="0.0" y="238" width="414" height="448"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="40" id="0Qb-L3-SMc">
                                                     <size key="itemSize" width="150" height="250"/>
@@ -680,7 +681,7 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RestaurantBookmarkCell" id="Cg5-5o-rJd" customClass="RestaurantBookmarkCell">
-                                                        <rect key="frame" x="0.0" y="26.666666666666668" width="180" height="307"/>
+                                                        <rect key="frame" x="0.0" y="70.666666666666671" width="180" height="307"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jkG-e7-hAj">
                                                             <rect key="frame" x="0.0" y="0.0" width="180" height="307"/>
@@ -750,7 +751,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m1n-nu-FrK">
-                                        <rect key="frame" x="139.66666666666666" y="148" width="134.99999999999997" height="135"/>
+                                        <rect key="frame" x="139.66666666666666" y="60" width="134.99999999999997" height="135"/>
                                         <color key="backgroundColor" red="0.89159607890000003" green="0.41093295810000002" blue="0.17637526989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="135" id="TH0-FN-GZ0"/>
@@ -790,7 +791,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Zj-Gj-Uqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2580" y="1615"/>
+            <point key="canvasLocation" x="3025" y="1615"/>
         </scene>
         <!--Yelp View Controller-->
         <scene sceneID="KgR-fq-Add">
@@ -1040,6 +1041,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="x3X-eE-fWx"/>
+        <segue reference="QeT-bs-w01"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Image" width="100" height="100"/>
