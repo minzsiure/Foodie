@@ -75,7 +75,6 @@
         imageView.image = nil;
         [imageView setImageWithURL:[imageArray objectAtIndex:i]];
         [self.imageScrollView addSubview:imageView];
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     //Set the content size of our scrollview according to the total width of our imageView objects.
     

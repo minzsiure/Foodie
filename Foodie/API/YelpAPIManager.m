@@ -78,6 +78,37 @@
     }] resume];
 }
 
+- (void) getYelpAutocomplete:(NSString *)lat forLongt: (NSString *)longt forText: (NSString *)text completion:(void(^)(NSArray *restaurantIDs, NSError *error))completion{
+// https://api.yelp.com/v3/autocomplete?text=lobster&latitude=42.376970&longitude=-71.102400
+    NSString *APIKey = self.YelpAPIKey;
+    NSString *textURL = [@"https://api.yelp.com/v3/autocomplete?text=" stringByAppendingString:text];
+    NSString *locURL = [textURL stringByAppendingFormat:@"&latitude=%@&longitude=%@",lat, longt];
+    NSURL *url = [NSURL URLWithString: locURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+
+    [request setHTTPMethod:@"GET"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+
+    NSString *authValue = [NSString stringWithFormat:@"Bearer %@", APIKey];
+    [request setValue:authValue forHTTPHeaderField:@"Authorization"];
+
+    NSURLSession *session = [NSURLSession sharedSession];
+    [[session dataTaskWithRequest:request
+             completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            NSLog(@"Restaurant Detail FETCHED SUCCESS");
+            NSArray *restaurantIDs = responseDictionary[@"businesses"];
+            completion(restaurantIDs, nil);
+        }
+        else{
+            NSLog(@"ERROR %@", [error localizedDescription]);
+            completion(nil, error);
+        }
+        
+    }] resume];
+}
+
 - (void)getRestaurantDetail:(NSString *)restaurantID completion:(void (^)(NSDictionary *restaurantDetail, NSError *error))completion {
     NSString *APIKey = self.YelpAPIKey;
     NSString *baseURL = @"https://api.yelp.com/v3/businesses/";
