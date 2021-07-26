@@ -136,6 +136,7 @@
     }
     else {
         self.filteredData = self.restaurants;
+        [self.restaurantTable reloadData];
     }
     
     [self.restaurantTable reloadData];

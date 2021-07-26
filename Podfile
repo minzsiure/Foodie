@@ -13,6 +13,7 @@ target 'Foodie' do
   pod 'GoogleMaps', '5.1.0'
   pod 'MaterialComponents/PageControl'
   pod 'ASIHTTPRequest'
+  pod 'GooglePlaces', '5.0.0'
 
   target 'FoodieTests' do
     inherit! :search_paths
