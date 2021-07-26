@@ -98,7 +98,11 @@
         if (!error) {
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
             NSLog(@"Restaurant Detail FETCHED SUCCESS");
-            NSArray *restaurantIDs = responseDictionary[@"businesses"];
+            NSArray *restaurantDict = responseDictionary[@"businesses"];
+            NSMutableArray *restaurantIDs = [NSMutableArray array];
+            for (NSDictionary *arr in restaurantDict){
+                [restaurantIDs addObject:arr[@"id"]];
+            }
             completion(restaurantIDs, nil);
         }
         else{
@@ -167,6 +171,37 @@
             
         }
         completion(restaurantDetailArray, nil);
+        }] resume];
+    }
+}
+
+- (void)getRestaurantArray:(NSArray *)restaurantIDArray completion:(void (^)(NSMutableArray *restaurantArray, NSError *error))completion {
+    NSString *APIKey = self.YelpAPIKey;
+    NSString *baseURL = @"https://api.yelp.com/v3/businesses/";
+    NSMutableArray *restaurantArray = [NSMutableArray array];
+    
+    for (NSString *restaurantID in restaurantIDArray){
+        NSString *completeURL = [baseURL stringByAppendingString:restaurantID];
+        NSURL *url = [NSURL URLWithString: completeURL];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+
+        [request setHTTPMethod:@"GET"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+
+        NSString *authValue = [NSString stringWithFormat:@"Bearer %@", APIKey];
+        [request setValue:authValue forHTTPHeaderField:@"Authorization"];
+
+        NSURLSession *session = [NSURLSession sharedSession];
+        [[session dataTaskWithRequest:request
+             completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            
+            Restaurant *restaurant = [[Restaurant alloc] initWithDictionary:responseDictionary];
+            [restaurantArray addObject:restaurant];
+            
+        }
+        completion(restaurantArray, nil);
         }] resume];
     }
 }
