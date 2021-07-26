@@ -110,16 +110,29 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
-        // search using Yelp Autocomplete API, and turn IDs into Restaurant Obj using Yelp Search API
+//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(name CONTAINS[cd] %@)", searchText];
+//        self.filteredData = [self.restaurants filteredArrayUsingPredicate:predicate];
+//        NSLog(@"%@", self.filteredData);
+        
+        // change to sending searchText to autocomplete API
         YelpAPIManager *manager = [YelpAPIManager new];
         [manager getYelpAutocomplete:self.latitude forLongt:self.longitude forText:searchText completion:^(NSArray * _Nonnull restaurantIDs, NSError * _Nonnull error) {
             if (restaurantIDs){
                 YelpAPIManager *anotherManager = [YelpAPIManager new];
                 [anotherManager getRestaurantArray:restaurantIDs completion:^(NSMutableArray * _Nonnull restaurantArray, NSError * _Nonnull error) {
                     self.filteredData = restaurantArray;
+                    dispatch_async(dispatch_get_main_queue(), ^(void){
+                        [self.restaurantTable reloadData];
+                    });
+                    NSLog(@"%@", self.filteredData);
                 }];
             }
+            else{
+                self.filteredData = self.restaurants;
+            }
         }];
+        
+
     }
     else {
         self.filteredData = self.restaurants;
