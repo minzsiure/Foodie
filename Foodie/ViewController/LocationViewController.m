@@ -32,11 +32,18 @@
 
 - (void)viewController:(GMSAutocompleteViewController *)viewController
 didAutocompleteWithPlace:(GMSPlace *)place {
-  [self dismissViewControllerAnimated:YES completion:nil];
-  // Do something with the selected place.
-  NSLog(@"Place name %@", place.name);
-  NSLog(@"Place ID %@", place.placeID);
-  NSLog(@"Place attributions %@", place.attributions.string);
+    [self dismissViewControllerAnimated:YES completion:nil];
+    // after user selected the place
+    dispatch_async(dispatch_get_main_queue(), ^{
+        GMSPlacesClient *placeClient = [GMSPlacesClient sharedClient];
+        [placeClient lookUpPlaceID:place.placeID callback:^(GMSPlace * _Nullable result, NSError * _Nullable error) {
+            if(!error) {
+                NSLog(@"place : %f,%f",result.coordinate.latitude, result.coordinate.longitude);
+            } else {
+                NSLog(@"Error : %@",error.localizedDescription);
+                }
+            }];
+        });
 }
 
 - (void)viewController:(GMSAutocompleteViewController *)viewController
