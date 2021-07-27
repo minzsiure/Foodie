@@ -194,10 +194,10 @@
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNw-cq-6aQ" customClass="HCSStarRatingView">
+                                                <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNw-cq-6aQ" customClass="HCSStarRatingView">
                                                     <rect key="frame" x="30" y="146" width="115" height="35"/>
                                                     <accessibility key="accessibilityConfiguration">
-                                                        <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                        <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                                     </accessibility>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="HDJ-A1-f7Z"/>
