@@ -8,11 +8,14 @@
 #import "LoginViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import <Parse/Parse.h>
+#import <UITextField+Shake.h>
 
 @interface LoginViewController () <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet UILabel *usernameText;
+@property (weak, nonatomic) IBOutlet UILabel *passwordText;
 
 @end
 
@@ -71,20 +74,29 @@
 }
 
 - (IBAction)logInUser:(id)sender {
-    NSString *username = self.usernameField.text;
-    NSString *password = self.passwordField.text;
-    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
-        if (error != nil) {
+    if (![self.usernameField.text isEqual:@""] && ![self.passwordField.text isEqual:@""]) {
+        NSString *username = self.usernameField.text;
+        NSString *password = self.passwordField.text;
+        [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
+            if (error != nil) {
 //            user[@"latitude"] = self.latitude;
 //            user[@"longitude"] = self.longitude;
-            NSLog(@"User log in failed: %@", error.localizedDescription);
-        } else {
-            NSLog(@"User logged in successfully");
+                NSLog(@"User log in failed: %@", error.localizedDescription);
+            } else {
+                NSLog(@"User logged in successfully");
             
-            // display view controller that needs to shown after successful login
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
-        }
-    }];
+                // display view controller that needs to shown after successful login
+                [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+            }
+        }];
+    }
+    else{
+        [self.usernameField shake];
+        [self.passwordField shake];
+        [self.usernameField shake:10 withDelta:10 speed:0.05 shakeDirection:ShakeDirectionHorizontal];
+        [self.passwordField shake:10 withDelta:10 speed:0.05 shakeDirection:ShakeDirectionHorizontal];
+        
+    }
 }
 
 - (void)displayAlert {

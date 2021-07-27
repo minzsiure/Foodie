@@ -49,6 +49,11 @@
     self.searchBar.delegate = self;
 //    [self accessCurrentLocation]; <- this is for real phone
     
+    //refresh controller
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.restaurantTable insertSubview:self.refreshControl atIndex:0];
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -80,10 +85,7 @@
         [self fetchRestaurants];
         [self.locationManager stopUpdatingLocation];
                   
-        //refresh controller
-        self.refreshControl = [[UIRefreshControl alloc] init];
-        [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
-        [self.restaurantTable insertSubview:self.refreshControl atIndex:0];
+        
     }
 
 - (void) beginRefresh:(UIRefreshControl *)refreshControl{

@@ -133,7 +133,9 @@
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="N03-Zn-MBA" id="ElO-BC-6Kb"/>
+                        <outlet property="passwordText" destination="JSA-uh-7nB" id="1al-mn-hab"/>
                         <outlet property="usernameField" destination="J9Q-GK-R5n" id="eX0-Fn-3a6"/>
+                        <outlet property="usernameText" destination="Q81-ik-vMt" id="dKx-X6-rE6"/>
                         <segue destination="TsS-8W-HZ8" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="YD7-3W-eU2"/>
                     </connections>
                 </viewController>
@@ -1091,6 +1093,11 @@
             <point key="canvasLocation" x="19" y="885"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="JNw-cq-6aQ">
+            <size key="intrinsicContentSize" width="252" height="44"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="iv0-8V-w9H"/>
         <segue reference="hNe-L1-yGF"/>

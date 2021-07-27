@@ -15,6 +15,8 @@ target 'Foodie' do
   pod 'ASIHTTPRequest'
   pod 'GooglePlaces', '5.0.0'
   pod 'HCSStarRatingView', '~> 1.5'
+  pod 'RZTransitions'
+  pod 'UITextField+Shake', '~> 1.2'
 
   target 'FoodieTests' do
     inherit! :search_paths
