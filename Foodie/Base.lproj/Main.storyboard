@@ -192,15 +192,45 @@
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNw-cq-6aQ" customClass="HCSStarRatingView">
+                                                    <rect key="frame" x="30" y="141" width="115" height="35"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                    </accessibility>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="HDJ-A1-f7Z"/>
+                                                        <constraint firstAttribute="width" constant="115" id="w7I-eM-lcn"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                                            <integer key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="starBorderColor">
+                                                            <color key="value" red="0.89159607890000003" green="0.41093295810000002" blue="0.17637526989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="emptyStarColor">
+                                                            <color key="value" red="0.89159607890000003" green="0.41093295810000002" blue="0.17637526989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Ten-YM-xnR" firstAttribute="leading" secondItem="cG6-M8-eCi" secondAttribute="leadingMargin" id="CIv-Ca-LZG"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="PJO-Fb-lQw" secondAttribute="trailing" id="F9z-zi-oyY"/>
                                                 <constraint firstItem="PJO-Fb-lQw" firstAttribute="top" secondItem="tdc-c1-c2j" secondAttribute="bottom" constant="5" id="OlB-wO-P5k"/>
+                                                <constraint firstItem="JNw-cq-6aQ" firstAttribute="leading" secondItem="cG6-M8-eCi" secondAttribute="leadingMargin" constant="10" id="Otb-Wb-G3X"/>
                                                 <constraint firstItem="Ten-YM-xnR" firstAttribute="top" secondItem="cG6-M8-eCi" secondAttribute="topMargin" id="PU9-N6-qcB"/>
                                                 <constraint firstAttribute="trailing" secondItem="D4D-j3-gbQ" secondAttribute="trailing" constant="20" id="WC4-ih-1rL"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="PJO-Fb-lQw" secondAttribute="bottom" constant="5" id="YU2-zA-W01"/>
                                                 <constraint firstItem="PJO-Fb-lQw" firstAttribute="leading" secondItem="tdc-c1-c2j" secondAttribute="leading" id="Zc8-nv-2Ne"/>
+                                                <constraint firstItem="tdc-c1-c2j" firstAttribute="top" secondItem="JNw-cq-6aQ" secondAttribute="bottom" constant="10" id="csx-Ze-nuu"/>
                                                 <constraint firstItem="D4D-j3-gbQ" firstAttribute="top" secondItem="cG6-M8-eCi" secondAttribute="top" id="dJb-wM-TbV"/>
                                                 <constraint firstItem="Ten-YM-xnR" firstAttribute="trailing" secondItem="cG6-M8-eCi" secondAttribute="trailingMargin" id="fTW-Lz-BMg"/>
                                                 <constraint firstItem="tdc-c1-c2j" firstAttribute="leading" secondItem="Ten-YM-xnR" secondAttribute="leading" id="hUT-cg-mWj"/>

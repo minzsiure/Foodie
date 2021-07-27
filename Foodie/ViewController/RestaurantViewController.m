@@ -129,6 +129,7 @@
             }
             else{
                 self.filteredData = self.restaurants;
+                
             }
         }];
         

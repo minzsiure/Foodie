@@ -14,6 +14,7 @@ target 'Foodie' do
   pod 'MaterialComponents/PageControl'
   pod 'ASIHTTPRequest'
   pod 'GooglePlaces', '5.0.0'
+  pod 'HCSStarRatingView', '~> 1.5'
 
   target 'FoodieTests' do
     inherit! :search_paths
