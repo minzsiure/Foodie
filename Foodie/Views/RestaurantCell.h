@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Restaurant.h"
+#import <HCSStarRatingView/HCSStarRatingView.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) Restaurant *restaurant;
 @property (weak, nonatomic) IBOutlet UIButton *bookmarkLogo;
 @property (weak, nonatomic) IBOutlet UILabel *ratingCategory;
+@property (weak, nonatomic) IBOutlet HCSStarRatingView *starRating;
 
 
 @end

@@ -193,7 +193,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNw-cq-6aQ" customClass="HCSStarRatingView">
-                                                    <rect key="frame" x="30" y="141" width="115" height="35"/>
+                                                    <rect key="frame" x="30" y="146" width="115" height="35"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <accessibilityTraits key="traits" notEnabled="YES"/>
                                                     </accessibility>
@@ -212,12 +212,9 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="spacing">
                                                             <integer key="value" value="8"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="starBorderColor">
-                                                            <color key="value" red="0.89159607890000003" green="0.41093295810000002" blue="0.17637526989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="emptyStarColor">
-                                                            <color key="value" red="0.89159607890000003" green="0.41093295810000002" blue="0.17637526989999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="empty_star"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="halfStarImage" value="half_star"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="star"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -230,7 +227,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="D4D-j3-gbQ" secondAttribute="trailing" constant="20" id="WC4-ih-1rL"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="PJO-Fb-lQw" secondAttribute="bottom" constant="5" id="YU2-zA-W01"/>
                                                 <constraint firstItem="PJO-Fb-lQw" firstAttribute="leading" secondItem="tdc-c1-c2j" secondAttribute="leading" id="Zc8-nv-2Ne"/>
-                                                <constraint firstItem="tdc-c1-c2j" firstAttribute="top" secondItem="JNw-cq-6aQ" secondAttribute="bottom" constant="10" id="csx-Ze-nuu"/>
+                                                <constraint firstItem="tdc-c1-c2j" firstAttribute="top" secondItem="JNw-cq-6aQ" secondAttribute="bottom" constant="5" id="csx-Ze-nuu"/>
                                                 <constraint firstItem="D4D-j3-gbQ" firstAttribute="top" secondItem="cG6-M8-eCi" secondAttribute="top" id="dJb-wM-TbV"/>
                                                 <constraint firstItem="Ten-YM-xnR" firstAttribute="trailing" secondItem="cG6-M8-eCi" secondAttribute="trailingMargin" id="fTW-Lz-BMg"/>
                                                 <constraint firstItem="tdc-c1-c2j" firstAttribute="leading" secondItem="Ten-YM-xnR" secondAttribute="leading" id="hUT-cg-mWj"/>
@@ -242,6 +239,7 @@
                                             <outlet property="posterImage" destination="Ten-YM-xnR" id="slx-j9-J6E"/>
                                             <outlet property="ratingCategory" destination="PJO-Fb-lQw" id="gB3-30-xH5"/>
                                             <outlet property="restaurantName" destination="tdc-c1-c2j" id="2wT-H0-raT"/>
+                                            <outlet property="starRating" destination="JNw-cq-6aQ" id="wPV-gH-xAo"/>
                                             <segue destination="2uV-1Y-M9w" kind="show" identifier="detailSegue" id="iv0-8V-w9H"/>
                                         </connections>
                                     </tableViewCell>
@@ -1101,7 +1099,9 @@
         <image name="Image" width="100" height="100"/>
         <image name="blob" width="356" height="173"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>
+        <image name="empty_star" width="32" height="32"/>
         <image name="grey-line-png" width="2088" height="144"/>
+        <image name="half_star" width="32" height="32"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="link.circle.fill" catalog="system" width="128" height="121"/>
         <image name="location.circle.fill" catalog="system" width="128" height="121"/>
@@ -1109,6 +1109,7 @@
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="phone.circle.fill" catalog="system" width="128" height="121"/>
         <image name="search" width="35" height="35"/>
+        <image name="star" width="32" height="32"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

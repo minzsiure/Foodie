@@ -9,6 +9,7 @@
 #import "Restaurant.h"
 #import "UIImageView+AFNetworking.h"
 #import <Parse/Parse.h>
+#import <HCSStarRatingView/HCSStarRatingView.h>
 
 @implementation RestaurantCell
 
@@ -39,6 +40,7 @@
     NSString *categoryStr = [newArray componentsJoinedByString:@", "];
     NSString *holder = [rating stringByAppendingString: @" "];
     self.ratingCategory.text = [holder stringByAppendingString:categoryStr];
+    self.starRating.value = rating.doubleValue;
     
     PFUser *currentUser = [PFUser currentUser];
     if ([currentUser[@"restaurants"] containsObject:self.restaurant.id]){
