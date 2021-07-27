@@ -37,18 +37,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
     [self.activityIndicator startAnimating];
     
     // for simulator
-    self.latitude = @"42.376970";
-    self.longitude = @"-71.102400";
-    [self fetchRestaurants];
+//    self.latitude = @"42.376970";
+//    self.longitude = @"-71.102400";
+//    [self fetchRestaurants];
     //
     
     self.restaurantTable.delegate = self;
     self.restaurantTable.dataSource = self;
     self.searchBar.delegate = self;
-//    [self accessCurrentLocation]; <- this is for real phone
+    [self accessCurrentLocation];// <- this is for real phone
     
     //refresh controller
     self.restaurantTable.backgroundColor = [UIColor colorWithRed:57/255.0 green:67/255.0 blue:89/255.0 alpha:1];
@@ -95,6 +96,7 @@
 }
 
 - (void) fetchRestaurants{
+    [self.activityIndicator startAnimating];
     PFUser *user = [PFUser currentUser];
     self.latitude = user[@"latitude"];
     self.longitude = user[@"longitude"];
