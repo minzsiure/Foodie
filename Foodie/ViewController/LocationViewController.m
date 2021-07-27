@@ -6,6 +6,7 @@
 //
 
 #import "LocationViewController.h"
+#import <Parse/Parse.h>
 @import GooglePlaces;
 
 @interface LocationViewController () <GMSAutocompleteViewControllerDelegate>
@@ -39,6 +40,10 @@ didAutocompleteWithPlace:(GMSPlace *)place {
         [placeClient lookUpPlaceID:place.placeID callback:^(GMSPlace * _Nullable result, NSError * _Nullable error) {
             if(!error) {
                 NSLog(@"place : %f,%f",result.coordinate.latitude, result.coordinate.longitude);
+                PFUser *user = [PFUser currentUser];
+                // regular phone
+                user[@"latitude"] = [NSString stringWithFormat:@"%f", result.coordinate.latitude];
+                user[@"longitude"] = [NSString stringWithFormat:@"%f", result.coordinate.longitude];
             } else {
                 NSLog(@"Error : %@",error.localizedDescription);
                 }
