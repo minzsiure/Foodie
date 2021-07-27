@@ -1,0 +1,6 @@
+framework module HHAttachmentSheetView {
+  umbrella header "HHAttachmentSheetView-umbrella.h"
+
+  export *
+  module * { export * }
+}

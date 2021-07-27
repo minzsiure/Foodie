@@ -16,6 +16,7 @@
 #import "LoginViewController.h"
 #import "DetailViewController.h"
 #import "MapViewController.h"
+#import "HHPullToRefreshWave.h"
 
 @interface RestaurantViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *restaurantTable;
@@ -50,9 +51,16 @@
 //    [self accessCurrentLocation]; <- this is for real phone
     
     //refresh controller
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
-    [self.restaurantTable insertSubview:self.refreshControl atIndex:0];
+//    self.refreshControl = [[UIRefreshControl alloc] init];
+//    [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+//    [self.restaurantTable insertSubview:self.refreshControl atIndex:0];
+    self.restaurantTable.backgroundColor = [UIColor colorWithRed:57/255.0 green:67/255.0 blue:89/255.0 alpha:1];
+    [self.restaurantTable hh_addRefreshViewWithActionHandler:^{
+        [self fetchRestaurants];
+        NSLog(@"hi");
+    }];
+     [self.restaurantTable hh_setRefreshViewTopWaveFillColor:[UIColor lightGrayColor]];
+     [self.restaurantTable hh_setRefreshViewBottomWaveFillColor:[UIColor whiteColor]];
     
 }
 
@@ -100,7 +108,8 @@
             self.filteredData = restaurants;
             dispatch_async(dispatch_get_main_queue(), ^(void){
                 [self.restaurantTable reloadData];
-                [self.refreshControl endRefreshing];
+//                [self.refreshControl endRefreshing];
+//                [self.restaurantTable hh_removeRefreshView];
                 [self.activityIndicator stopAnimating];
             });
         }

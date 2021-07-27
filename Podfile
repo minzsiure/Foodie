@@ -17,6 +17,7 @@ target 'Foodie' do
   pod 'HCSStarRatingView', '~> 1.5'
   pod 'RZTransitions'
   pod 'UITextField+Shake', '~> 1.2'
+  pod "HHAttachmentSheetView"
 
   target 'FoodieTests' do
     inherit! :search_paths
