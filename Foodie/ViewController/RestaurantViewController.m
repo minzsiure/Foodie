@@ -34,22 +34,24 @@
 @implementation RestaurantViewController
 
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
     [self.activityIndicator startAnimating];
     
     // for simulator
-//    self.latitude = @"42.376970";
-//    self.longitude = @"-71.102400";
-//    [self fetchRestaurants];
+    self.latitude = @"42.376970";
+    self.longitude = @"-71.102400";
+    PFUser *user = [PFUser currentUser];
+    user[@"latitude"] = self.latitude;
+    user[@"longitude"] = self.longitude;
+    [self fetchRestaurants];
     //
     
     self.restaurantTable.delegate = self;
     self.restaurantTable.dataSource = self;
     self.searchBar.delegate = self;
-    [self accessCurrentLocation];// <- this is for real phone
+//    [self accessCurrentLocation];// <- this is for real phone
     
     //refresh controller
     self.restaurantTable.backgroundColor = [UIColor colorWithRed:57/255.0 green:67/255.0 blue:89/255.0 alpha:1];
@@ -61,8 +63,10 @@
     
 }
 
-- (void) viewWillAppear:(BOOL)animated{
+- (void) viewDidAppear:(BOOL)animated{
+    [self fetchRestaurants];
     [self.restaurantTable reloadData];
+    NSLog(@"hi");
 }
 
 - (void) accessCurrentLocation{
@@ -83,8 +87,6 @@
          
         NSLog(@"restaurant view controller said lat%@ - lon%@", self.latitude, self.longitude);
         PFUser *user = [PFUser currentUser];
-         
-        // regular phone
         user[@"latitude"] = self.latitude;
         user[@"longitude"] = self.longitude;
         [self fetchRestaurants];
@@ -135,19 +137,14 @@
             }
             else{
                 self.filteredData = self.restaurants;
-                
             }
         }];
-        
-
     }
     else {
         self.filteredData = self.restaurants;
         [self.restaurantTable reloadData];
     }
-    
     [self.restaurantTable reloadData];
- 
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
@@ -224,7 +221,6 @@
                 [self.restaurantTable reloadData];
                 [self.refreshControl endRefreshing];
                 [self.activityIndicator stopAnimating];
-
             });
         }
         else{
@@ -276,8 +272,8 @@
         //if currentUser did not bookmark, then add the restaurantID to their bookmark; else, do nothing
         if (!([currentUser[@"restaurants"] containsObject:restaurant.id])){
             [currentUser addObject:restaurant.id forKey:@"restaurants"];
+            NSLog(@"restID %@", restaurant.id);
         }
-
         [currentUser saveInBackground];
         
         // check if this restaurant is previously created
@@ -304,13 +300,10 @@
                 }
             }];
         }
-
         [self.restaurantTable beginUpdates];
         [self.restaurantTable reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationNone];
         [self.restaurantTable endUpdates];
         completionHandler(true);
-        
-        
     }];
     
     // UI Design
@@ -336,7 +329,6 @@
         //if currentUser did bookmark, then remove the restaurantID from their bookmark; else, do nothing
         if (([currentUser[@"restaurants"] containsObject:restaurant.id])){
             [currentUser removeObject:restaurant.id forKey:@"restaurants"];
-            
         }
         [currentUser saveInBackground];
         
@@ -349,8 +341,6 @@
             [object saveInBackground];
             NSLog(@"removed");
         }
-
-        
         [self.restaurantTable beginUpdates];
         [self.restaurantTable reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationNone];
         [self.restaurantTable endUpdates];

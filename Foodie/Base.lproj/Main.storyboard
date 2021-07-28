@@ -334,9 +334,9 @@
         <!--Location View Controller-->
         <scene sceneID="Xoq-Vb-ifW">
             <objects>
-                <viewController id="JBw-rP-rm8" customClass="LocationViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="JBw-rP-rm8" customClass="LocationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lj4-86-W56">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="a82-dx-gTi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -725,7 +725,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7gH-CY-iQI">
-                                                <rect key="frame" x="0.0" y="238" width="414" height="360"/>
+                                                <rect key="frame" x="0.0" y="228" width="414" height="370"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="40" id="0Qb-L3-SMc">
                                                     <size key="itemSize" width="150" height="250"/>
@@ -735,7 +735,7 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RestaurantBookmarkCell" id="Cg5-5o-rJd" customClass="RestaurantBookmarkCell">
-                                                        <rect key="frame" x="0.0" y="26.666666666666668" width="180" height="307"/>
+                                                        <rect key="frame" x="0.0" y="31.666666666666668" width="180" height="307"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jkG-e7-hAj">
                                                             <rect key="frame" x="0.0" y="0.0" width="180" height="307"/>
@@ -794,7 +794,7 @@
                                             <constraint firstItem="7gH-CY-iQI" firstAttribute="leading" secondItem="laB-wl-tCk" secondAttribute="leading" id="Xpa-dT-bDz"/>
                                             <constraint firstAttribute="bottom" secondItem="7gH-CY-iQI" secondAttribute="bottom" constant="80" id="bN1-j2-e6d"/>
                                             <constraint firstItem="DRo-CK-Ido" firstAttribute="top" secondItem="zoT-Vg-5bM" secondAttribute="bottom" constant="80" id="gqn-A8-cGp"/>
-                                            <constraint firstItem="7gH-CY-iQI" firstAttribute="top" secondItem="DRo-CK-Ido" secondAttribute="bottom" constant="10" id="oPu-oK-yab"/>
+                                            <constraint firstItem="7gH-CY-iQI" firstAttribute="top" secondItem="DRo-CK-Ido" secondAttribute="bottom" id="oPu-oK-yab"/>
                                             <constraint firstAttribute="trailing" secondItem="cN0-xY-X62" secondAttribute="trailing" constant="-28" id="pmU-wG-Lkp"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -932,7 +932,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="180" height="307"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cl1-iy-nc9">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="button_compass_night.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cl1-iy-nc9">
                                                             <rect key="frame" x="10" y="0.0" width="170" height="259"/>
                                                             <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                             <constraints>
@@ -1099,13 +1099,14 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="iv0-8V-w9H"/>
+        <segue reference="oJJ-al-duT"/>
         <segue reference="hNe-L1-yGF"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Image" width="100" height="100"/>
         <image name="blob" width="356" height="173"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>
+        <image name="button_compass_night.png" width="40" height="40"/>
         <image name="empty_star" width="32" height="32"/>
         <image name="grey-line-png" width="2088" height="144"/>
         <image name="half_star" width="32" height="32"/>

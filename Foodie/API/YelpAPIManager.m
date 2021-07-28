@@ -29,7 +29,6 @@
     return self;
 }
 
-
 - (void)getYelpRestaurantCompletion: (NSString *)lat forLongt: (NSString *)longt forLimit: (NSString *)limit forOffset: (NSString *)offset completion:(void(^)(NSArray *restaurants, NSError *error))completion{
     // https://api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972&limit=20&offset=20
     
@@ -44,12 +43,8 @@
     NSString *limitVal = [limitString stringByAppendingString:limit];
     NSString *offsetString = [limitVal stringByAppendingString:@"&offset="];
     NSString *offsetVal = [offsetString stringByAppendingString:offset];
-    
-    
     NSURL *url = [NSURL URLWithString:offsetVal];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    
-
     [request setHTTPMethod:@"GET"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 
@@ -63,23 +58,17 @@
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
             NSLog(@"YELP DATA FETCHED SUCCESS");
             NSArray *dictionaries = responseDictionary[@"businesses"];
-            
-            // this is for testing location manager
-//            NSLog(@"at API %@, %@", lat, longt);
             NSArray *restaurants = [Restaurant restaurantsWithDictionaries:dictionaries];
             completion(restaurants, nil);
-            
         }
         else{
             NSLog(@"ERROR %@", [error localizedDescription]);
             completion(nil, error);
         }
-        
     }] resume];
 }
 
 - (void) getYelpAutocomplete:(NSString *)lat forLongt: (NSString *)longt forText: (NSString *)text completion:(void(^)(NSArray *restaurantIDs, NSError *error))completion{
-// https://api.yelp.com/v3/autocomplete?text=lobster&latitude=42.376970&longitude=-71.102400
     NSString *APIKey = self.YelpAPIKey;
     NSString *textURL = [@"https://api.yelp.com/v3/autocomplete?text=" stringByAppendingString:text];
     NSString *locURL = [textURL stringByAppendingFormat:@"&latitude=%@&longitude=%@",lat, longt];
@@ -109,7 +98,6 @@
             NSLog(@"ERROR %@", [error localizedDescription]);
             completion(nil, error);
         }
-        
     }] resume];
 }
 
@@ -139,7 +127,6 @@
             NSLog(@"ERROR %@", [error localizedDescription]);
             completion(nil, error);
         }
-        
     }] resume];
 }
 
@@ -148,7 +135,7 @@
     NSString *APIKey = self.YelpAPIKey;
     NSString *baseURL = @"https://api.yelp.com/v3/businesses/";
     NSMutableArray *restaurantDetailArray = [NSMutableArray array];
-    
+
     for (NSString *restaurantID in restaurantIDArray){
         NSString *completeURL = [baseURL stringByAppendingString:restaurantID];
         NSURL *url = [NSURL URLWithString: completeURL];
@@ -163,16 +150,14 @@
         NSURLSession *session = [NSURLSession sharedSession];
         [[session dataTaskWithRequest:request
              completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (!error) {
-            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-            
-            RestaurantDetail *restaurantDetail = [[RestaurantDetail alloc] initWithDictionary:responseDictionary];
-            [restaurantDetailArray addObject:restaurantDetail];
-            
-        }
-        completion(restaurantDetailArray, nil);
+            if (!error) {
+                NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                RestaurantDetail *restaurantDetail = [[RestaurantDetail alloc] initWithDictionary:responseDictionary];
+                [restaurantDetailArray addObject:restaurantDetail];
+            }
         }] resume];
     }
+    completion(restaurantDetailArray, nil);
 }
 
 - (void)getRestaurantArray:(NSArray *)restaurantIDArray completion:(void (^)(NSMutableArray *restaurantArray, NSError *error))completion {
@@ -194,13 +179,11 @@
         NSURLSession *session = [NSURLSession sharedSession];
         [[session dataTaskWithRequest:request
              completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (!error) {
-            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-            
-            Restaurant *restaurant = [[Restaurant alloc] initWithDictionary:responseDictionary];
-            [restaurantArray addObject:restaurant];
-            
-        }
+            if (!error) {
+                NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                Restaurant *restaurant = [[Restaurant alloc] initWithDictionary:responseDictionary];
+                [restaurantArray addObject:restaurant];
+            }
         completion(restaurantArray, nil);
         }] resume];
     }

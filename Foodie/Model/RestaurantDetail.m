@@ -50,7 +50,6 @@
 + (RestaurantDetail *)detailsWithDictionaries:(NSDictionary *)dictionary {
     // a factory method that returns Restaurants when initialized with an array of Restaurant Dictionaries.
     RestaurantDetail *restaurantDetail = [[RestaurantDetail alloc] initWithDictionary:dictionary];
-    
     return restaurantDetail;
 }
 

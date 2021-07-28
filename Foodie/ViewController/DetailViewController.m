@@ -41,7 +41,6 @@
     self.otherUsersCollectionView.dataSource = self;
     self.otherUsersCollectionView.delegate = self;
     self.imageScrollView.delegate = self;
-    
 
     PFQuery *query = [PFQuery queryWithClassName:@"Restaurant"];
     // id is passed in from tableView, so we fetch API using /search{id} request;
@@ -52,7 +51,6 @@
     //otherwise from profile page, we will set up this page with passed-in restaurantDetail object (no restaurant.id)
     else{
         [query whereKey:@"restaurantID" equalTo:self.restaurantDetailObj.id];
-        
     }
     PFObject *object = [query getFirstObject];
     self.userArray = object[@"userArray"];
@@ -77,7 +75,6 @@
         [self.imageScrollView addSubview:imageView];
     }
     //Set the content size of our scrollview according to the total width of our imageView objects.
-    
     self.imageScrollView.contentSize = CGSizeMake(width * [imageArray count], 170);
 }
 
@@ -109,6 +106,7 @@
 //    if currentUser did not bookmark, then add the restaurantID to their bookmark;
     if (!([currentUser[@"restaurants"] containsObject:self.restaurantDetailObj.id])){
         [currentUser addObject:self.restaurantDetailObj.id forKey:@"restaurants"];
+        NSLog(@"restD %@", self.restaurantDetailObj.id);
         [currentUser saveInBackground];
         [btn setImage:[UIImage systemImageNamed:@"bookmark.fill"] forState:UIControlStateNormal];
     }
@@ -118,9 +116,6 @@
         [currentUser saveInBackground];
         [btn setImage:[UIImage systemImageNamed:@"bookmark"] forState:UIControlStateNormal];
     }
-    
-    
-    
 }
 
 

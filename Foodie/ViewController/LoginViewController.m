@@ -39,7 +39,6 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
      {
         CLLocation *location = [locations lastObject];
-        
          self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
          self.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
          NSLog(@"lat%@ - lon%@", self.latitude, self.longitude);
@@ -47,7 +46,6 @@
          user[@"latitude"] = self.latitude;
          user[@"longitude"] = self.longitude;
         [self.locationManager stopUpdatingLocation];
-         
     }
 
 
@@ -95,7 +93,6 @@
         [self.passwordField shake];
         [self.usernameField shake:10 withDelta:10 speed:0.05 shakeDirection:ShakeDirectionHorizontal];
         [self.passwordField shake:10 withDelta:10 speed:0.05 shakeDirection:ShakeDirectionHorizontal];
-        
     }
 }
 

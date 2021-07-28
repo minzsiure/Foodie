@@ -89,7 +89,7 @@
 		8A425C802698D653000D7A79 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		8A425C812698D653000D7A79 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		8A425C832698D77C000D7A79 /* YelpAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YelpAPIManager.h; sourceTree = "<group>"; };
-		8A425C842698D77C000D7A79 /* YelpAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YelpAPIManager.m; sourceTree = "<group>"; };
+		8A425C842698D77C000D7A79 /* YelpAPIManager.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; path = YelpAPIManager.m; sourceTree = "<group>"; };
 		8A425C862698D7C1000D7A79 /* Restaurant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
 		8A425C872698D7C1000D7A79 /* Restaurant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
 		8A425C892698E930000D7A79 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };

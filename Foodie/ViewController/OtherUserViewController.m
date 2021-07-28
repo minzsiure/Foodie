@@ -26,7 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.shadowView.layer.shadowOpacity = 0.35;
     self.shadowView.layer.shadowOffset = CGSizeMake(0, -5);
     self.shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
