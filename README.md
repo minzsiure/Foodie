@@ -1,6 +1,3 @@
-Original App Design Project - README Template
-===
-
 # FoodieWIKI
 
 ## Table of Contents
@@ -15,7 +12,7 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 
 ### App Evaluation
 - **Category:** Lifestyle
-- **Mobile:** Users will also be able to view restraunts in selected region's map and mark them down. User can filter restraunts based on their choices.
+- **Mobile:** Users will also be able to view restraunts in current location or customized selected region's map and mark them down. User can search restraunts based on their choices.
 - **Story:** The value of the app is clear - to learn about cultures through food around the world. As a foodie, I was always looking for a platform that's specific to food-searching but there's almost none in the market. Many people also take a large amount of time to look for good restraunts because resources are not concentrated in one platform. The app story solves this problem.
 - **Market:** We mainly focus on young people who are looking to learn more about cultures, or simply want to find a nice restraunt to hang out with friends. The app can be helpful when other age groups are planning a trip locally or to other regions since food is always an important part when we visit new places.
 - **Habit:** Average users will consume the content on the app. The platform is habit-forming because this app serves as a centralized platform for food info.
@@ -28,18 +25,22 @@ FoodieWIKI - A food centered app to bookmark and learn about cultures through fo
 **Required Must-have Stories**
 - [x] User can create a new account
 - [x] User can login/logout
-- [x] User can bookmark/unbookmark a restaurant
+- [x] User can swipe to bookmark/unbookmark a restaurant on main page and detail page
 - [x] User can view a feed of restraunt cards
-- [x] User can see detial page of a restaurant
+- [x] User can see detial page of a restaurant (rating, category, price, hour, address, other users who bookmarked it, three images)
 - [x] User can see nearby restraurants in a map and mark down restaurants 
 
 
 **Optional Nice-to-have Stories**
 - [x] User can see other users who bookedmarked the restaurant on restaurant detail page
-- [ ] User can tap a photo to view a more detailed photo screen
+- [x] User can see restaurant photos in an image slider in restaurant detail page
 - [x] User can see their profile page with their bookmarks
 - [x] User can view other user’s profiles and see their bookmarks
-- [ ] User can see restraunts nearby or choose a region
+- [x] User can see restraunts nearby or choose a region
+- [x] User can see a route from select regions/current location to a certain restaurant's location in restaurant detail page
+- [x] User can call restaurant in its detail page
+- [x] User can go to a restaurant's yelp page in its detail page  
+- [x] User can change their profile picture by taking a picture or select photos from their library 
 
 
 ### 2. Screen Archetypes
