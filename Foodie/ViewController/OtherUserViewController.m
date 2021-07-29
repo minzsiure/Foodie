@@ -18,6 +18,7 @@
 @property (strong, nonatomic) UIImage *resizedImage;
 @property (strong, nonatomic) NSArray *bookmarks; //array of IDs
 @property (strong, nonatomic) NSArray *restaurantDetailArray; //array of RestaurantDetail Objects
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 
 @end
@@ -26,6 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
+    [self.activityIndicator startAnimating];
     self.shadowView.layer.shadowOpacity = 0.35;
     self.shadowView.layer.shadowOffset = CGSizeMake(0, -5);
     self.shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -48,13 +51,50 @@
 }
 
 - (void) fetchBookmarks{
-    YelpAPIManager *manager = [YelpAPIManager new];
-    [manager getRestaurantDetailArray:(self.bookmarks) completion:^(NSMutableArray *restaurantDetailArray, NSError * error) {
-        self.restaurantDetailArray = restaurantDetailArray;
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            [self.bookmarkCollectionView reloadData];
+    //Global queue get command
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),^{
+        //Create dispatch group
+        dispatch_group_t group = dispatch_group_create();
+        dispatch_group_async(group,dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^ {
+            // block1
+            NSLog(@"Block1");
+            YelpAPIManager *manager = [YelpAPIManager new];
+            [manager getRestaurantDetailArray:(self.bookmarks) completion:^(NSMutableArray *restaurantDetailArray, NSError * error) {
+                if (error) {
+                    NSLog(@"it is failing here.");
+                } else {
+                    self.restaurantDetailArray = restaurantDetailArray;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        // Update UI
+                        [self.bookmarkCollectionView reloadData];
+                    });
+                }
+            }];
+            NSLog(@"Block1 End");
         });
-    }];
+        //Start dispatch group
+        dispatch_group_enter(group);
+        //Dont continue until group finished
+        [self computeInBackground:1 completion:^{
+            NSLog(@"1 done");
+            dispatch_group_leave(group); // pair 1 leave
+        }];
+        dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+        NSLog(@"finally!");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Update UI
+            [self.bookmarkCollectionView reloadData];
+            [self.activityIndicator stopAnimating];
+        });
+    });
+}
+
+- (void)computeInBackground:(int)no completion:(void (^)(void))block {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        NSLog(@"%d starting", no);
+        sleep(no*2);
+        block();
+    });
 }
 
 - (void)viewDidAppear:(BOOL)animated {
