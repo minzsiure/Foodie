@@ -66,7 +66,6 @@
 - (void) viewDidAppear:(BOOL)animated{
     [self fetchRestaurants];
     [self.restaurantTable reloadData];
-    NSLog(@"hi");
 }
 
 - (void) accessCurrentLocation{

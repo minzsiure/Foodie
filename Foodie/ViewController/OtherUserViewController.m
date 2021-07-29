@@ -37,6 +37,8 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
+    [self.activityIndicator startAnimating];
     // get array of bookmarked restaurantID
     PFQuery *userQuery = [PFUser query];
     [userQuery whereKey:@"objectId" equalTo:self.userID];
@@ -98,6 +100,8 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    self.activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
+    [self.activityIndicator startAnimating];
     PFQuery *userQuery = [PFUser query];
     [userQuery whereKey:@"objectId" equalTo:self.userID];
     PFUser *thisUser = [userQuery getFirstObject];
