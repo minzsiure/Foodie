@@ -121,6 +121,7 @@
         Restaurant *restaurant = sender;
         DetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.restaurant = restaurant;
+        detailViewController.restaurantDictionaries = self.restaurantDictionaries;
     }
 }
 
