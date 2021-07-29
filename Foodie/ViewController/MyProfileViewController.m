@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *bookmarkCollectionView;
 @property (strong, nonatomic) NSArray *bookmarks; //array of IDs
 @property (strong, nonatomic) NSArray *restaurantDetailArray; //array of RestaurantDetail Objects
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 
 @end
@@ -31,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
+    [self.activityIndicator startAnimating];
     self.shadowView.layer.shadowOpacity = 0.35;
     self.shadowView.layer.shadowOffset = CGSizeMake(0, -5);
     self.shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -175,6 +178,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update UI
             [self.bookmarkCollectionView reloadData];
+            [self.activityIndicator stopAnimating];
         });
     });
 }
