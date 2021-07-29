@@ -102,25 +102,25 @@
     PFUser *user = [PFUser currentUser];
     self.latitude = user[@"latitude"];
     self.longitude = user[@"longitude"];
-    dispatch_async(dispatch_get_main_queue(), ^(void){
-        YelpAPIManager *manager = [YelpAPIManager new];
-        [manager getYelpRestaurantCompletion:self.latitude forLongt:self.longitude forLimit:@"20" forOffset:@"0" completion:^(NSArray *restaurants, NSError *error) {
-            if (restaurants){
-                self.restaurants = restaurants;
-                self.filteredData = restaurants;
-                dispatch_async(dispatch_get_main_queue(), ^(void){
-                    [self.restaurantTable reloadData];
-                    [self.activityIndicator stopAnimating];
-                });
-            }
-            else{
-                NSLog(@"%@", error.localizedDescription);
-            }
-        }];
-    });
+    YelpAPIManager *manager = [YelpAPIManager new];
+    [manager getYelpRestaurantCompletion:self.latitude forLongt:self.longitude forLimit:@"20" forOffset:@"0" completion:^(NSArray *restaurants, NSError *error) {
+        if (restaurants){
+            self.restaurants = restaurants;
+            self.filteredData = restaurants;
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                [self.restaurantTable reloadData];
+                [self.activityIndicator stopAnimating];
+            });
+        }
+        else{
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    // TODO: send less request?
+    // TODO: cancel existing request if the previous ones are not yet finished
     if (searchText.length != 0) {
         // change to sending searchText to autocomplete API
         YelpAPIManager *manager = [YelpAPIManager new];

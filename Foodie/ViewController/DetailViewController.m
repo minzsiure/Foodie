@@ -69,7 +69,7 @@
         frame.size = self.imageScrollView.frame.size;
 
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
-        [imageView setContentMode:UIViewContentModeScaleToFill];
+        [imageView setContentMode:UIViewContentModeScaleAspectFill];
         imageView.image = nil;
         [imageView setImageWithURL:[imageArray objectAtIndex:i]];
         [self.imageScrollView addSubview:imageView];
