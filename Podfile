@@ -18,6 +18,10 @@ target 'Foodie' do
   pod 'RZTransitions'
   pod 'UITextField+Shake', '~> 1.2'
   pod "HHAttachmentSheetView"
+  pod 'RKDropdownAlert'
+
+
+
 
   target 'FoodieTests' do
     inherit! :search_paths

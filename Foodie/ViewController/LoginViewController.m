@@ -9,6 +9,9 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Parse/Parse.h>
 #import <UITextField+Shake.h>
+#import <UIKit/UIKit.h>
+#import "RKDropdownAlert.h"
+
 
 @interface LoginViewController () <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
@@ -24,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //[self accessCurrentLocation];
+  
+
 }
 
 - (void) accessCurrentLocation{
@@ -59,10 +64,17 @@
 //        newUser[@"longitude"] = self.longitude;
 
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
+            
             if (error != nil) {
+                [RKDropdownAlert show];
+                [RKDropdownAlert title:@"Error!" message:@"Username exists. Please try another one." backgroundColor:[UIColor orangeColor] textColor:[UIColor whiteColor] time:5];
                 NSLog(@"Error: %@", error.localizedDescription);
             } else {
-                NSLog(@"User registered successfully");
+                [RKDropdownAlert show];
+                [RKDropdownAlert title:@"Congratulation!" message:@"You have successfully signed up. Welcome to Foodie Journey!" backgroundColor:[UIColor colorWithRed:71.0f/255.0f
+                                                                                                                                      green:173.0f/255.0f
+                                                                                                                                       blue:121.0f/255.0f
+                                                                                                                                      alpha:1.0f] textColor:[UIColor whiteColor] time:5];
             }
         }];
     }
@@ -77,22 +89,21 @@
         NSString *password = self.passwordField.text;
         [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
             if (error != nil) {
-//            user[@"latitude"] = self.latitude;
-//            user[@"longitude"] = self.longitude;
                 NSLog(@"User log in failed: %@", error.localizedDescription);
             } else {
-                NSLog(@"User logged in successfully");
-            
                 // display view controller that needs to shown after successful login
                 [self performSegueWithIdentifier:@"loginSegue" sender:nil];
             }
         }];
     }
     else{
+        [RKDropdownAlert show];
+        [RKDropdownAlert title:@"Unsuccessful Login" message:@"Please enter username and password." backgroundColor:[UIColor orangeColor] textColor:[UIColor whiteColor] time:5];
+
         [self.usernameField shake];
         [self.passwordField shake];
-        [self.usernameField shake:10 withDelta:10 speed:0.05 shakeDirection:ShakeDirectionHorizontal];
-        [self.passwordField shake:10 withDelta:10 speed:0.05 shakeDirection:ShakeDirectionHorizontal];
+        [self.usernameField shake:15 withDelta:10 speed:0.05 shakeDirection:ShakeDirectionHorizontal];
+        [self.passwordField shake:15 withDelta:10 speed:0.05 shakeDirection:ShakeDirectionHorizontal];
     }
 }
 

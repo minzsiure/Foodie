@@ -45,6 +45,7 @@ PODS:
   - Parse/Core (1.19.2):
     - Bolts/Tasks (= 1.9.1)
   - Reachability (3.2)
+  - RKDropdownAlert (0.3.0)
   - RZTransitions (1.2.1)
   - "UITextField+Shake (1.2.1)"
   - YelpAPI (3.0.0)
@@ -59,6 +60,7 @@ DEPENDENCIES:
   - HHAttachmentSheetView
   - MaterialComponents/PageControl
   - Parse
+  - RKDropdownAlert
   - RZTransitions
   - "UITextField+Shake (~> 1.2)"
   - YelpAPI
@@ -77,6 +79,7 @@ SPEC REPOS:
     - MDFInternationalization
     - Parse
     - Reachability
+    - RKDropdownAlert
     - RZTransitions
     - "UITextField+Shake"
     - YelpAPI
@@ -94,10 +97,11 @@ SPEC CHECKSUMS:
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  RKDropdownAlert: f4b3364c251829ad439dc666836a1f2dad26f4c7
   RZTransitions: 0e0013fda6989ee84dc5e44dca79fd539e1a975a
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
   YelpAPI: 9ae0ee45b998d306c1aff9b2d966dc23121f191e
 
-PODFILE CHECKSUM: e837502019e578ae11cc39807f53625d1f73f4eb
+PODFILE CHECKSUM: 84aeb42808453f64cff5167c2a118029af129888
 
 COCOAPODS: 1.10.1

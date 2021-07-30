@@ -8,6 +8,7 @@ ${BUILT_PRODUCTS_DIR}/HHAttachmentSheetView/HHAttachmentSheetView.framework
 ${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework
 ${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework
 ${BUILT_PRODUCTS_DIR}/Parse/Parse.framework
+${BUILT_PRODUCTS_DIR}/RKDropdownAlert/RKDropdownAlert.framework
 ${BUILT_PRODUCTS_DIR}/RZTransitions/RZTransitions.framework
 ${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/UITextField+Shake/UITextField_Shake.framework

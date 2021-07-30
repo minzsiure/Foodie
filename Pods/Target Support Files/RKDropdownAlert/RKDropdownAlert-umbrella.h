@@ -10,8 +10,8 @@
 #endif
 #endif
 
-#import "MCActivityButton.h"
+#import "RKDropdownAlert.h"
 
-FOUNDATION_EXPORT double MCActivityButtonVersionNumber;
-FOUNDATION_EXPORT const unsigned char MCActivityButtonVersionString[];
+FOUNDATION_EXPORT double RKDropdownAlertVersionNumber;
+FOUNDATION_EXPORT const unsigned char RKDropdownAlertVersionString[];
 

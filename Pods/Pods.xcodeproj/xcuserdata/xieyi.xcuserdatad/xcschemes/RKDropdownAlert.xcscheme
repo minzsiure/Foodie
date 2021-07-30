@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CEFCBF6EA78408DB95B2F0CA0E1DA54B"
-               BuildableName = "MCActivityButton.framework"
-               BlueprintName = "MCActivityButton"
+               BlueprintIdentifier = "B17CD1A03A2188ABB00010F9DB42B8D1"
+               BuildableName = "RKDropdownAlert.framework"
+               BlueprintName = "RKDropdownAlert"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
