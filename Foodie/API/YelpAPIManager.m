@@ -151,6 +151,7 @@
         [[session dataTaskWithRequest:request
              completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             if (!error) {
+                NSLog(@"enter");
                 NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
                 RestaurantDetail *restaurantDetail = [[RestaurantDetail alloc] initWithDictionary:responseDictionary];
                 [restaurantDetailArray addObject:restaurantDetail];
@@ -166,6 +167,7 @@
     NSMutableArray *restaurantArray = [NSMutableArray array];
     
     for (NSString *restaurantID in restaurantIDArray){
+        
         NSString *completeURL = [baseURL stringByAppendingString:restaurantID];
         NSURL *url = [NSURL URLWithString: completeURL];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];

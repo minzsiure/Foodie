@@ -151,14 +151,11 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),^{
         //Create dispatch group
         dispatch_group_t group = dispatch_group_create();
+        // block1
         dispatch_group_async(group,dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^ {
-            // block1
-            NSLog(@"Block1");
             YelpAPIManager *manager = [YelpAPIManager new];
             [manager getRestaurantDetailArray:(self.bookmarks) completion:^(NSMutableArray *restaurantDetailArray, NSError * error) {
-                if (error) {
-                    NSLog(@"it is failing here.");
-                } else {
+                if (!error) {
                     self.restaurantDetailArray = restaurantDetailArray;
                     dispatch_async(dispatch_get_main_queue(), ^{
                         // Update UI
@@ -166,17 +163,15 @@
                     });
                 }
             }];
-            NSLog(@"Block1 End");
         });
         //Start dispatch group
         dispatch_group_enter(group);
         //Dont continue until group finished
         [self computeInBackground:1 completion:^{
-            NSLog(@"1 done");
-            dispatch_group_leave(group); // pair 1 leave
+            if (self.restaurantDetailArray.count == self.bookmarks.count){
+                dispatch_group_leave(group);} // pair 1 leave
         }];
         dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-        NSLog(@"finally!");
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update UI
             [self.bookmarkCollectionView reloadData];
