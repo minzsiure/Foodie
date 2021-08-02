@@ -55,7 +55,6 @@
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(_latitude, _longtitude);
     marker.title = @"Current Location";
-//    marker.snippet = @"";
     marker.map = self.mapView;
     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
 }

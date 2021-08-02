@@ -80,7 +80,7 @@
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
+        // Camera 🚫 available so we will use photo library instead
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -140,7 +140,6 @@
 
 - (void)computeInBackground:(int)no completion:(void (^)(void))block {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        NSLog(@"%d starting", no);
         sleep(no*2);
         block();
     });

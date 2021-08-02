@@ -84,7 +84,6 @@
         self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
         self.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
          
-        NSLog(@"restaurant view controller said lat%@ - lon%@", self.latitude, self.longitude);
         PFUser *user = [PFUser currentUser];
         user[@"latitude"] = self.latitude;
         user[@"longitude"] = self.longitude;
