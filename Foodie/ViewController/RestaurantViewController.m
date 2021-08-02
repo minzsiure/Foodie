@@ -268,7 +268,6 @@
         //if currentUser did not bookmark, then add the restaurantID to their bookmark; else, do nothing
         if (!([currentUser[@"restaurants"] containsObject:restaurant.id])){
             [currentUser addObject:restaurant.id forKey:@"restaurants"];
-            NSLog(@"restID %@", restaurant.id);
         }
         [currentUser saveInBackground];
         
@@ -335,7 +334,6 @@
         if (object) {
             [object removeObject:currentUser.objectId forKey:@"userArray"];
             [object saveInBackground];
-            NSLog(@"removed");
         }
         [self.restaurantTable beginUpdates];
         [self.restaurantTable reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationNone];
