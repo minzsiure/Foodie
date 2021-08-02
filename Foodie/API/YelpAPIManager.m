@@ -12,10 +12,15 @@
 #import <YelpAPI/YelpAPI.h>
 #import <Parse/Parse.h>
 
+extern NSMutableArray *sessionArr;
+NSMutableArray *sessionArr;
+
 @interface YelpAPIManager() 
 
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSString *YelpAPIKey;
+
+
 
 @end
 
@@ -79,7 +84,7 @@
     [request setValue:authValue forHTTPHeaderField:@"Authorization"];
 
     NSURLSession *session = [NSURLSession sharedSession];
-    [[session dataTaskWithRequest:request
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
              completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
@@ -94,7 +99,25 @@
             NSLog(@"ERROR %@", [error localizedDescription]);
             completion(nil, error);
         }
-    }] resume];
+    }];
+    NSURLSessionDataTask *lastSession;
+    
+    if (sessionArr == nil){
+        sessionArr = [[NSMutableArray alloc] init];
+    }
+    else{
+        lastSession = [sessionArr objectAtIndex:0];
+    }
+    
+    if (lastSession != nil){
+        for (int i = 0; i < sessionArr.count; i++){
+            [sessionArr[0] cancel];
+            [sessionArr removeObjectAtIndex:0];
+        }
+    }
+    [sessionArr insertObject:task atIndex:0];
+    
+    [task resume];
 }
 
 - (void)getRestaurantDetail:(NSString *)restaurantID completion:(void (^)(NSDictionary *restaurantDetail, NSError *error))completion {

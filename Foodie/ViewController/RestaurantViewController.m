@@ -117,8 +117,6 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    // TODO: send less request?
-    // TODO: cancel existing request if the previous ones are not yet finished
     if (searchText.length != 0) {
         // change to sending searchText to autocomplete API
         YelpAPIManager *manager = [YelpAPIManager new];

@@ -34,8 +34,8 @@
             filePath = "Foodie/API/YelpAPIManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "-getRestaurantDetailArray:completion:"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "Foodie/ViewController/RestaurantViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
             landmarkName = "-tableView:leadingSwipeActionsConfigurationForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -144,8 +144,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "197"
             endingLineNumber = "197"
-            landmarkName = "-collectionView:cellForItemAtIndexPath:"
-            landmarkType = "7">
+            landmarkName = "MyProfileViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -158,8 +158,8 @@
             filePath = "Foodie/ViewController/RestaurantViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "354"
-            endingLineNumber = "354"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
             landmarkName = "-tableView:leadingSwipeActionsConfigurationForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -222,10 +222,10 @@
             filePath = "Foodie/ViewController/RestaurantViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "RestaurantViewController"
-            landmarkType = "3">
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "-prepareForSegue:sender:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -318,8 +318,10 @@
             filePath = "Foodie/API/YelpAPIManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205">
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "YelpAPIManager"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -332,8 +334,8 @@
             filePath = "Foodie/API/YelpAPIManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "-getRestaurantArray:completion:"
             landmarkType = "7">
             <Locations>
@@ -383,6 +385,38 @@
             startingLineNumber = "71"
             endingLineNumber = "71"
             landmarkName = "-signUpUser:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2C7670BE-463D-4BEF-A77F-F311B81F46B6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Foodie/API/YelpAPIManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "-getYelpAutocomplete:forLongt:forText:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CBA6E0E4-5254-4D0F-8D1C-5992E950A08B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Foodie/API/YelpAPIManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-getYelpAutocomplete:forLongt:forText:completion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
