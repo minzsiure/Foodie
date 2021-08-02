@@ -30,8 +30,6 @@
 }
 
 - (void)getYelpRestaurantCompletion: (NSString *)lat forLongt: (NSString *)longt forLimit: (NSString *)limit forOffset: (NSString *)offset completion:(void(^)(NSArray *restaurants, NSError *error))completion{
-    // https://api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972&limit=20&offset=20
-    
     NSString *baseURL =  @"https://api.yelp.com/v3/businesses/search?term=restaurant&latitude=";
     //location
     NSString *latURL = [baseURL stringByAppendingString:lat];
@@ -56,7 +54,6 @@
              completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-            NSLog(@"YELP DATA FETCHED SUCCESS");
             NSArray *dictionaries = responseDictionary[@"businesses"];
             NSArray *restaurants = [Restaurant restaurantsWithDictionaries:dictionaries];
             completion(restaurants, nil);
@@ -86,7 +83,6 @@
              completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-            NSLog(@"Restaurant Detail FETCHED SUCCESS");
             NSArray *restaurantDict = responseDictionary[@"businesses"];
             NSMutableArray *restaurantIDs = [NSMutableArray array];
             for (NSDictionary *arr in restaurantDict){
@@ -119,7 +115,6 @@
              completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-            NSLog(@"Restaurant Detail FETCHED SUCCESS");
             NSDictionary *restaurantDetail = responseDictionary;
             completion(restaurantDetail, nil);
         }
@@ -151,7 +146,6 @@
         [[session dataTaskWithRequest:request
              completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             if (!error) {
-                NSLog(@"enter");
                 NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
                 RestaurantDetail *restaurantDetail = [[RestaurantDetail alloc] initWithDictionary:responseDictionary];
                 [restaurantDetailArray addObject:restaurantDetail];
