@@ -2,6 +2,18 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Foodie/Restaurant+CoreDataProperties.h">
+   </FileRef>
+   <FileRef
+      location = "group:Foodie/Restaurant+CoreDataClass.h">
+   </FileRef>
+   <FileRef
+      location = "group:Foodie/Restaurant+CoreDataClass.m">
+   </FileRef>
+   <FileRef
+      location = "group:Foodie/Restaurant+CoreDataProperties.m">
+   </FileRef>
+   <FileRef
       location = "group:Foodie.xcodeproj">
    </FileRef>
    <FileRef

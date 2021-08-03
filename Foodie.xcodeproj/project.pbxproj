@@ -36,6 +36,7 @@
 		8ACA07EA26AF4CA300D87F55 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACA07E926AF4CA300D87F55 /* LocationViewController.m */; };
 		8ACA07F426B0A21700D87F55 /* UIScrollView+HHPullToRefreshWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACA07EF26B0A21700D87F55 /* UIScrollView+HHPullToRefreshWaveView.m */; };
 		8ACA07F526B0A21700D87F55 /* HHPullToRefreshWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACA07F326B0A21700D87F55 /* HHPullToRefreshWaveView.m */; };
+		8ADB452226B9A39900B49013 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8ADB452026B9A39900B49013 /* Model.xcdatamodeld */; };
 		B9272DF2021C3A3A963EA9F8 /* Pods_Foodie_FoodieUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E7D464BCF89E48C4B6AA40 /* Pods_Foodie_FoodieUITests.framework */; };
 		DE1803EED51CF9B401A98E98 /* Pods_Foodie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F80AD68F3A04A89403AE86D /* Pods_Foodie.framework */; };
 /* End PBXBuildFile section */
@@ -116,6 +117,7 @@
 		8ACA07F126B0A21700D87F55 /* UIScrollView+HHPullToRefreshWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HHPullToRefreshWaveView.h"; sourceTree = "<group>"; };
 		8ACA07F226B0A21700D87F55 /* HHPullToRefreshWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHPullToRefreshWave.h; sourceTree = "<group>"; };
 		8ACA07F326B0A21700D87F55 /* HHPullToRefreshWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHPullToRefreshWaveView.m; sourceTree = "<group>"; };
+		8ADB452126B9A39900B49013 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		AEA169FC7C5F8B8EDBD86F30 /* Pods-Foodie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.release.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.release.xcconfig"; sourceTree = "<group>"; };
 		B0101693DE2FF6A26F7A9E7C /* Pods-Foodie-FoodieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie-FoodieUITests.release.xcconfig"; path = "Target Support Files/Pods-Foodie-FoodieUITests/Pods-Foodie-FoodieUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B3725B4F03FE35156DBD8CB8 /* Pods-Foodie-FoodieUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie-FoodieUITests.debug.xcconfig"; path = "Target Support Files/Pods-Foodie-FoodieUITests/Pods-Foodie-FoodieUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				8A06BDDA268E216400A13382 /* Info.plist */,
 				8A06BDDB268E216400A13382 /* main.m */,
 				8A425C892698E930000D7A79 /* Keys.plist */,
+				8ADB452026B9A39900B49013 /* Model.xcdatamodeld */,
 			);
 			path = Foodie;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				8A425C7F2698D4BB000D7A79 /* LoginViewController.m in Sources */,
 				8ACA07D726A215EA00D87F55 /* TabBarController.m in Sources */,
 				8A425C792698D38C000D7A79 /* MyProfileViewController.m in Sources */,
+				8ADB452226B9A39900B49013 /* Model.xcdatamodeld in Sources */,
 				8A425C762698D37D000D7A79 /* RestaurantViewController.m in Sources */,
 				8ACA07DE26A5F80F00D87F55 /* OtherUsersCell.m in Sources */,
 				8ACA07EA26AF4CA300D87F55 /* LocationViewController.m in Sources */,
@@ -931,6 +935,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8ADB452026B9A39900B49013 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8ADB452126B9A39900B49013 /* Model.xcdatamodel */,
+			);
+			currentVersion = 8ADB452126B9A39900B49013 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8A06BDBE268E216200A13382 /* Project object */;
 }
