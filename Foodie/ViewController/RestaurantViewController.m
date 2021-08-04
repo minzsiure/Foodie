@@ -17,6 +17,8 @@
 #import "DetailViewController.h"
 #import "MapViewController.h"
 #import "HHPullToRefreshWave.h"
+#import <CoreData/CoreData.h>
+
 
 @interface RestaurantViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *restaurantTable;
