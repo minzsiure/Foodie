@@ -8,7 +8,7 @@
 
 ## Overview
 ### Description
-FoodieWIKI - A food centered app to bookmark and learn about cultures through food around the world.
+FoodieWIKI - A food centered app to bookmark and learn about food nearby and around the world.
 
 ### App Evaluation
 - **Category:** Lifestyle
