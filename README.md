@@ -7,6 +7,9 @@
 2. [Schema](#Schema)
 
 ## Overview
+### App Demo 
+https://www.dropbox.com/sh/gjnacowukh8qo1m/AAAgRYzqsuSSCtWeSRdhxMbfa?dl=0
+
 ### Description
 FoodieWIKI - A food centered app to bookmark and learn about food nearby and around the world.
 
